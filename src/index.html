@@ -4,67 +4,39 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>YachayWasi</title>
-  <link rel="stylesheet" href="style.css" />
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <title>YachayWasi Perú</title>
 </head>
 <body>
   <header>
-    <div class="logo">
-      <a href="https://img2.freepng.es/20181127/rcc/kisspng-computer-icons-user-scalable-vector-graphics-login-set-menu-personal-settings-px-svg-png-icon-free-do-5bfdc61ed1a448.2136901815433579828587.jpg"></a>
+    <div class ="menu_bar">
+      <a href="#" class= "bt-menu"><span class="icon-menu"></span>YachayWasi</a>
     </div>
-    <nav class= "menu">
-      <!--<ul class="menubar">
-        <li>Inicio</li>
-        <li>Perfil</li>
-        <li>Cerrar Sesión</li> </ul>-->
-        <a href="#">Inicio</a>
-        <a href="#">Perfil</a>
-        <a href="#">Cerrar Sesion</a>
+    <nav id="menu">
+        <ul>
+          <li><span class="icon-menu"></span><a href="#">Inicio</a></li>
+          <li><span class="icon-menu"></span><a href="#">Perfil</a></li>
+          <li><span class="icon-menu"></span><a href="#">Cerrar Sesión</a></li>
+        </ul>
     </nav>
+    <section class="ingreso">
+      <div class="logo"> <img src="https://previews.123rf.com/images/lumut/lumut1707/lumut170700320/81954169-plantilla-logotipo-de-la-educaci%C3%B3n.jpg" width="79%" height="79%"> 
+      </div>
+      <form class="logIn"> 
+        <p> Bienvenid@s a YachayWasi, una red social para estudiantes, padres y maestros de todo el Perú </p>
+        <div class="formulario">
+         <input class="email" type="email" placeholder="Correo Electrónico" required> 
+         <input class="password" type="password" placeholder="Contraseña" required> 
+         <button class= "ingresar"> Ingresar </button>
+        </div>
+        <p class="otherOptions">O puedes ingresar con ...</p>
+        <img class="iconFb" src="assets/iconFb.jpg"/>
+        <img class="iconGoogle" src="assets/iconG.png"/>
+        <p>¿No tienes cuenta? , <a href="blank">Regístrate</a> </p>
+      </form>
+    </section>
   </header>
 
-  <main>
-    <section class ="inicio">
-      <!--<div class = "cardNombre">
-        <img class = "portada" src="https://i.pinimg.com/originals/f4/ba/04/f4ba048069fb1977fe838e925ff41e81.jpg">
-        <img class ="user" src="https://img2.freepng.es/20181127/rcc/kisspng-computer-icons-user-scalable-vector-graphics-login-set-menu-personal-settings-px-svg-png-icon-free-do-5bfdc61ed1a448.2136901815433579828587.jpg"> 
-        <p> Nombre del usuario </p>
-        <p> Maestr@ / alumn@ / Padre de Familia </p>
-      </div>-->
-
-      <div class="contenedorInicio">
-        <div class="crearPublicacion">
-          <img class = "user" src=" https://img2.freepng.es/20181127/rcc/kisspng-computer-icons-user-scalable-vector-graphics-login-set-menu-personal-settings-px-svg-png-icon-free-do-5bfdc61ed1a448.2136901815433579828587.jpg">
-          <div class="escribirPublicacion">
-            <p>¿Qué quieres compartir?</p>
-          </div>
-          <img class= "agregarImg" src= "C:\Users\Lourdes\Documents\GitHub\logos red social\src\imagenes\agregarIng.png">
-          <button class="btnPublicar">Publicar</button>
-        </div>
-  
-        
-        <div class="publicacion">
-          <img class = "user" src=" https://img2.freepng.es/20181127/rcc/kisspng-computer-icons-user-scalable-vector-graphics-login-set-menu-personal-settings-px-svg-png-icon-free-do-5bfdc61ed1a448.2136901815433579828587.jpg">
-          <p>Publicado por: Nombre de Usuario (${}$) </p>
-          <div class= "btnHamburguesa">
-            <button class="btnGuardar">Guardar</button>
-            <button class="btnEditar">Editar</button>
-            <button class="btnEliminar">Eliminar</button>
-          </div>
-          <div class="escribirPublicacion">
-            <p>Aqui va las publicaciones</p>
-          </div>
-          <button class="btnPublicar">Publicar</button>
-          <button class="btnMe gusta">Me gusta</button>
-          <button class="btnComentar">Comentar</button>
-        </div>
-
-      </div>
-
-     
-    </section>
-
-  </main>
   <script type="module" src="index.js"></script>
 </body>
 </html>
