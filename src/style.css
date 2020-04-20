@@ -4,7 +4,15 @@
     box-sizing: border-box;
     font-family: Helvetica, Arial, sans-serif;
 } 
-
+body::-webkit-scrollbar{
+    width: 1.5%;
+    background-color: #F6EEEE;
+}
+body::-webkit-scrollbar-thumb{
+    border-radius: 0.4rem;
+    background: #ED8D8D;
+    height: 1%;
+}
 .ingreso{
     display: flex;
 }
@@ -15,7 +23,6 @@
 
 @media (max-width:600px){
 .logo{
-    position: absolute;
     margin-top: 10%;
     margin-left: 25%;
    }
