@@ -1,6 +1,92 @@
 *{
     margin: 0px;
     padding: 0px;
+
+  } 
+  
+  
+  body{
+    background: #ffffff;
+  }
+  header{
+    background: #d94545;
+    width: 100%;
+    height: 50px;
+    display: flex; 
+    justify-content: flex-end;
+    align-items: center;
+    flex-flow: row wrap;
+  }
+  
+  nav{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  
+  }
+  
+  nav a {
+    height: auto;
+    padding: 15px;
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    flex-grow: 1;
+  }
+  
+  header nav a:hover{
+    background: #EC9797;
+  }
+  .contenedorInicio{
+    background: #cccccc;
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+  
+   @media all and (max-width: 400px){
+     nav{
+       width: auto;
+     }
+   }
+  
+  
+   .user {
+    width: 30px;
+    height: auto;
+  }
+  .portada{
+    width: 30%;
+    height: auto;
+  }
+  
+  .cardNombre {
+    margin: 10px;
+    border : solid 2px #EC9797;
+  } 
+  
+  .crearPublicacion,
+  .publicacion{
+    border : solid 2px #EC9797;
+    margin: 10px;
+    padding: 10px;
+  }
+   button{
+     margin: 5px;
+     padding: 5px;
+   }
+  
+  .escribirPublicacion{
+    border : solid 2px #EC9797;
+    padding: 10px;
+  }
+  
+
     box-sizing: border-box;
     font-family: Helvetica, Arial, sans-serif;
 } 
@@ -148,3 +234,4 @@ body::-webkit-scrollbar-thumb{
       font-size:40px;
     }
   }
+
