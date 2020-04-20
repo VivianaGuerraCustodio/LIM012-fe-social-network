@@ -78,7 +78,7 @@
     width:100%;
   }
   header nav {
-    background-color: rgb(233, 18, 18);
+    background-color: rgb(218, 69, 69);
   }
   .menu_bar{
     display:none;
@@ -117,7 +117,7 @@
     header nav ul li{
       display:block;
       float:none;
-      border-bottom:1px solid rgb(231, 128, 128);
+      border-bottom:1px solid rgb(236, 151, 151);
     }
     .menu_bar{
       display:block;
@@ -127,7 +127,7 @@
     .menu_bar .bt-menu{
       display:block;
       padding:20px;
-      background:rgb(209, 16, 16);
+      background:rgb(218, 69, 69);
       color:white;
       text-decoration:none;
       font-weight:bold;
