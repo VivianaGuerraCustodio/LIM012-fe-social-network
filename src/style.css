@@ -1,7 +1,76 @@
 *{
-    margin:0;
-    padding:0;
-  }
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: Helvetica, Arial, sans-serif;
+} 
+
+.ingreso{
+    display: flex;
+}
+
+.logo{
+    margin-right: 10%;
+}
+
+@media (max-width:600px){
+.logo{
+    position: absolute;
+    margin-top: 10%;
+    margin-left: 25%;
+   }
+}
+
+.logIn{
+    margin:auto;
+    align-items: center;
+    text-align: center;
+    margin-top: 10%;
+    margin-right: 15%;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+@media (max-width:600px){
+    .logIn{
+        margin-top: 62%;
+        margin-left: 27%;
+        margin-right: 27%;
+    }
+}
+
+.email, .password {
+    border-color: #BAB7B7;
+    border-radius: 9%;
+    outline: none;
+    padding: 3%;
+    margin: 5%;
+    display: grid;
+}
+
+.ingresar{
+    background-color: #DA4545;
+    text-align: center;
+    color: white;
+    border-radius: 9%;
+    padding: 3%;
+    outline: none;
+}
+
+.otherOptions{
+    margin:5%;
+}
+.formulario{
+    margin: auto;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+}
+.iconFb, .iconGoogle{
+    height: 10%;
+    width: 10%;
+    background-color: white;
+    margin: 0% 3% 3% 0%;
+}
   
   body{background-color: rgb(230, 230, 233);font-family: Arial;}
   

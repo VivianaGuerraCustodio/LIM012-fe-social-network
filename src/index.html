@@ -4,9 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link href="fonts.css" rel="stylesheet" type="text/css" />
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <title>Document</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <title>YachayWasi Perú</title>
 </head>
 <body>
   <header>
@@ -20,18 +19,23 @@
           <li><span class="icon-menu"></span><a href="#">Cerrar Sesión</a></li>
         </ul>
     </nav>
-  </header> 
-  <section>
-    <div class="dataGeneral" >
-        <div class="card">
-            <div class="frontSide">
-                <div id="profile" class="profile">
-                    <img class="img">
-                </div>
-            </div>
-        </div>
+    <section class="ingreso">
+      <div class="logo"> <img src="https://previews.123rf.com/images/lumut/lumut1707/lumut170700320/81954169-plantilla-logotipo-de-la-educaci%C3%B3n.jpg" width="79%" height="79%"> 
       </div>
-  </section>
+      <form class="logIn"> 
+        <p> Bienvenid@s a YachayWasi, una red social para estudiantes, padres y maestros de todo el Perú </p>
+        <div class="formulario">
+         <input class="email" type="email" placeholder="Correo Electrónico" required> 
+         <input class="password" type="password" placeholder="Contraseña" required> 
+         <button class= "ingresar"> Ingresar </button>
+        </div>
+        <p class="otherOptions">O puedes ingresar con ...</p>
+        <img class="iconFb" src="assets/iconFb.jpg"/>
+        <img class="iconGoogle" src="assets/iconG.png"/>
+        <p>¿No tienes cuenta? , <a href="blank">Regístrate</a> </p>
+      </form>
+    </section>
+  </header>
   <script type="module" src="index.js"></script>
 </body>
 </html>
