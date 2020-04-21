@@ -2,19 +2,18 @@ import { example } from './example.js';
 
 example();
 
-
-document.querySelector('.menu_bar').addEventListener('click',()=>{
-  let contador = 1;
-  if (contador === 1) {
-    document.querySelector('nav').animate({
-    left:'0';
-    });
-    contador=0;
-    }else{
-    contador=1;
-    document.querySelector('nav').animate({
-    left:'-100%';
-    });
-    }
-    // console.log('hola chicas')
-    });
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: 'AIzaSyAwXhQApvJ9tq-KWDkobxKX3eX02aJnTnY',
+  authDomain: 'yachaywasiper.firebaseapp.com',
+  databaseURL: 'https://yachaywasiper.firebaseio.com',
+  projectId: 'yachaywasiper',
+  storageBucket: 'yachaywasiper.appspot.com',
+  messagingSenderId: '310386263852',
+  appId: '1:310386263852:web:73a2899abadb931f214e89',
+  measurementId: 'G-QTBC8WWL0Y',
+};
+const provider = new firebase.auth.FacebookAuthProvider();
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
