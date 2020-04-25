@@ -17,17 +17,72 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
+
 const signIn = document.querySelector('.logIn');
-// const login = document.querySelector('.ingresar');
+const login = document.querySelector('.ingresar');
 const buttonRegister = document.querySelector('.register');
 const registerNewUser = document.querySelector('.newUser');
 const registrar = document.querySelector('.nuevoUsuario');
+const generalContainer = document.querySelector('.generalContainer');
+const logOut = document.querySelector('.logOut');
+generalContainer.style.display = 'none';
 
 buttonRegister.addEventListener('click', () => {
   signIn.style.display = 'none';
   registerNewUser.style.display = 'block';
+  generalContainer.style.display = 'none';
 });
-
+// funcion para iniciar sesión
+login.addEventListener('click', () => {
+  const emailLogIn = document.querySelector('.email').value;
+  const contraseñaLogIn = document.querySelector('.password').value;
+  firebase.auth().signInWithEmailAndPassword(emailLogIn, contraseñaLogIn).catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // [START_EXCLUDE]
+    if (errorCode === 'auth/wrong-password') {
+      alert('Wrong password.');
+    } else {
+      alert(errorMessage);
+    }
+  });
+});
+// esta función nos recuerda los datos de un usuario activo,
+// previamente logeado o registrado.
+const observador = () => {
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+    // User is signed in.
+      console.log('usuario activo');
+      generalContainer.style.display = 'block';
+      const displayName = user.displayName;
+      console.log(displayName);
+      const email = user.email;
+      console.log(email);
+      const emailVerified = user.emailVerified;
+      console.log(emailVerified);
+      const photoURL = user.photoURL;
+      console.log(photoURL);
+      const isAnonymous = user.isAnonymous;
+      console.log(isAnonymous);
+      const uid = user.uid;
+      console.log(uid);
+      const providerData = user.providerData;
+      console.loge(providerData);
+    // ...
+    } else {
+    // User is signed out.
+      console.log('Has cerrado sesión correctamente');
+    }
+  });
+};
+observador();
+// funcion para cerrar sesión.
+logOut.addEventListener('click', () => {
+  firebase.auth().signOut().then().catch();
+});
+// funcion para registrarse.
 registrar.addEventListener('click', (event) => {
   event.preventDefault();
   const email = document.querySelector('.newEmail').value;
@@ -43,5 +98,6 @@ registrar.addEventListener('click', (event) => {
     }
     signIn.style.display = 'block';
     registerNewUser.style.display = 'none';
+    generalContainer.style.display = 'none';
   });
 });
