@@ -4,62 +4,337 @@
 
   } 
   
-  
   body{
     background: #ffffff;
+    width: 100%;
   }
+  /* ----------------------Estilos LOGIN ------------*/
+.ingreso{
+  display: flex;
+}
+
+.logo{
+  margin-right: 10%;
+}
+
+@media (max-width:600px){
+.logo{
+  margin-top: 10%;
+  margin-left: 25%;
+ }
+}
+
+.logIn{
+  margin:auto;
+  align-items: center;
+  text-align: center;
+  margin-top: 10%;
+  margin-right: 15%;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+@media (max-width:600px){
+  .logIn{
+      margin-top: 62%;
+      margin-left: 27%;
+      margin-right: 27%;
+  }
+}
+
+.email, .password {
+  border-color: #BAB7B7;
+  border-radius: 9%;
+  outline: none;
+  padding: 3%;
+  margin: 5%;
+  display: grid;
+}
+
+.ingresar{
+  background-color: #DA4545;
+  text-align: center;
+  color: white;
+  border-radius: 9%;
+  padding: 3%;
+  outline: none;
+}
+
+.otherOptions{
+  margin:5%;
+}
+.formulario{
+  margin: auto;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+}
+.iconFb, .iconGoogle{
+  height: 10%;
+  width: 10%;
+  background-color: white;
+  margin: 0% 3% 3% 0%;
+}
+
+  /*Verificar codigo de NAV (PARTE LOURDES)-----------------------*/
   header{
     background: #d94545;
-    width: 100%;
     height: 50px;
     display: flex; 
     justify-content: flex-end;
     align-items: center;
     flex-flow: row wrap;
   }
-  
-  nav{
-    width: 50%;
-    height: 100%;
+  .menubar{
+    list-style: none;
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+    width: 400px;
+  }
   
+  li{
+    margin: 5px;
+    padding: 5px;
   }
   
   nav a {
-    height: auto;
     padding: 15px;
     color: #ffffff;
-    text-align: center;
     text-decoration: none;
     flex-grow: 1;
   }
+
   
   header nav a:hover{
     background: #EC9797;
   }
-  .contenedorInicio{
-    background: #cccccc;
-    width: 90%;
-    max-width: 1000px;
+
+  @media all and (max-width: 400px){
+    header{
+      align-items: center;
+      flex-flow: row;
+    }
+    .menubar{
+      width: 300px;
+      align-items: center;
+    }
+  }
+
+  /* -------------------- Estilos del inicio -----------------*/
+
+  main {
+    background: #F1F2F5;
+  }
+  .homeContainer{
+    background: #ffffff;
+    width: 50%;
     margin: auto;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
   }
   
-   @media all and (max-width: 400px){
-     nav{
-       width: auto;
-     }
+  .createPost,
+  .post-done{
+    border : solid 2px #DA4545;
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+   button{
+     margin: 5px;
+     padding: 5px;
    }
-  
-  
-   .user {
+  .top-create-post, .lower-create-post{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+ 
+
+  textarea{
+    border : solid 2px #BAB7B7;
+    width: 85%;
+    height: 50%;
+    margin: 0.5em;
+    padding: 1.8em;
+    border-radius: 10px;
+    text-decoration: none;
+  }
+  .addImg{
     width: 30px;
     height: auto;
+    margin: 0em 10em;
   }
+  .user {
+    width: 8%;
+    height: 8%;
+    margin: 15px;
+  }
+
+  .btnPost{
+    background: #DA4545;
+    width: 30%;
+    text-decoration: none;
+    color: #ffffff;
+    border-radius: 4px;
+    border: 2px solid #DA4545;
+    font-size: 15px;
+    text-shadow: -1px 2px 4px rgb(117, 116, 116);
+  }
+
+  .btnPost:hover{
+    transform: scale(1.1);
+    transition: 0.5;
+    font-weight: bold;
+  }
+
+  .addImg{
+    width: 5%;
+    height: 5%;
+    margin: 0em 5em;
+  }
+
+
+
+/* ----------------------------------------------------publicaciones */
+
+  .postHeader{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    
+  }
+ 
+
+  .user-info{
+  display: flex;
+  justify-content: flex-start;
+  }
+
+  .dateUser{
+    padding: 0em 1em;
+    position: relative;
+  }
+  .option-edit-post{
+    font-size: 15px;
+    right: 0;
+    top: 0;
+    position: absolute;
+  }
+
+  span{
+    font-size: 25px;
+    margin-bottom: 15px;
+    margin-left: 0;
+    padding-left: 50px;
+
+  }
+
+  .optionPost{ 
+    list-style: none;
+    display: none;
+  }
+
+  .optionPost>ul{
+    list-style: none;
+    display: none;
+  }
+
+  .option-edit-post:hover>ul{
+    display: block;
+    border: 2px solid #DA4545;
+    border-radius: 3px;
+    box-shadow: 1px 5px 5px 3px#DA4545;
+  }
+
+  li{
+    padding: 2px;
+    margin: 2px;
+  }
+
+  #nameUser{
+    font-size: 12px;
+    font-weight: bold;
+    margin: 5px;
+  }
+
+  .contentPost{
+    border : solid 2px #BAB7B7;
+    width: 82%;
+    margin: 0.5em;
+    padding: 1.8em;
+    border-radius: 10px;
+  }
+
+  time{
+    font-size: 14px;
+    margin: 5px;
+    top: 20px;
+  }
+
+  .divReactions{
+    border-bottom: 3px solid rgba(235, 178, 24, 0.719);
+  }
+  .reactions{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  button{
+    border: none;
+    background: #ffffff;
+    cursor: pointer;
+    width: 30%;
+    text-decoration: none;
+    font-size: 12px;
+    }
+  
+    button:hover{
+      transform: scale(1.1);
+      transition: 0.5;
+      font-weight: bold;
+    }
+  
+
+
+  /*------------------------------------------------------------------------------*/
+  @media all and (max-width: 400px){
+    .homeContainer{
+      width: 100%;
+    }
+    .addImg{
+      width: 25px;
+      height: 25px;
+      margin: 0em 3em;
+    }
+  time{
+    font-size: 10px;
+    top: 38px;
+  }
+  .user {
+    width: 20%;
+    height: 20%;
+    margin: 5px;
+  }
+
+.contentPost{
+  width: 75%;
+}
+
+textarea{
+  width: 70%;
+}
+
+}
+ 
+  /* ----------------------Estilos cuadrito perfil (en dehuso)------------*/
+
   .portada{
     width: 30%;
     height: auto;
@@ -70,21 +345,7 @@
     border : solid 2px #EC9797;
   } 
   
-  .crearPublicacion,
-  .publicacion{
-    border : solid 2px #EC9797;
-    margin: 10px;
-    padding: 10px;
-  }
-   button{
-     margin: 5px;
-     padding: 5px;
-   }
-  
-  .escribirPublicacion{
-    border : solid 2px #EC9797;
-    padding: 10px;
-  }
+/* ----------------------Estilos scroll ()------------*/ 
   
 body::-webkit-scrollbar{
     width: 1.5%;
@@ -95,72 +356,19 @@ body::-webkit-scrollbar-thumb{
     background: #ED8D8D;
     height: 1%;
 }
-.ingreso{
-    display: flex;
+
+footer{
+  background: rgb(202, 202, 206);
+  display: flex;
+  justify-content: center;
+  bottom: 0;
+  width: 100%;
+  height: 30px;
+ 
 }
 
-.logo{
-    margin-right: 10%;
-}
+  /*Verificar codigo de NAV (PARTE SABINA)-----------------------
 
-@media (max-width:600px){
-.logo{
-    margin-top: 10%;
-    margin-left: 25%;
-   }
-}
-
-.logIn{
-    margin:auto;
-    align-items: center;
-    text-align: center;
-    margin-top: 10%;
-    margin-right: 15%;
-    font-family: Helvetica, Arial, sans-serif;
-}
-
-@media (max-width:600px){
-    .logIn{
-        margin-top: 62%;
-        margin-left: 27%;
-        margin-right: 27%;
-    }
-}
-
-.email, .password {
-    border-color: #BAB7B7;
-    border-radius: 9%;
-    outline: none;
-    padding: 3%;
-    margin: 5%;
-    display: grid;
-}
-
-.ingresar{
-    background-color: #DA4545;
-    text-align: center;
-    color: white;
-    border-radius: 9%;
-    padding: 3%;
-    outline: none;
-}
-
-.otherOptions{
-    margin:5%;
-}
-.formulario{
-    margin: auto;
-    flex-direction: column;
-    display: flex;
-    align-items: center;
-}
-.iconFb, .iconGoogle{
-    height: 10%;
-    width: 10%;
-    background-color: white;
-    margin: 0% 3% 3% 0%;
-}
-  
   body{background-color: rgb(230, 230, 233);font-family: Arial;}
   
   header{
@@ -197,9 +405,10 @@ body::-webkit-scrollbar-thumb{
   
   @media screen and (max-width:800px){
     header nav {
+      display:none;
       width:80%;
       height:100%;
-      /*left:-100%;*/
+      /*left:-100%;
       margin:0;
       position:fixed;
     }
@@ -215,6 +424,7 @@ body::-webkit-scrollbar-thumb{
     }
     .menu_bar .bt-menu{
       display:block;
+     
       padding:20px;
       background:rgb(209, 16, 16);
       color:white;
@@ -223,11 +433,11 @@ body::-webkit-scrollbar-thumb{
       font-size:25px;
       /*-webkit-box-sizing:border-box;
       -moz-box-sinzing:border-box;
-      box-sizing:border-box;*/
+      box-sizing:border-box;
     }
     .menu_bar span{
       float:right;
       font-size:40px;
     }
-  }
+  }*/
 
