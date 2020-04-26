@@ -1,53 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link href="style.css" rel="stylesheet" type="text/css" />
-  <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-analytics.js"></script>
-  <title>YachayWasi Perú</title>
-</head>
-<body>
-  <header>
-    <section class="flex">
-      <div class="logo"> 
-        <!--<img src="https://previews.123rf.com/images/lumut/lumut1707/lumut170700320/81954169-plantilla-logotipo-de-la-educaci%C3%B3n.jpg"
-         widht="79%" height="79%">-->
-      </div>
-      <form class="logIn"> 
-        <p> Bienvenid@s a YachayWasi, una red social para estudiantes, padres y maestros de todo el Perú </p>
-        <div class="formulario">
-         <input class="email" type="email" placeholder="Correo Electrónico" required> 
-         <input class="password" type="password" placeholder="Contraseña" required> 
-         <button class= "ingresar"> Ingresar </button>
-        </div>
-        <p class="otherOptions">O puedes ingresar con ...</p>
-        <img class="iconFb" src="assets/iconFb.jpg"/>
-        <img class="iconGoogle" src="assets/iconG.png"/>
-        <p>¿No tienes cuenta? , <a class="register"> Regístrate </a> </p>
-      </form>
-      <form class="newUser">
-        <div class="formulario">
-         <input class="newEmail" type="email" placeholder="Correo Electrónico" required> 
-         <input class="newPassword" type="password" placeholder="Contraseña" required> 
-         <button class= "nuevoUsuario"> Registrar </button>
-         </div>
-      </form>
-      <div class="generalContainer">
-        <p class="prueba">
-          Este contenido solo esta disponible para usuarios registrados
-        </p>
-        <button class="logOut"> Cerrar Sesión</button>
-      </div>
-    </section>
-  </header>
-<footer class="endPage">
-  <p class="footer">Realizado por Lourdes Merino , Sabina Canchumani , 
-    Viviana Guerra</p>
-</footer>
-  <script type="module" src="index.js"></script>
-</body>
+<html>
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-analytics.js"></script>
+    <title>YachayWasi Perú</title>
+ </head>
+
+ <body>
+   <header>
+     <div class="login">
+     <a class="login-start" href="#">
+     </a>
+     </div>
+     <div class="register-user">
+     <a class="register" href="#/register"> 
+     </a>
+     </div>
+     <nav class= "menu">
+       <ul class="menubar">
+         <li>
+           <a href="#/home">Inicio</a>
+         </li>
+         <li>
+           <a href="#/profile">Perfil</a>
+         </li>
+         <li>
+           <a class ="logOut" >Cerrar Sesion</a>
+         </li>
+        </ul>
+     </nav>
+   </header> 
+
+   <main id= "container"> </main>
+    <footer class="footer"><p> YachayWasi Perú &copy;2020 - Todos los derechos reservados</p></footer>
+    <script type="module" src="main.js"></script>
+ </body>
 </html>
