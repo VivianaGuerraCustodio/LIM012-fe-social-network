@@ -1,7 +1,9 @@
 export default () => {
-  const viewLogin = `<div class="logo"> <img src="https://previews.123rf.com/images/lumut/lumut1707/lumut170700320/81954169-plantilla-logotipo-de-la-educaci%C3%B3n.jpg" width="79%" height="79%"> 
-    </div>
+  const viewLogin = `
     <form class="logIn"> 
+     <div class="logo"> 
+     <img class="logoPrincipal" src="assets/logo-wasi.png">
+       </div>
        <p> Bienvenid@s a YachayWasi, una red social para estudiantes, padres y maestros de todo el Perú </p>
        <div class="formulario">
         <input class="email" type="email" placeholder="Correo Electrónico" required> 

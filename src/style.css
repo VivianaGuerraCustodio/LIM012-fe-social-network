@@ -1,7 +1,7 @@
 *{
     margin: 0px;
     padding: 0px;
-
+    font-family: 'Poppins', sans-serif;
   } 
   
   body{
@@ -14,30 +14,38 @@
 }
 
 .logo{
-  margin-right: 10%;
+  width: 100%;
+}
+.logoPrincipal{
+  width: 190px;
 }
 
-@media (max-width:600px){
-.logo{
-  margin-top: 10%;
-  margin-left: 25%;
- }
-}
 
-.logIn{
-  margin:auto;
-  align-items: center;
-  text-align: center;
-  margin-top: 10%;
-  margin-right: 15%;
-  font-family: Helvetica, Arial, sans-serif;
-}
-
-@media (max-width:600px){
+@media(min-width:320px){
   .logIn{
-      margin-top: 62%;
-      margin-left: 27%;
-      margin-right: 27%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    align-content: center;
+    padding: 20px;
+    box-sizing: border-box
+ }
+  .logo{
+  height: 100px;
+  }
+  .logoPrincipal{
+  width: 170px;
+  }
+}
+  
+
+@media (min-width:760px){
+  .logIn{
+    width: 40%;
+    text-align: center;
+    height: 100vh;
   }
 }
 
@@ -69,10 +77,8 @@
   align-items: center;
 }
 .iconFb, .iconGoogle{
-  height: 10%;
-  width: 10%;
-  background-color: white;
-  margin: 0% 3% 3% 0%;
+  height: 35px;
+  margin: 5%;
 }
 
   /*Verificar codigo de NAV (PARTE LOURDES)-----------------------*/
@@ -762,7 +768,6 @@ footer{
   bottom: 0;
   width: 100%;
   height: 30px;
- 
 }
 
   /*Verificar codigo de NAV (PARTE SABINA)-----------------------
