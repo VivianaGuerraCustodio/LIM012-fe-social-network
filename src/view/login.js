@@ -16,6 +16,7 @@ export default () => {
        <p>¿No tienes cuenta? , <a class="register"  href="#/register">Regístrate</a> </p>
     </form>`;
   const sectionElem = document.createElement('section');
+  sectionElem.className = 'login';
   sectionElem.innerHTML = viewLogin;
   return sectionElem;
 };

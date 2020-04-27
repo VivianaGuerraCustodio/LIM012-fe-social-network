@@ -12,14 +12,16 @@
 .ingreso{
   display: flex;
 }
-
 .logo{
   width: 100%;
 }
 .logoPrincipal{
   width: 190px;
 }
-
+.login{
+display: flex;
+flex-direction: row;
+}
 
 @media(min-width:320px){
   .logIn{
@@ -67,7 +69,7 @@
   outline: none;
 }
 
-.otherOptions{
+.otherNet{
   margin:5%;
 }
 .formulario{
@@ -79,6 +81,11 @@
 .iconFb, .iconGoogle{
   height: 35px;
   margin: 5%;
+}
+@media (max-width:600px){
+  .logIn{
+      margin: 1em 1em
+  }
 }
 
   /*Verificar codigo de NAV (PARTE LOURDES)-----------------------*/
@@ -131,7 +138,7 @@
   }
   .homeContainer{
     background: #ffffff;
-    width: 50%;
+    width: 100%;
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -147,10 +154,10 @@
     flex-direction: column;
     flex-wrap: nowrap;
   }
-   button{
-     margin: 5px;
-     padding: 5px;
-   }
+  button{
+    margin: 5px;
+    padding: 5px;
+  }
   .top-create-post, .lower-create-post{
     display: flex;
     flex-direction: row;
@@ -158,11 +165,10 @@
     justify-content: space-evenly;
     align-items: center;
   }
- 
 
   textarea{
     border : solid 2px #BAB7B7;
-    width: 85%;
+    width: 70%;
     height: 50%;
     margin: 0.5em;
     padding: 1.8em;
@@ -170,14 +176,14 @@
     text-decoration: none;
   }
   .addImg{
-    width: 30px;
-    height: auto;
-    margin: 0em 10em;
-  }
-  .user {
     width: 8%;
     height: 8%;
-    margin: 15px;
+    margin: 0em 2.5em;
+  }
+  .user {
+    width: 20%;
+    height: 20%;
+    margin: 5px;
   }
 
   .btnPost{
@@ -197,11 +203,6 @@
     font-weight: bold;
   }
 
-  .addImg{
-    width: 5%;
-    height: 5%;
-    margin: 0em 5em;
-  }
 
 
 
@@ -272,21 +273,19 @@
 
   .contentPost{
     border : solid 2px #BAB7B7;
-    width: 82%;
+    width: 75%;
     margin: 0.5em;
     padding: 1.8em;
     border-radius: 10px;
   }
 
   time{
-    font-size: 14px;
+    font-size: 10px;
     margin: 5px;
-    top: 20px;
+    top: 38px;
   }
 
-  .divReactions{
-    border-bottom: 3px solid rgba(235, 178, 24, 0.719);
-  }
+ 
   .reactions{
     display: flex;
     justify-content: space-around;
@@ -306,451 +305,40 @@
       transition: 0.5;
       font-weight: bold;
     }
-  /*------------estilos perfil Sab-----------------------------------------------------*/
-  .main-section {
-    margin: 20px 0px;
-    min-width: 60px;
-  }
-  .main-content{
-    padding: 0px 50px;
-    width: 100%;
-    display: flex;
-  
-    max-width: 1300px;
-    margin: 20px auto;
-  }
-  .user-information {
-    margin: 10px 20px auto 50px;
-    width: 600px;
-    position: sticky;
-    top: 89.69px;
-    border: solid 1px rgb(185, 184, 184);
-  }
-  .profile-container{
-    width: 100%;
-    text-align: center;
-  }
-  .img-portada{
-    width: 100%;
-    height: 100%;
-  }
-  .logged-user-data-container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .user-info-container{
-    margin: 0px 20px;
-  }
-  .user-info-container>div {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-  .name p {
-    font-weight: bold;
-    font-size: 22px;
-  }
-  .type-of-user p{
-    font-size: 18px;
-    margin-left: 64px;
-  }
-  .user-info-container>p {
-    margin: 5px;
-  }
-  .user-info-container button{
-    font-size: 16px;
-    font-weight: bold;
-    outline: none;
-    width: 170px;
-    height: 25px;
-    background: rgb(218, 69, 69);
-    border-radius: 9px;
-    border: none;
-    color: #ffffff;
-    cursor: pointer;
-  }
-  .user-info-container button:hover {
-    background-color: rgb(231, 128, 128);
-  }
-  .imageUser{
-    width: 100px;
-  }
-  .contacts {
-    width: 100%;
-    margin-top: 40px;
-  }
-  /* div columna derecha user-post(new post and recently published)*/
-  .user-post {
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 8px;
-    margin: 10px 50px auto 20px;
-    width: 800px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  
-  }
-  .user-new-post{
-    /*width: 100%;*/
-    /*margin: 10px 20px auto 50px;
-    width: 600px;
-    position: sticky;
-    top: 89.69px;
-    border: solid 1px rgb(185, 184, 184);*/
-    width: 100%;
-    border: 1px solid #CCCCCC;
-    padding: 20px 20px 10px 20px;
-  }
-  .user-new-post button{
-    font-size: 16px;
-    font-weight: bold;
-    outline: none;
-    width: 170px;
-    height: 25px;
-    background: rgb(218, 69, 69);
-    border-radius: 9px;
-    border: none;
-    color: #ffffff;
-    cursor: pointer;
-  }
-  .user-new-post button:hover {
-    background-color: rgb(231, 128, 128);
-  }
-  /*caja donde se escribe la publicacion*/
-  .user-new-post textarea {
-    width: 100%;
-    margin: auto;
-    height: 127px;
-    border: 1px solid #CCCCCC;
-    box-sizing: border-box;
-    border-radius: 8px;
-    padding: 10px;
-    outline: none;
-    resize: none;
-    font-size: 16px;
-  }
-  /*acciones para la publicacion*/
-  .actions-for-the-user {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .add-image{
-    display: flex;
-    align-items: center;
-  }
-  .select-privacy {
-    margin: 0px 20px;
-  }
-  .image {
-    width: 40px;
-    height: auto;
-    cursor: pointer;
-  }
-  /*boton de privacidad*/
-  .select-privacy select {
-    font-size: 15px;
-    border: none;
-    outline: none;
-    background: none;
-    appearance: none;
-    cursor: pointer;
-    padding: 0px 10px;
-  }
-  .for-each-publication {
-    width: 100%;
-    border: 1px solid #CCCCCC;
-    margin-top: 20px;
-  }
-  .publication-header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-  .publication-body {
-    padding: 20px;
-    text-align: justify;
-  }
-  .actions-commentary {
-    padding: 5px 20px;
-    border-top: solid 1px #CCCCCC;
-    border-bottom: solid 1px #CCCCCC;
-  }
-  .actions-commentary div {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-  .actions-commentary p {
-    font-size: 14px;
-    color: #333333;
-    text-align: left;
-  }
-  .like {
-    width: 34px;
-    height: auto;
-    margin-right: 10px;
-    cursor: pointer;
-  }
-  .comment {
-    width: 26px;
-    height: 26px;
-    cursor: pointer;
-  }
-  .commentary {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    background-color: #F2F2F2;
-    padding: 10px;
-  }
-  .commentary input {
-    min-width: 80%;
-    padding: 0px 10px;
-    outline: none;
-    height: 42px;
-    border: 1px solid #CCCCCC;
-    box-sizing: border-box;
-    box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 20px;
-  }
-  .commentary {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    background-color: #F2F2F2;
-    padding: 10px;
-  }
-  
-  .commentary input {
-    min-width: 80%;
-    padding: 0px 10px;
-    outline: none;
-    height: 42px;
-    border: 1px solid #CCCCCC;
-    box-sizing: border-box;
-    box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 20px;
-  }
-  
-  .imageUser-comentary {
-    width: 50px;
-  }
-  
-  .add-commentary {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 5px 20px;
-    text-align: left;
-    font-size: 15px;
-    position: relative;
-  }
-  .tres-puntos {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 7em;
-  }
-  .tres-puntos span {
-    margin-left: 0;
-    background: none;
-    padding-left: 3em;
-  }
-  .tres-puntos>ul {
-    display: none;
-    list-style: none;
-}
 
-.tres-puntos:hover>ul {
-    display: block;
-    padding: 3px;
-    border-radius: 0.3em;
-    background: #FFFFFF;
-
-}
-.simulator-select:hover>ul>li:hover {
-  background:palevioletred;
-}
-
-.tres-puntos a {
-    text-decoration: none;
-}
-
-/*fin estilos sabi ---------------------------------------*/
-/*Media 800 y 425 sabi*/
-@media screen and (max-width:800px){
-  /*Creación boton*/
-  .buttonMenu{
-    /*margin: 0 auto;*/
-    display: block;
-    width: 35px;
-    height: 30px;
-    padding: 10px;
-    border-radius: 3px;
-    background: rgb(218, 69, 69);
-    color: white;
-    cursor: pointer;
-    position: relative;
-  }
-  .buttonMenu span{
-    display: block;
-    width: 32px;
-    height: 4px;
-    background: white;
-    margin-top: 6px;
-  }
-  .yachayWasiDesktop{
-    display:none;
-  }
-  /*--------------*/
-  .yachayWasi{
-    display: block;
-    position: absolute;
-    left: 168px;
-    top: 10px;
-    font-size: 28px;
-    color:white;
-    /*left: 10px;*/
-  }
-  header label div:hover{
-    cursor: pointer;
-    background-color: rgb(231, 128, 128);
-  }
-  /*No es visible el cuadro para hacer check*/
-  #menuBurger {
-  display: none;
-  }
-  #menu {
-  display: none;
-  text-align:left;
-  }
-  #menu li a{
-    display: block;
-    padding: 10px 0;
-    color:white;
-    margin-left: 8px;
-  }
-  header nav ul li {
-  border-bottom:2px solid rgba(255,255,255, .3);
-  width: 100%;
-  }
-  header nav ul{
-  flex-direction: column;
-  }
-  
-  /* como #menuBurger y #menu comparten en mismo padre... todos los elementos nav id="menu" que siguen un elemento label id="menuBurger"*/
-  #menuBurger:checked~#menu{
-    display: block;
-  }
-  /*Comienzo Main*/
-  /*div dentro de section*/
-  .main-content {
-    width: 100%;
-    grid-template-columns: 45% 55%;
-    justify-content: space-around;
-    padding: 5px;
-    display: grid;
-  }
-  .user-information{
-    width: 90%;
-    margin: 0px 20px;
-  }
-  .logged-user-data-container{
-    position: relative;
-  }
-  .imageUser {
-    position: absolute;
-    margin-top: -50px;
-  }
-  .user-info-container {
-    margin-top: 40px;
-  }
-  /* div columna derecha user-post(new post and recently published)*/
-  .user-post {
-      width: 90%;
-      margin: 0px 20px;
-  
-  }
-  .user-new-post{
-      padding: 7px;
-  }
-  
-}
-/*vista mas pequeña*/
-@media (max-width:425px){
-  .main-content {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr;
-    justify-items: center;
-    padding: 0;
-  }
-  .user-information {
-    text-align: center;
-    width: 95%;
-    margin: 0;
-  }
-  /* div columna derecha user-post(new post and recently published)*/
-  .user-post {
-    text-align: center;
-    width: 95%;
-    margin: 0;
-    display: none;
-  }
-  .user-new-post {
-      padding: 7px;
-  }
- 
-}
-/* Fin estilos media sabi*/
-
-  /*------------------------------------------------------------------------------*/
-  @media all and (max-width: 400px){
-    .homeContainer{
-      width: 100%;
+    footer{
+      background: rgb(202, 202, 206);
+      text-align: center;
     }
-    .addImg{
-      width: 25px;
-      height: 25px;
-      margin: 0em 3em;
+    @media all and (min-width: 600px){
+      .homeContainer{
+        width: 50%;
+      }
+      .addImg{
+        width: 30px;
+      height: auto;
+      margin: 0em 10em;
+      }
+    time{
+      font-size: 14px;
+      margin: 5px;
+      top: 20px;
     }
-  time{
-    font-size: 10px;
-    top: 38px;
+    .user {
+      width: 8%;
+      height: 8%;
+      margin: 15px;
+    }
+  .contentPost{
+    width: 82%;
   }
-  .user {
-    width: 20%;
-    height: 20%;
-    margin: 5px;
+  textarea{
+    width: 85%;
   }
-
-.contentPost{
-  width: 75%;
-}
-
-textarea{
-  width: 70%;
-}
-
-}
+    }
+  
  
-  /* ----------------------Estilos cuadrito perfil (en dehuso)------------*/
-
-  .portada{
-    width: 30%;
-    height: auto;
-  }
-  
-  .cardNombre {
-    margin: 10px;
-    border : solid 2px #EC9797;
-  } 
-  
 /* ----------------------Estilos scroll ()------------*/ 
-  
 body::-webkit-scrollbar{
     width: 1.5%;
     background-color: #F6EEEE;
@@ -759,94 +347,4 @@ body::-webkit-scrollbar-thumb{
     border-radius: 0.4rem;
     background: #ED8D8D;
     height: 1%;
-}
-
-footer{
-  background: rgb(202, 202, 206);
-  display: flex;
-  justify-content: center;
-  bottom: 0;
-  width: 100%;
-  height: 30px;
-}
-
-  /*Verificar codigo de NAV (PARTE SABINA)-----------------------
-
-  body{background-color: rgb(230, 230, 233);font-family: Arial;}
-  
-  header{
-    width:100%;
-  }
-  header nav {
-    background-color: rgb(218, 69, 69);
-  }
-  .menu_bar{
-    display:none;
-  }
-  header nav ul{
-    overflow:hidden;
-    list-style:none;
-  }
-  header nav ul li{
-    float:left;
-  }
-  
-  header nav ul li a{
-      color: white;
-      display: block;
-      padding: 20px;
-      text-decoration: none;
-  }
-  
-  header nav ul li a:hover{
-      background-color: rgb(231, 128, 128);
-  }
-  
-  section{
-    padding:20px;
-  }
-  
-  @media screen and (max-width:800px){
-    header nav {
-      display:none;
-      width:80%;
-      height:100%;
-      /*left:-100%;
-      margin:0;
-      position:fixed;
-    }
-    header nav ul li{
-      display:block;
-      float:none;
-      border-bottom:1px solid rgb(236, 151, 151);
-    }
-    .menu_bar{
-      display:block;
-      width:100%;
-      background:#ccc;
-    }
-    .menu_bar .bt-menu{
-      display:block;
-     
-      padding:20px;
-      background:rgb(218, 69, 69);
-      color:white;
-      text-decoration:none;
-      font-weight:bold;
-      font-size:25px;
-      /*-webkit-box-sizing:border-box;
-      -moz-box-sinzing:border-box;
-      box-sizing:border-box;
-    }
-    .menu_bar span{
-      float:right;
-      font-size:40px;
-    }
-  }*/
-
-.footer{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
 }

@@ -1,5 +1,28 @@
 export default () => {
-  const viewProfile = `<section class="main-section">
+  const viewProfile = `<header>
+  <div class="login">
+  <a class="login-start" href="#">
+  </a>
+  </div>
+  <div class="register-user">
+  <a class="register" href="#/register"> 
+  </a>
+  </div>
+  <nav class= "menu">
+    <ul class="menubar">
+    <li>
+        <a href="#/home">Inicio</a>
+      </li>
+      <li>
+        <a href="#/profile">Perfil</a>
+      </li>
+      <li>
+        <a href="#/hola">Cerrar Sesion</a>
+      </li>
+      </ul>
+  </nav>
+</header> 
+<section class="main-section">
     <div class="main-content">
       <div class="user-information">
         <div class="profile-container">
