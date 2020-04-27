@@ -8,23 +8,6 @@ export default () => {
          <button class= "nuevoUsuario"> Registrar </button>
          </div>
       </form> `;
-  const registrar = document.querySelector('.nuevoUsuario');
-  // funcion para registrarse.
-  registrar.addEventListener('click', (event) => {
-    event.preventDefault();
-    const email = document.querySelector('.newEmail').value;
-    const password = document.querySelector('.newPassword').value;
-    firebase.auth().createUserWithEmailAndPassword(email, password).catch((error) => {
-    // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      if (errorCode === 'auth/weak-password') {
-        alert('The password is too weak.');
-      } else {
-        alert(errorMessage);
-      }
-    });
-  });
 
   const divElem = document.createElement('div');
   divElem.innerHTML = viewRegister;
