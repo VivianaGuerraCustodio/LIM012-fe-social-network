@@ -1,5 +1,28 @@
 export default () => {
-  const viewHome = `<section class="createPost">
+  const viewHome = ` <header>
+  <div class="login">
+  <a class="login-start" href="#">
+  </a>
+  </div>
+  <div class="register-user">
+  <a class="register" href="#/register"> 
+  </a>
+  </div>
+  <nav class= "menu">
+    <ul class="menubar">
+    <li>
+        <a href="#/home">Inicio</a>
+      </li>
+      <li>
+        <a href="#/profile">Perfil</a>
+      </li>
+      <li>
+        <a href="#/hola">Cerrar Sesion</a>
+      </li>
+      </ul>
+  </nav>
+</header> 
+<section class="createPost">
   <div class="top-create-post"> 
     <img class = "user" src= "assets/user.png">
     <div class="writePost">
@@ -112,6 +135,7 @@ export default () => {
 </section>`;
 
   const sectionElem = document.createElement('section');
+  sectionElem.className = 'homeContainer';
   sectionElem.innerHTML = viewHome;
 
   return sectionElem;
