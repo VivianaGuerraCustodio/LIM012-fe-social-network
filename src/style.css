@@ -33,7 +33,7 @@ flex-direction: row;
     align-content: center;
     padding: 20px;
     box-sizing: border-box
- }
+}
   .logo{
   height: 100px;
   }
@@ -206,7 +206,7 @@ flex-direction: row;
 
 
 
-/* ----------------------------------------------------publicaciones */
+/* -------------------publicaciones ----------------------------------- */
 
   .postHeader{
     display: flex;
@@ -217,7 +217,6 @@ flex-direction: row;
     position: relative;
     
   }
- 
 
   .user-info{
   display: flex;
@@ -240,7 +239,6 @@ flex-direction: row;
     margin-bottom: 15px;
     margin-left: 0;
     padding-left: 50px;
-
   }
 
   .optionPost{ 
@@ -285,7 +283,6 @@ flex-direction: row;
     top: 38px;
   }
 
- 
   .reactions{
     display: flex;
     justify-content: space-around;
@@ -300,34 +297,36 @@ flex-direction: row;
     font-size: 12px;
     }
   
-    button:hover{
-      transform: scale(1.1);
-      transition: 0.5;
-      font-weight: bold;
-    }
+  button:hover{
+    transform: scale(1.1);
+    transition: 0.5;
+    font-weight: bold;
+  }
 
-    footer{
-      background: rgb(202, 202, 206);
-      text-align: center;
+  footer{
+    background: rgb(202, 202, 206);
+    text-align: center;
+  }
+
+    /*---------------------------------*/
+  @media all and (min-width: 600px){
+    .homeContainer{
+    width: 50%;
+  }
+    .addImg{
+    width: 30px;
+    height: auto;
+    margin: 0em 10em;
     }
-    @media all and (min-width: 600px){
-      .homeContainer{
-        width: 50%;
-      }
-      .addImg{
-        width: 30px;
-      height: auto;
-      margin: 0em 10em;
-      }
-    time{
-      font-size: 14px;
-      margin: 5px;
-      top: 20px;
-    }
-    .user {
-      width: 8%;
-      height: 8%;
-      margin: 15px;
+  time{
+    font-size: 14px;
+    margin: 5px;
+    top: 20px;
+  }
+  .user {
+    width: 8%;
+    height: 8%;
+    margin: 15px;
     }
   .contentPost{
     width: 82%;
@@ -337,7 +336,7 @@ flex-direction: row;
   }
     }
   
- 
+
 /* ----------------------Estilos scroll ()------------*/ 
 body::-webkit-scrollbar{
     width: 1.5%;
@@ -347,4 +346,10 @@ body::-webkit-scrollbar-thumb{
     border-radius: 0.4rem;
     background: #ED8D8D;
     height: 1%;
+}
+
+/* ----------------------Estilos PERFIL ()------------*/ 
+
+.img-portada{
+  width: 90%;
 }
