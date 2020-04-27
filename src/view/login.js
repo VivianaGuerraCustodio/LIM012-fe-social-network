@@ -21,7 +21,8 @@ export default () => {
   sectionElem.className = 'login';
   sectionElem.innerHTML = viewLogin;
   const login = sectionElem.querySelector('.ingresar');
-  login.addEventListener('click', () => {
+  login.addEventListener('click', (event) => {
+    event.preventDefault();
     const emailLogin = sectionElem.querySelector('.emailLogin').value;
     const passwordLogin = sectionElem.querySelector('.passwordLogin').value;
     logIn(emailLogin, passwordLogin);
