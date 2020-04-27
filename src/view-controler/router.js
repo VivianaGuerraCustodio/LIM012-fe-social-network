@@ -1,4 +1,5 @@
 import { components } from '../view/index.js';
+// import register from '../view/register.js';
 
 const changeView = (hash) => {
   const id = hash.split('/')[1];

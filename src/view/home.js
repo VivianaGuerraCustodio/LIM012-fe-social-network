@@ -1,3 +1,5 @@
+import { singInOff } from '../controller/firebase.js';
+
 export default () => {
   const viewHome = ` <header>
   <div class="login">
@@ -17,7 +19,7 @@ export default () => {
         <a href="#/profile">Perfil</a>
       </li>
       <li>
-        <a href="#/hola">Cerrar Sesion</a>
+        <a class="logOut">Cerrar Sesion</a>
       </li>
       </ul>
   </nav>
@@ -137,6 +139,9 @@ export default () => {
   const sectionElem = document.createElement('section');
   sectionElem.className = 'homeContainer';
   sectionElem.innerHTML = viewHome;
-
+  const logOut = sectionElem.querySelector('.logOut');
+  logOut.addEventListener('click', () => {
+    singInOff();
+  });
   return sectionElem;
 };
