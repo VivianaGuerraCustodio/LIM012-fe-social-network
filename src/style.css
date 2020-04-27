@@ -51,7 +51,7 @@ flex-direction: row;
   }
 }
 
-.email, .password {
+.emailLogin, .passwordLogin {
   border-color: #BAB7B7;
   border-radius: 9%;
   outline: none;

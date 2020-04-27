@@ -1,3 +1,5 @@
+import { register } from '../controller/firebase.js';
+
 export default () => {
   const viewRegister = `<div class="logo"> <img src="https://previews.123rf.com/images/lumut/lumut1707/lumut170700320/81954169-plantilla-logotipo-de-la-educaci%C3%B3n.jpg" width="79%" height="79%"> 
   </div>
@@ -11,5 +13,15 @@ export default () => {
 
   const divElem = document.createElement('div');
   divElem.innerHTML = viewRegister;
+  const registrar = divElem.querySelector('button');
+  // funcion para registrarse.
+  registrar.addEventListener('click', (event) => {
+    event.preventDefault();
+    const email = divElem.querySelector('.newEmail').value;
+    const password = divElem.querySelector('.newPassword').value;
+    register(email, password);
+  });
+
+  // divElem.className = '';
   return divElem;
 };

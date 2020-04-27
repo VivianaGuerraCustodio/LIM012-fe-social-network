@@ -1,3 +1,5 @@
+import { logIn } from '../controller/firebase.js';
+
 export default () => {
   const viewLogin = `
     <form class="logIn"> 
@@ -6,9 +8,9 @@ export default () => {
        </div>
        <p> Bienvenid@s a YachayWasi, una red social para estudiantes, padres y maestros de todo el Perú </p>
        <div class="formulario">
-        <input class="email" type="email" placeholder="Correo Electrónico" required> 
-        <input class="password" type="password" placeholder="Contraseña" required> 
-        <button class= "ingresar" href="#/home"> Ingresar </button>
+        <input class="emailLogin" type="email" placeholder="Correo Electrónico" required> 
+        <input class="passwordLogin" type="password" placeholder="Contraseña" required> 
+        <button class= "ingresar"> Ingresar </button>
        </div>
        <p class="otherOptions">O puedes ingresar con ...</p>
        <img class="iconFb" src="assets/iconFb.jpg"/>
@@ -18,5 +20,11 @@ export default () => {
   const sectionElem = document.createElement('section');
   sectionElem.className = 'login';
   sectionElem.innerHTML = viewLogin;
+  const login = sectionElem.querySelector('.ingresar');
+  login.addEventListener('click', () => {
+    const emailLogin = sectionElem.querySelector('.emailLogin').value;
+    const passwordLogin = sectionElem.querySelector('.passwordLogin').value;
+    logIn(emailLogin, passwordLogin);
+  });
   return sectionElem;
 };
