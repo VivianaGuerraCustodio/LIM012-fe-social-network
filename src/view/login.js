@@ -2,6 +2,7 @@ import { logIn, googleAuth, facebookAuth } from '../controller/firebase.js';
 
 export default () => {
   const viewLogin = `
+  <img class="imageDetail" src="assets/vista1.jpg">
     <form class="logIn"> 
      <div class="logo"> 
      <img class="logoPrincipal" src="assets/logo-wasi.png">
