@@ -1,16 +1,11 @@
-# YachayWasi-Perú 
+# YachayWasi-Perú 🖱️
 
-***
 
-## 1. Nombre del proyecto
-
- Proyecto: YachayWasi-Perú
-
-## 2. Resumen del proyecto
+## Resumen del proyecto
 
 Yachaywasi,es una red social que busca facilitar y promover el acceso a información, contenidos educativos, y sobre todo una mayor difusión del espacio Aprendo en Casa, la modalidad de clases no presenciales dispuestas por el Gobierno del Perú y el Ministerio de Educación, como medidas de prevención ante la pandemia del Covid-19 en el país.
 
-## 3. Definición del usuario y primeros pasos
+## Definición del usuario y primeros pasos
 
 ### ¿Quiénes son los principales usuarios del producto?
 
@@ -20,22 +15,161 @@ Los principales usuarios de esta Red Social son Alumn@s, Maestr@s tanto del nive
 
 Los usuarios podrán escribir, leer, actualizar y eliminar datos de las publicaciones que realicen, asimismo podrán comentar publicaciones hechas por otros usuarios.
 
+## Historias de Usuario
+
+#### Historia 1: Como usuario nuevo debo poder crear una cuenta con email y password válidos para poder iniciar sesion e ingresar a la red social.
+
+* CRITERIOS DE ACEPTACIÓN:
+- El usuari@ tendrá un espacio para digitar su correo y contraseña para crear su cuenta.
+- Conectar los formularios con Firebase
+- El usuario visualizara un mensaje de error, si su email o password ingresado es inválido.
+- El diseño debe ser mobile first ( acomodable en desktop)
+
+* DEFINICIÓN DE TERMINADO:
+- La funcionalidad cumple satisface los criterios de aceptación.
+- Código revisado por la coach.
+- Funcionalidad desplegada en Github.
+- Test Unitario.
+- Historia de usuario incluida en el readme.
+- El diseño visual corresponde al prototipo de alta fidelidad.
+- Usar linter como una buena practica.
+- Test de usabilidad completado (directamente al usuario objetivo).
+
+## Prototipo versión Mobile
+![](https://github.com/Lourdes0896/LIM012-fe-social-network/blob/ludevelop/src/assets/prototipo%20H1-MOBILE.png)
+
+## Prototipo versión Desktop
+![](https://github.com/Lourdes0896/LIM012-fe-social-network/blob/ludevelop/src/assets/prototipo%20H1-DESKTOP.png)
+
+#### Historia 2: Como usuario nuevo debo poder tener la opción de iniciar sesión con mi cuenta de Google o Facebook para ingresar a la red social sin necesidad de crear una cuenta de email válido.
+
+* CRITERIOS DE ACEPTACIÓN:
+- El usuari@ podrá elegir la opción de login entre Google o facebook.
+- Solicitar permisos a firebase para poder acceder a cualquiera de las opciones que el usuari@ seleccione.
+- Firebase valida los permisos solicitados para que el usuario ingrese a la opción seleccionada.
+
+* DEFINICIÓN DE TERMINADO:
+- La funcionalidad cumple satisface los criterios de aceptación.
+- Código revisado por la coach.
+- Funcionalidad desplegada en Github.
+- Test Unitario.
+- Historia de usuario incluida en el readme.
+- El diseño visual corresponde al prototipo de alta fidelidad.
+- Usar linter como una buena practica.
+- Test de usabilidad completado (directamente al usuario objetivo).
+
+## Prototipo versión Mobile
+![](https://github.com/Lourdes0896/LIM012-fe-social-network/blob/ludevelop/src/assets/prototipo%20H2-MOBILE.png)
+
+## Prototipo versión Desktop
+![](https://github.com/Lourdes0896/LIM012-fe-social-network/blob/ludevelop/src/assets/prototipo%20H2-DESKTOP.png)
+
+#### Historia 3: Como usuario loggeado debo poder crear, guardar, modificar en el mismo lugar (in place) y eliminar una publicación (post) privada o pública, que puede ser una frase o una imagen.
+
+* CRITERIOS DE ACEPTACIÓN:
+- El usuari@ visualizará una caja donde podrá escribir, para crear una publicación.
+- Se necesita al menos un caracter para que el boton PUBLICAR se active y se pueda realizar la publicación.
+- El usuari@ tendrá la opción de publicar una imagen.
+- El usuari@ tendrá la opción de modificar una publicación (post).
+- El usuari@ tendrá la opción de eliminar una publicación (post).
+- El usuari@ podrá configurar una publicación como pública o privada, según lo crea conveniente.
+
+* DEFINICIÓN DE TERMINADO:
+- La funcionalidad cumple satisface los criterios de aceptación.
+- Código revisado por la coach.
+- Funcionalidad desplegada en Github.
+- Test Unitario.
+- Historia de usuario incluida en el readme.
+- El diseño visual corresponde al prototipo de alta fidelidad.
+- Usar linter como una buena practica.
+- Test de usabilidad completado (directamente al usuario objetivo).
+## Prototipo versión Mobile
+![](https://github.com/Lourdes0896/LIM012-fe-social-network/blob/ludevelop/src/assets/prototipo%20H3-MOBILE.png)
+
+## Prototipo versión Desktop
+![](https://github.com/Lourdes0896/LIM012-fe-social-network/blob/ludevelop/src/assets/prototipo%20H3-DESKTOP.png)
+
+#### Historia 4: Como usuario loggeado debo poder ver todos los posts públicos y privados que he creado hasta ese momento, desde el más reciente hasta el más antiguo, así como la opción de poder cambiar la configuración de privacidad de mis post.
+
+* CRITERIOS DE ACEPTACIÓN:
+- Cuando el usuari@ haga alguna publicación (publica o privada), se creará un historial de publicaciones en su perfil y las podrá visualizar todas.
+- El historial de sus publicaciones del usuari@, aparecerá de manera ascendente (del mas reciente al mas antiguo).
+- El usuari@ podrá cambiar la consiguración de privacidad (publico/privado) de sus publicaciones compartidas anteriormente.
+
+* DEFINICIÓN DE TERMINADO:
+- La funcionalidad cumple satisface los criterios de aceptación.
+- Código revisado por la coach.
+- Funcionalidad desplegada en Github.
+- Test Unitario.
+- Historia de usuario incluida en el readme.
+- El diseño visual corresponde al prototipo de alta fidelidad.
+- Usar linter como una buena practica.
+- Test de usabilidad completado (directamente al usuario objetivo).
+
+## Prototipo versión Mobile
+![](https://github.com/Lourdes0896/LIM012-fe-social-network/blob/ludevelop/src/assets/prototipo%20H4-MOBILE.png)
+
+## Prototipo versión Desktop
+![](https://github.com/Lourdes0896/LIM012-fe-social-network/blob/ludevelop/src/assets/prototipo%20H4-DESKTOP.png)
+
+#### Historia 5: Yo como usuario loggeado, puedo dar like y llevar un conteo de likes en mi publicación así como poder escribir, guardar, editar o eliminar un comentario en mi publicación.
+
+* CRITERIOS DE ACEPTACIÓN:
+- Al realizar alguna publicación, se generará un botón de likes por defecto. (inicializado en 0).
+- El usuario podrá clickear el botón de likes.
+- El botón de Likes tendrá un contador, el cual aumentará cada vez que se le dé click.
+- El usuari@ podrá comentar cualquier publicación y subirlo.
+- El usuari@ podrá editar sus comentarios hechos en alguna publicación.
+- El usuari@ podrá eliminar sus comentarios hechos en alguna publicacion.
+- El usuari@ podrá eliminar los comentarios hechos a su publicación.
+
+* DEFINICIÓN DE TERMINADO:
+- La funcionalidad cumple satisface los criterios de aceptación.
+- Código revisado por la coach.
+- Funcionalidad desplegada en Github.
+- Test Unitario.
+- Historia de usuario incluida en el readme.
+- El diseño visual corresponde al prototipo de alta fidelidad.
+- Usar linter como una buena practica.
+- Test de usabilidad completado (directamente al usuario objetivo).
+
+## Prototipo versión Mobile
+![](https://github.com/Lourdes0896/LIM012-fe-social-network/blob/ludevelop/src/assets/prototipo%20H5-MOBILE.png)
+
+## Prototipo versión Desktop
+![](https://github.com/Lourdes0896/LIM012-fe-social-network/blob/ludevelop/src/assets/prototipo%20H5-DESKTOP.png)
+
+#### Historia 6: Al final debo poder ingresar a la red social y poder visualizar los datos de mi perfil creado o editarlos.
+
+* CRITERIOS DE ACEPTACIÓN:
+- El usuari@ registrado ,podrá editar nombre en el perfil.
+- El usuari@ podrá subir su foto de perfil.
+- El usuari@ podra cambiar la foto de perfil en cualquier momento.
+- El usuari@ podra eliminar la foto de perfil escogida.
+- El usuari@ podrá elegir opciones (maestro/alumno) al momento de editar su perfil academico.
+- El usuari@ tendrá un espacio para completarlo con una pequeña descripción.
+
+* DEFINICIÓN DE TERMINADO:
+- La funcionalidad cumple satisface los criterios de aceptación.
+- Código revisado por la coach.
+- Funcionalidad desplegada en Github.
+- Test Unitario.
+- Historia de usuario incluida en el readme.
+- El diseño visual corresponde al prototipo de alta fidelidad.
+- Usar linter como una buena practica.
+- Test de usabilidad completado (directamente al usuario objetivo).
+
+## Prototipo versión Mobile
+![](https://github.com/Lourdes0896/LIM012-fe-social-network/blob/ludevelop/src/assets/prototipo%20H6-MOBILE.png)
+
+## Prototipo versión Desktop
+![](https://github.com/Lourdes0896/LIM012-fe-social-network/blob/ludevelop/src/assets/prototipo%20H6-DESKTOP.png)
 
 
+## Link para visualizar los prototipos de alta fidelidad en Figma para móvil.
+[VER 👉 FIGMA] (https://www.figma.com/file/dUJn3uXiX60FTgDgkMaIix/Untitled?node-id=0%3A1)
 
-
-
-
-
-* Como usuario nuevo debo poder tener la opción de iniciar sesión con mi cuenta de Google o Facebook para ingresar a la red social sin necesidad de crear una cuenta de email válido.
-
-* Como usuario loggeado debo poder crear, guardar, modificar en el mismo lugar (in place) y eliminar una publicación (post) privada o pública, que puede ser una frase o una imagen.
-
-* Como usuario loggeado debo poder ver todos los posts públicos y privados que he creado hasta ese momento, desde el más reciente hasta el más antiguo, así como la opción de poder cambiar la configuración de privacidad de mis post.
-
-* Yo como usuario loggeado, puedo dar like y llevar un conteo de likes en mi publicación así como poder escribir, guardar, editar o eliminar un comentario en mi publicación.
-
-* Al final debo poder ingresar a la red social y poder visualizar los datos de mi perfil creado o editarlos.
+*******************************************************************************
 
 
 ## Objetivos de aprendizaje
