@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-alert */
+/* eslint-disable no-console */
 const firebaseConfig = {
   apiKey: 'AIzaSyAwXhQApvJ9tq-KWDkobxKX3eX02aJnTnY',
   authDomain: 'yachaywasiper.firebaseapp.com',

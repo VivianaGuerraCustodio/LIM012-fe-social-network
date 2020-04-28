@@ -12,9 +12,7 @@
 .ingreso{
   display: flex;
 }
-.logo{
-  width: 100%;
-}
+
 .logoPrincipal{
   width: 190px;
 }
@@ -65,7 +63,12 @@ flex-direction: row;
     display:block;
   }
 }
-
+.newEmail, .newPassword {
+    border-radius: 2vh;
+    outline: none;
+    padding: 1%;
+    margin: 1%;
+}
 .emailLogin, .passwordLogin {
   border-color: rgb(230, 229, 229);
   border-radius: 9%;
@@ -75,6 +78,14 @@ flex-direction: row;
   display: grid;
 }
 
+.nuevoUsuario{
+  background-color: #DA4545;
+    text-align: center;
+    color: white;
+    border-radius: 2vh;
+    outline: none;
+    width: 15vh;
+}
 .ingresar{
   background-color: #DA4545;
   text-align: center;
