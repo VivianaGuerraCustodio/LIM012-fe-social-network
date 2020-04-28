@@ -21,6 +21,7 @@
 .login{
 display: flex;
 flex-direction: row;
+border: solid 2px #DA4545;
 }
 
 @media(min-width:320px){
