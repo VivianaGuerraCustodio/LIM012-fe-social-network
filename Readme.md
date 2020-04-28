@@ -3,7 +3,7 @@
 
 ## Resumen del proyecto
 
-Yachaywasi,es una red social que busca facilitar y promover el acceso a información, contenidos educativos, y sobre todo una mayor difusión del espacio Aprendo en Casa, la modalidad de clases no presenciales dispuestas por el Gobierno del Perú y el Ministerio de Educación, como medidas de prevención ante la pandemia del Covid-19 en el país.
+Yachaywasi, es una red social que busca facilitar y promover el acceso a información, contenidos educativos, y sobre todo una mayor difusión del espacio Aprendo en Casa, la modalidad de clases no presenciales dispuestas por el Gobierno del Perú y el Ministerio de Educación, como medidas de prevención ante la pandemia del Covid-19 en el país.
 
 ## Definición del usuario y primeros pasos
 
@@ -13,6 +13,7 @@ Los principales usuarios de esta Red Social son Alumn@s, Maestr@s tanto del nive
 
 ### ¿Cuáles son los objetivos de estos usuarios en relación con el producto?
 
+Los usuarios podrán en primera instancia, acceder a la red social mediante la creación de una cuenta.
 Los usuarios podrán escribir, leer, actualizar y eliminar datos de las publicaciones que realicen, asimismo podrán comentar publicaciones hechas por otros usuarios.
 
 ## Historias de Usuario
