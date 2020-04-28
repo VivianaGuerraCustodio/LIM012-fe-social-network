@@ -5,10 +5,10 @@ export default () => {
   </div>
   <form class="newUser">
         <div class="formulario">
-         <input class="newEmail" type="email" placeholder="Correo Electrónico" required> 
-         <input class="newPassword" type="password" placeholder="Contraseña" required> 
-         <button class= "nuevoUsuario"> Registrar </button>
-         </div>
+        <input class="newEmail" type="email" placeholder="Correo Electrónico" required> 
+        <input class="newPassword" type="password" placeholder="Contraseña" required> 
+        <button class= "nuevoUsuario"> Registrar </button>
+        </div>
       </form> `;
 
   const divElem = document.createElement('div');

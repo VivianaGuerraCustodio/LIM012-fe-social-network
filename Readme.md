@@ -1,141 +1,177 @@
-# Creando una Red Social
+# YachayWasi-Perú 🖱️
 
-Bienvenida a tu primer proyecto del track de Frontend en Laboratoria.
 
-En este proyecto construirás una red social, cuya temáticas dejaremos a tu elección.
+## Resumen del proyecto
 
-Aquí algunas ideas para inspirarte:
+Yachaywasi, es una red social que busca facilitar y promover el acceso a información, contenidos educativos, y sobre todo una mayor difusión del espacio Aprendo en Casa, la modalidad de clases no presenciales dispuestas por el Gobierno del Perú y el Ministerio de Educación, como medidas de prevención ante la pandemia del Covid-19 en el país.
 
-- Alimentación
-- Feminismo
-- Educación
-- Salud
-- Energías Renovables
+## Definición del usuario y primeros pasos
 
-Las **caraterísticas técnicas** de tu aplicación serán las siguientes:
-- Debe ser una Single-Page Application [SPA](https://dzone.com/articles/how-single-page-web-applications-actually-work) ([versión traducida](https://dzone.com/articles/how-single-page-web-applications-actually-work))
-- Debe ser diseñada con un enfoque [mobile first](https://darwindigital.com/mobile-first-versus-responsive-web-design/) ([versión traducida](https://translate.google.com/translate?hl=&sl=auto&tl=es&u=https%3A%2F%2Fdarwindigital.com%2Fmobile-first-versus-responsive-web-design))
-- Debe permitir la persintencia de datos
-  
-Para implementar tu aplicación usarás *HTML5*, *CCS3* o *SASS*, *Vanilla JavaScript(ES6+)*, *Firebase* o *LocalStogarge*
+### ¿Quiénes son los principales usuarios del producto?
 
-## Objetivo
+Los principales usuarios de esta Red Social son Alumn@s, Maestr@s tanto del nivel inicial, primaria y secundaria, además de los Padres de Familia con hijos en etapa escolar.
 
-El objetivo de este proyecto es construir una Red Social, Single-Page Application (SPA), responsiva en la que podamos escribir, leer, actualizar y eliminar datos.
+### ¿Cuáles son los objetivos de estos usuarios en relación con el producto?
 
-Para ello deberás poner en juego tu creatividad para generar ideas que lleven a una solución original y valiosa del problema, trabajando en equipo buscando feedback constante.
-
-En otras palabras, seguirás afianzando todo lo aprendido en el Common Core, pero en particular verás :
-
-### Planificación
-
-* Te recomendamos utilizar *projects*, *issues* y *milestones* de GitHub para gestionar la planificación de tu proyecto. Estos recursos serán la fuente de organización de tu equipo y a través de estas herramientas tus coaches podrán ver el avance del proyecto y darte feedback.
-
-* Escribir, de manera colaborativa, las **Definiciones de terminado** y **Criterios de Aceptación** por cada **Historia de usuario** que te daremos para este proyecto y que se deberán ver reflejadas en tu planificación.
-
-* **Priorizar** la implementación de tus funcionalidades, en función al esfuerzo que demandan en relación al valor que le aportan al usuario, y ejecutar en equipo todas las historias de usuario dentro del tiempo estimado para cada sprint y que finalmente se vean reflejadas en publicaciones completamentamente funcionales al final de cada sprint.
-
-* Adquirir la disciplina de la completitud, terminando una historia de usuario antes de pasar a la siguiente (es decir, que cumple con *Definición de Terminado* y *Criterios de Aceptación* contemplando todos los puntos que son objetivos de aprendizaje para este proyecto).
-
-### Desarrollo frontend
-
-#### Arquitectura de la aplicación
-
-- Diseñar la arquitectura de tu aplicación, modularizando tu código a través de *es modules* ([`import`](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/import) y [`export`](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/export))
-
-- Familiarizarte con el patrón  modelo - vista - controlador ([MVC](https://es.wikipedia.org/wiki/Modelo%E2%80%93vista%E2%80%93controlador)).
-
-#### Tecnologías HTML5 y CSS3/SASS
-
-* Aplicar HTML5 semántico en tu proyecto.
-* Aplicar y reforzar los conceptos fundamentales de CSS3.
-* Implementar selectores de clase evitando la redundancia de estilos en CCS3.
-* Utilizar `flexbox` para lograr un diseño `mobile first`, implementando un layout que te permita crear un diseño adaptativo para **mobile y desktop**
-
-A continuación te proporcionamos el layout (diseño) de la vista mobile y desktop que deberás replicar visualmente y cuyo contenido, colores y fuentes de texto, dejaremos a tu elección.
-
-* Vista mobile
-
-    ![mobile](https://user-images.githubusercontent.com/32286663/56174616-ec9f6100-5fb8-11e9-9edb-d5ef7c251d9c.png)
-
-* Vista Desktop
-
-    ![desktop](https://user-images.githubusercontent.com/32286663/56174626-fcb74080-5fb8-11e9-8854-26e8d9c4e25f.png)
-
-#### JavaScript (ES6+)
-
-* Utilizar modulos de ES6 para poder modularizar tu código JavaScript.
-* Reforzar tu conocimiento sobre el uso de Template literals (Template strings).
-* Reforzar tu conocimiento de la manipulacion de los elementos del DOM a traves JavaScript.
-* Implementar un sistema de rutas para cambiar de una vista a otra de manera dinámica (SPA).
-* Testear la lógica de tu aplicación, con Jest cuidando que el coverage pase el 90% de statements (sentencias), functions (funciones), lines (líneas), y branches (ramas).
-
-### Persistencia de datos
-
-En los proyectos anteriores solo has consumido (leído) datos, por ejemplo, a través de un archivo `json` o utilizando `fetch`.
-
-En este proyecto diseñarás la estructura de esos datos, la forma de consultarlos, actualizarlos, modificarlos y eliminarlos según los requerimiento del usuario. Para llevarlo a cabo utilizaras `Firestore` de `Firebase` o `LocalStogarge` una `Web Storage API`
-
-#### Firebase
-
-El objetivo de usar Firestore en este proyecto, es que aprendes a manejar y persistir datos a traves de una base de datos no relacional, en tiempo real y puedas implementar operaciones CRUD (Creación, Lectura, Actualización y eliminación) de datos.
-
-## Consideraciones generales del proyecto
-
-* Este proyecto debe ser desarrollado en equipos de trabajo de 3 integrantes.
-
-* La duración propuesta del proyecto es **3 sprints**, con una duración de una semana cada uno.
-
-* Te daremos las **historias de usuario** con el fin de presentarte los requerimientos y funcionalidades que desea el usuario final.
-
-* La **planificación es vital**, para ello te recomendamos utilizar el flujo de trabajo colaborativo que nos ofrecen los projects de GitHub, para que puedas **escribir tus definiciones de terminado** y **criterios de aceptación** por cada historia de usuario con el objetivo que determinen, en equipo, **qué hacer** en el sprint y **cómo se realizará**.
-
-* Para que todas las miembros de tu equipo puedan lograr los objetivos de aprendizaje, deberán determinar cuál será la estrategia de desarrollo que utilizarán: división por sub-historias, pair programming, code reviews, etc.
-
-## Restricciones Técnicas
-
-* Debes utilizar `flexbox` para posicionar tus elementos. No está permitido el uso de frameworks de CCS (bootstrap), ni de componentes flotantes.
-
-* Ya te damos un diseño (layout) de la vista mobile y desktop, queremos que lo repliques a nivel *pixel perfect*, el contenido, paleta de colores y fuentes, depende de la temática que van a elegir como equipo. La implementación de ese layout deberá formar parte de la *definición de terminado* de tus historias de usuario.
-
-* Los test son **fundamentales** y deberán formar parte de tu definición de terminado, te recomendamos que comiences a implementarlos desde el comienzo.
+Los usuarios podrán en primera instancia, acceder a la red social mediante la creación de una cuenta.
+Los usuarios podrán escribir, leer, actualizar y eliminar datos de las publicaciones que realicen, asimismo podrán comentar publicaciones hechas por otros usuarios.
 
 ## Historias de Usuario
 
-* Como usuario nuevo debo poder crear una cuenta con email y password válidos para poder iniciar sesion e ingresar a la red social.
+#### Historia 1: Como usuario nuevo debo poder crear una cuenta con email y password válidos para poder iniciar sesion e ingresar a la red social.
 
-* Como usuario nuevo debo poder tener la opción de iniciar sesión con mi cuenta de Google o Facebook para ingresar a la red social sin necesidad de crear una cuenta de email válido.
+* CRITERIOS DE ACEPTACIÓN:
+- El usuari@ tendrá un espacio para digitar su correo y contraseña para crear su cuenta.
+- Conectar los formularios con Firebase
+- El usuario visualizara un mensaje de error, si su email o password ingresado es inválido.
+- El diseño debe ser mobile first ( acomodable en desktop)
 
-* Como usuario loggeado debo poder crear, guardar, modificar en el mismo lugar (in place) y eliminar una publicación (post) privada o pública, que puede ser una frase o una imagen.
+* DEFINICIÓN DE TERMINADO:
+- La funcionalidad cumple satisface los criterios de aceptación.
+- Código revisado por la coach.
+- Funcionalidad desplegada en Github.
+- Test Unitario.
+- Historia de usuario incluida en el readme.
+- El diseño visual corresponde al prototipo de alta fidelidad.
+- Usar linter como una buena practica.
+- Test de usabilidad completado (directamente al usuario objetivo).
 
-* Como usuario loggeado debo poder ver todos los posts públicos y privados que he creado hasta ese momento, desde el más reciente hasta el más antiguo, así como la opción de poder cambiar la configuración de privacidad de mis post.
+## Prototipo versión Mobile
+![](https://github.com/Lourdes0896/LIM012-fe-social-network/blob/ludevelop/src/assets/prototipo%20H1-MOBILE.png)
 
-* Yo como usuario loggeado, puedo dar like y llevar un conteo de likes en mi publicación así como poder escribir, guardar, editar o eliminar un comentario en mi publicación.
+## Prototipo versión Desktop
+![](https://github.com/Lourdes0896/LIM012-fe-social-network/blob/ludevelop/src/assets/prototipo%20H1-DESKTOP.png)
 
-* Al final debo poder ingresar a la red social y poder visualizar los datos de mi perfil creado o editarlos.
+#### Historia 2: Como usuario nuevo debo poder tener la opción de iniciar sesión con mi cuenta de Google o Facebook para ingresar a la red social sin necesidad de crear una cuenta de email válido.
 
-* Te dejamos un ejemplo de cómo definir criterios de aceptación y definiciones de terminado para una H.U. Si se te complica definirlas o no tienes idea de que considerar para cada H.U. es de gran ayuda revisar redes sociales como `facebok`, `twitter`, `instagram`, `devopedia` o la red social que más te guste y puedas evaluar qué consideran en cada funcionalidad para darla como terminada y aceptada.
+* CRITERIOS DE ACEPTACIÓN:
+- El usuari@ podrá elegir la opción de login entre Google o facebook.
+- Solicitar permisos a firebase para poder acceder a cualquiera de las opciones que el usuari@ seleccione.
+- Firebase valida los permisos solicitados para que el usuario ingrese a la opción seleccionada.
 
-    > Como usuario nuevo debo poder crear una cuenta con email y password para 
-    > poder iniciar sesion. Por otro lado, necesito también tener la opción de 
-    > iniciar sesión con mi cuenta de Google o Facebook.
-    >
-    > **Criterios de aceptación**
-    > - Si el mail o password no es válido, al momento de logearme, debo poder 
-    >   ver un mensaje de error.
-    > - Debe ser visible si hay algún mensaje de error.
-    > - Debo poder ver esta página de creación en Móviles y desktop (responsive). 
-    > - No debe necesitar recargar la página para crear una cuenta (SPA).
-    >
-    > **Definición de terminado**
-    > - La funcionalidad cumple satisface los criterios de aceptación.
-    > - La funcionalidad tiene _test unitarios_.
-    > - El diseño visual corresponde al prototipo de alta fidelidad.
-    > - El código de esta funcionalidad recibió code review.
-    > - La funcionalidad esta desplegada y pública para ser probada. 
-    > - La funcionalidad fue probada manualmente.
-    > - Se hicieron pruebas de usuabilidad y se implementó el feedback si se 
-    >   consideró necesario.
+* DEFINICIÓN DE TERMINADO:
+- La funcionalidad cumple satisface los criterios de aceptación.
+- Código revisado por la coach.
+- Funcionalidad desplegada en Github.
+- Test Unitario.
+- Historia de usuario incluida en el readme.
+- El diseño visual corresponde al prototipo de alta fidelidad.
+- Usar linter como una buena practica.
+- Test de usabilidad completado (directamente al usuario objetivo).
+
+## Prototipo versión Mobile
+![](https://github.com/Lourdes0896/LIM012-fe-social-network/blob/ludevelop/src/assets/prototipo%20H2-MOBILE.png)
+
+## Prototipo versión Desktop
+![](https://github.com/Lourdes0896/LIM012-fe-social-network/blob/ludevelop/src/assets/prototipo%20H2-DESKTOP.png)
+
+#### Historia 3: Como usuario loggeado debo poder crear, guardar, modificar en el mismo lugar (in place) y eliminar una publicación (post) privada o pública, que puede ser una frase o una imagen.
+
+* CRITERIOS DE ACEPTACIÓN:
+- El usuari@ visualizará una caja donde podrá escribir, para crear una publicación.
+- Se necesita al menos un caracter para que el boton PUBLICAR se active y se pueda realizar la publicación.
+- El usuari@ tendrá la opción de publicar una imagen.
+- El usuari@ tendrá la opción de modificar una publicación (post).
+- El usuari@ tendrá la opción de eliminar una publicación (post).
+- El usuari@ podrá configurar una publicación como pública o privada, según lo crea conveniente.
+
+* DEFINICIÓN DE TERMINADO:
+- La funcionalidad cumple satisface los criterios de aceptación.
+- Código revisado por la coach.
+- Funcionalidad desplegada en Github.
+- Test Unitario.
+- Historia de usuario incluida en el readme.
+- El diseño visual corresponde al prototipo de alta fidelidad.
+- Usar linter como una buena practica.
+- Test de usabilidad completado (directamente al usuario objetivo).
+## Prototipo versión Mobile
+![](https://github.com/Lourdes0896/LIM012-fe-social-network/blob/ludevelop/src/assets/prototipo%20H3-MOBILE.png)
+
+## Prototipo versión Desktop
+![](https://github.com/Lourdes0896/LIM012-fe-social-network/blob/ludevelop/src/assets/prototipo%20H3-DESKTOP.png)
+
+#### Historia 4: Como usuario loggeado debo poder ver todos los posts públicos y privados que he creado hasta ese momento, desde el más reciente hasta el más antiguo, así como la opción de poder cambiar la configuración de privacidad de mis post.
+
+* CRITERIOS DE ACEPTACIÓN:
+- Cuando el usuari@ haga alguna publicación (publica o privada), se creará un historial de publicaciones en su perfil y las podrá visualizar todas.
+- El historial de sus publicaciones del usuari@, aparecerá de manera ascendente (del mas reciente al mas antiguo).
+- El usuari@ podrá cambiar la consiguración de privacidad (publico/privado) de sus publicaciones compartidas anteriormente.
+
+* DEFINICIÓN DE TERMINADO:
+- La funcionalidad cumple satisface los criterios de aceptación.
+- Código revisado por la coach.
+- Funcionalidad desplegada en Github.
+- Test Unitario.
+- Historia de usuario incluida en el readme.
+- El diseño visual corresponde al prototipo de alta fidelidad.
+- Usar linter como una buena practica.
+- Test de usabilidad completado (directamente al usuario objetivo).
+
+## Prototipo versión Mobile
+![](https://github.com/Lourdes0896/LIM012-fe-social-network/blob/ludevelop/src/assets/prototipo%20H4-MOBILE.png)
+
+## Prototipo versión Desktop
+![](https://github.com/Lourdes0896/LIM012-fe-social-network/blob/ludevelop/src/assets/prototipo%20H4-DESKTOP.png)
+
+#### Historia 5: Yo como usuario loggeado, puedo dar like y llevar un conteo de likes en mi publicación así como poder escribir, guardar, editar o eliminar un comentario en mi publicación.
+
+* CRITERIOS DE ACEPTACIÓN:
+- Al realizar alguna publicación, se generará un botón de likes por defecto. (inicializado en 0).
+- El usuario podrá clickear el botón de likes.
+- El botón de Likes tendrá un contador, el cual aumentará cada vez que se le dé click.
+- El usuari@ podrá comentar cualquier publicación y subirlo.
+- El usuari@ podrá editar sus comentarios hechos en alguna publicación.
+- El usuari@ podrá eliminar sus comentarios hechos en alguna publicacion.
+- El usuari@ podrá eliminar los comentarios hechos a su publicación.
+
+* DEFINICIÓN DE TERMINADO:
+- La funcionalidad cumple satisface los criterios de aceptación.
+- Código revisado por la coach.
+- Funcionalidad desplegada en Github.
+- Test Unitario.
+- Historia de usuario incluida en el readme.
+- El diseño visual corresponde al prototipo de alta fidelidad.
+- Usar linter como una buena practica.
+- Test de usabilidad completado (directamente al usuario objetivo).
+
+## Prototipo versión Mobile
+![](https://github.com/Lourdes0896/LIM012-fe-social-network/blob/ludevelop/src/assets/prototipo%20H5-MOBILE.png)
+
+## Prototipo versión Desktop
+![](https://github.com/Lourdes0896/LIM012-fe-social-network/blob/ludevelop/src/assets/prototipo%20H5-DESKTOP.png)
+
+#### Historia 6: Al final debo poder ingresar a la red social y poder visualizar los datos de mi perfil creado o editarlos.
+
+* CRITERIOS DE ACEPTACIÓN:
+- El usuari@ registrado ,podrá editar nombre en el perfil.
+- El usuari@ podrá subir su foto de perfil.
+- El usuari@ podra cambiar la foto de perfil en cualquier momento.
+- El usuari@ podra eliminar la foto de perfil escogida.
+- El usuari@ podrá elegir opciones (maestro/alumno) al momento de editar su perfil academico.
+- El usuari@ tendrá un espacio para completarlo con una pequeña descripción.
+
+* DEFINICIÓN DE TERMINADO:
+- La funcionalidad cumple satisface los criterios de aceptación.
+- Código revisado por la coach.
+- Funcionalidad desplegada en Github.
+- Test Unitario.
+- Historia de usuario incluida en el readme.
+- El diseño visual corresponde al prototipo de alta fidelidad.
+- Usar linter como una buena practica.
+- Test de usabilidad completado (directamente al usuario objetivo).
+
+## Prototipo versión Mobile
+![](https://github.com/Lourdes0896/LIM012-fe-social-network/blob/ludevelop/src/assets/prototipo%20H6-MOBILE.png)
+
+## Prototipo versión Desktop
+![](https://github.com/Lourdes0896/LIM012-fe-social-network/blob/ludevelop/src/assets/prototipo%20H6-DESKTOP.png)
+
+
+## Link para visualizar los prototipos de alta fidelidad en Figma para móvil.
+[VER 👉 FIGMA] (https://www.figma.com/file/dUJn3uXiX60FTgDgkMaIix/Untitled?node-id=0%3A1)
+
+*******************************************************************************
+
 
 ## Objetivos de aprendizaje
 
