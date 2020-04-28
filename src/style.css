@@ -34,6 +34,9 @@ flex-direction: row;
     padding: 20px;
     box-sizing: border-box
  }
+ .otherOptions{
+   align-content: center;
+ }
   .logo{
   height: 100px;
   }
@@ -49,10 +52,14 @@ flex-direction: row;
     text-align: center;
     height: 100vh;
   }
+  .otherOptions{
+    align-content: center;
+    margin: 3% 15% 3%;
+  }
 }
 
 .emailLogin, .passwordLogin {
-  border-color: #BAB7B7;
+  border-color: rgb(230, 229, 229);
   border-radius: 9%;
   outline: none;
   padding: 3%;
@@ -67,6 +74,7 @@ flex-direction: row;
   border-radius: 9%;
   padding: 3%;
   outline: none;
+  width: 45%;
 }
 
 .otherNet{

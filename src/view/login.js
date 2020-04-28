@@ -1,4 +1,4 @@
-import { logIn } from '../controller/firebase.js';
+import { logIn, googleAuth, facebookAuth } from '../controller/firebase.js';
 
 export default () => {
   const viewLogin = `
@@ -21,11 +21,21 @@ export default () => {
   sectionElem.className = 'login';
   sectionElem.innerHTML = viewLogin;
   const login = sectionElem.querySelector('.ingresar');
+  const iconFB = sectionElem.querySelector('.iconFb');
+  const iconGoogle = sectionElem.querySelector('.iconGoogle');
   login.addEventListener('click', (event) => {
     event.preventDefault();
     const emailLogin = sectionElem.querySelector('.emailLogin').value;
     const passwordLogin = sectionElem.querySelector('.passwordLogin').value;
     logIn(emailLogin, passwordLogin);
+  });
+  iconFB.addEventListener('click', (event) => {
+    event.preventDefault();
+    facebookAuth();
+  });
+  iconGoogle.addEventListener('click', (event) => {
+    event.preventDefault();
+    googleAuth();
   });
   return sectionElem;
 };

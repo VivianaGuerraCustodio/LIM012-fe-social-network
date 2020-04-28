@@ -1,3 +1,5 @@
+import { signInOff } from '../controller/firebase.js';
+
 export default () => {
   const viewProfile = `<header>
   <div class="login">
@@ -17,7 +19,7 @@ export default () => {
         <a href="#/profile">Perfil</a>
       </li>
       <li>
-        <a href="#/hola">Cerrar Sesion</a>
+        <a class="logOut">Cerrar Sesion</a>
       </li>
       </ul>
   </nav>
@@ -122,6 +124,9 @@ export default () => {
 
   const divElem = document.createElement('div');
   divElem.innerHTML = viewProfile;
-
+  const logOut = divElem.querySelector('.logOut');
+  logOut.addEventListener('click', () => {
+    signInOff();
+  });
   return divElem;
 };
