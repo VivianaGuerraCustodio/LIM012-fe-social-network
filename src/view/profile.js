@@ -1,4 +1,7 @@
+/* eslint-disable no-alert */
+/* eslint-disable import/no-cycle */
 import { signInOff } from '../controller/firebase.js';
+import { changeView } from '../view-controler/router.js';
 
 export default () => {
   const viewProfile = `<header>
@@ -13,10 +16,10 @@ export default () => {
   <nav class= "menu">
     <ul class="menubar">
     <li>
-        <a href="#/home">Inicio</a>
+        <a class="home" href="#/home">Inicio</a>
       </li>
       <li>
-        <a href="#/profile">Perfil</a>
+        <a class="profile" href="#/profile">Perfil</a>
       </li>
       <li>
         <a class="logOut">Cerrar Sesion</a>
@@ -127,6 +130,14 @@ export default () => {
   const logOut = divElem.querySelector('.logOut');
   logOut.addEventListener('click', () => {
     signInOff();
+  });
+  const home = divElem.querySelector('.home');
+  home.addEventListener('click', () => {
+    changeView('#/home');
+  });
+  const profile = divElem.querySelector('.profile');
+  profile.addEventListener('click', () => {
+    changeView('#/profile');
   });
   return divElem;
 };
