@@ -3,7 +3,7 @@ import { logIn, googleAuth, facebookAuth } from '../controller/firebase.js';
 export default () => {
   const viewLogin = `
   <img class="imageDetail" src="assets/vista1.jpg">
-    <form class="logIn"> 
+  <form class="logIn"> 
     <div class="logo"> 
     <img class="logoPrincipal" src="assets/logo-wasi.png">
       </div>
@@ -16,8 +16,8 @@ export default () => {
       <p class="otherOptions">O puedes ingresar con ...</p>
       <img class="iconFb" src="assets/iconFb.jpg"/>
       <img class="iconGoogle" src="assets/iconG.png"/>
-      <p>¿No tienes cuenta? , <a class="register"  href="#/register">Regístrate</a> </p>
-    </form>`;
+      <p class="p-Options">¿No tienes cuenta?,<a class="register"  href="#/register">Regístrate</a> </p>
+  </form>`;
   const sectionElem = document.createElement('section');
   sectionElem.className = 'login';
   sectionElem.innerHTML = viewLogin;
