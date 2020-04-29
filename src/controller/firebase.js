@@ -1,6 +1,9 @@
+/* eslint-disable import/no-cycle */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-alert */
 /* eslint-disable no-console */
+import { changeView } from '../view-controler/router.js';
+
 const firebaseConfig = {
   apiKey: 'AIzaSyAwXhQApvJ9tq-KWDkobxKX3eX02aJnTnY',
   authDomain: 'yachaywasiper.firebaseapp.com',
@@ -46,7 +49,10 @@ observador();
 // este si essta..
 // funcion para iniciar sesion
 export const register = (email, password) => {
-  firebase.auth().createUserWithEmailAndPassword(email, password)
+  firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
+    alert('Registro exitoso, ¡dale! , inicia sesión ');
+    changeView('#/login');
+  })
     .catch((error) => {
     // Handle Errors here.
       const errorCode = error.code;
@@ -59,23 +65,29 @@ export const register = (email, password) => {
     });
 };
 export const logIn = (emailLogin, passwordLogin) => {
-  firebase.auth().signInWithEmailAndPassword(emailLogin, passwordLogin)
-    .catch((error) => {
+  firebase.auth().signInWithEmailAndPassword(emailLogin, passwordLogin).then(() => {
+    changeView('#/home');
+  }).catch((error) => {
     // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // [START_EXCLUDE]
-      if (errorCode === 'auth/wrong-password') {
-        alert('Wrong password.');
-      } else {
-        alert(errorMessage);
-      }
-    });
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // [START_EXCLUDE]
+    if (errorCode === 'auth/wrong-password') {
+      alert('Wrong password.');
+    } else {
+      alert(errorMessage);
+      changeView('#/login');
+    }
+  });
 };
 
 export const signInOff = () => {
-  firebase.auth().signOut().then().catch();
+  firebase.auth().signOut().then(() => {
+    alert('Ha cerrado sesión correctamente 🤗');
+    changeView('#/login');
+  }).catch();
 };
+
 export const googleAuth = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInWithPopup(provider).then((result) => {
@@ -84,6 +96,7 @@ export const googleAuth = () => {
     // The signed-in user info.
     const user = result.user;
     // ...
+    changeView('#/home');
   }).catch((error) => {
     // Handle Errors here.
     const errorCode = error.code;
@@ -93,6 +106,8 @@ export const googleAuth = () => {
     // The firebase.auth.AuthCredential type that was used.
     const credential = error.credential;
     // ...
+    alert(`${errorMessage}`);
+    changeView('#/login');
   });
 };
 export const facebookAuth = () => {
@@ -103,6 +118,7 @@ export const facebookAuth = () => {
     // The signed-in user info.
     const user = result.user;
     // ...
+    changeView('#/home');
   }).catch((error) => {
     // Handle Errors here.
     const errorCode = error.code;
@@ -112,5 +128,7 @@ export const facebookAuth = () => {
     // The firebase.auth.AuthCredential type that was used.
     const credential = error.credential;
     // ...
+    alert(`${errorMessage}`);
+    changeView('#/login');
   });
 };

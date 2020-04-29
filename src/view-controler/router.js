@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import { components } from '../view/index.js';
 // import register from '../view/register.js';
 
@@ -10,6 +11,7 @@ const changeView = (hash) => {
     case '#':
     case '#/':
     { return container.appendChild(components.login()); }
+    case '#/login':
     case '#/register':
     case '#/home':
     case '#/profile':
