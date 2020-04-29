@@ -1,4 +1,4 @@
-import { singInOff } from '../controller/firebase.js';
+import { signInOff } from '../controller/firebase.js';
 
 export default () => {
   const viewHome = ` <header>
@@ -141,7 +141,7 @@ export default () => {
   sectionElem.innerHTML = viewHome;
   const logOut = sectionElem.querySelector('.logOut');
   logOut.addEventListener('click', () => {
-    singInOff();
+    signInOff();
   });
   return sectionElem;
 };

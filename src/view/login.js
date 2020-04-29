@@ -1,8 +1,9 @@
-import { logIn } from '../controller/firebase.js';
+import { logIn, googleAuth, facebookAuth } from '../controller/firebase.js';
 
 export default () => {
   const viewLogin = `
-    <form class="logIn"> 
+  <img class="imageDetail" src="assets/vista1.jpg">
+  <form class="logIn"> 
     <div class="logo"> 
     <img class="logoPrincipal" src="assets/logo-wasi.png">
       </div>
@@ -15,17 +16,27 @@ export default () => {
       <p class="otherOptions">O puedes ingresar con ...</p>
       <img class="iconFb" src="assets/iconFb.jpg"/>
       <img class="iconGoogle" src="assets/iconG.png"/>
-      <p>¿No tienes cuenta? , <a class="register"  href="#/register">Regístrate</a> </p>
-    </form>`;
+      <p class="p-Options">¿No tienes cuenta?,<a class="register"  href="#/register">Regístrate</a> </p>
+  </form>`;
   const sectionElem = document.createElement('section');
   sectionElem.className = 'login';
   sectionElem.innerHTML = viewLogin;
   const login = sectionElem.querySelector('.ingresar');
+  const iconFB = sectionElem.querySelector('.iconFb');
+  const iconGoogle = sectionElem.querySelector('.iconGoogle');
   login.addEventListener('click', (event) => {
     event.preventDefault();
     const emailLogin = sectionElem.querySelector('.emailLogin').value;
     const passwordLogin = sectionElem.querySelector('.passwordLogin').value;
     logIn(emailLogin, passwordLogin);
+  });
+  iconFB.addEventListener('click', (event) => {
+    event.preventDefault();
+    facebookAuth();
+  });
+  iconGoogle.addEventListener('click', (event) => {
+    event.preventDefault();
+    googleAuth();
   });
   return sectionElem;
 };
