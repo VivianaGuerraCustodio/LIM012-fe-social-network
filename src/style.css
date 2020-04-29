@@ -301,58 +301,70 @@
       font-weight: bold;
     }
   /*------------estilos perfil Sab-----------------------------------------------------*/
-  .main-section {
-    margin: 20px 0px;
-    min-width: 60px;
-  }
-  .main-content{
-    padding: 0px 50px;
+  header{
     width: 100%;
-    display: flex;
-  
-    max-width: 1300px;
-    margin: 20px auto;
-  }
-  .user-information {
-    margin: 10px 20px auto 50px;
-    width: 600px;
     position: sticky;
-    top: 89.69px;
-    border: solid 1px rgb(185, 184, 184);
-  }
-  .profile-container{
-    width: 100%;
-    text-align: center;
-  }
-  .img-portada{
-    width: 100%;
-    height: 100%;
-  }
-  .logged-user-data-container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .user-info-container{
-    margin: 0px 20px;
-  }
-  .user-info-container>div {
+    top: 0;
+    z-index: 1;
+}
+.main-content{
     display: flex;
     flex-direction: row;
-    align-items: center;
-  }
-  .name p {
+    flex-wrap: wrap;
+    text-align: center;
+    padding: 20px;
+}
+.user-post{
+    flex-grow:1;
+    flex-basis:100%;
+    padding: 10px;
+}
+.user-information{
+    flex-basis: 100%;
+    border: solid 1px rgb(185, 184, 184);
+    padding: 10px;
+   
+}
+.user-post{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: center;
+    flex-basis: 100%;
+}
+.new-post, .recently-published{
+    flex-grow: 1;
+    flex-basis: 100%;
+    padding: 10px;
+    border: solid 1px rgb(185, 184, 184);
+}
+.profile-container{
+    width: 100%;
+}
+.img-portada{
+    width: 90%;
+    height: 90%;
+}
+.imageUser{
+    width: 100px;
+    margin-top: -50px;
+
+}
+.information-user{
+    margin: 0px 20px;
+}
+.name p {
     font-weight: bold;
     font-size: 22px;
-  }
-  .type-of-user p{
+}
+.type-of-user p{
     font-size: 18px;
     margin-left: 64px;
-  }
-  .user-info-container>p {
+}
+.information-user>p {
     margin: 5px;
-  }
-  .user-info-container button{
+}
+.information-user button{
     font-size: 16px;
     font-weight: bold;
     outline: none;
@@ -363,41 +375,12 @@
     border: none;
     color: #ffffff;
     cursor: pointer;
-  }
-  .user-info-container button:hover {
+}
+.information-user button:hover {
     background-color: rgb(231, 128, 128);
-  }
-  .imageUser{
-    width: 100px;
-  }
-  .contacts {
-    width: 100%;
-    margin-top: 40px;
-  }
-  /* div columna derecha user-post(new post and recently published)*/
-  .user-post {
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 8px;
-    margin: 10px 50px auto 20px;
-    width: 800px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  
-  }
-  .user-new-post{
-    /*width: 100%;*/
-    /*margin: 10px 20px auto 50px;
-    width: 600px;
-    position: sticky;
-    top: 89.69px;
-    border: solid 1px rgb(185, 184, 184);*/
-    width: 100%;
-    border: 1px solid #CCCCCC;
-    padding: 20px 20px 10px 20px;
-  }
-  .user-new-post button{
+}
+/*ddd*/
+.new-post button{
     font-size: 16px;
     font-weight: bold;
     outline: none;
@@ -408,42 +391,22 @@
     border: none;
     color: #ffffff;
     cursor: pointer;
-  }
-  .user-new-post button:hover {
+}
+.new-post button:hover {
     background-color: rgb(231, 128, 128);
-  }
-  /*caja donde se escribe la publicacion*/
-  .user-new-post textarea {
-    width: 100%;
-    margin: auto;
-    height: 127px;
-    border: 1px solid #CCCCCC;
-    box-sizing: border-box;
-    border-radius: 8px;
-    padding: 10px;
-    outline: none;
-    resize: none;
-    font-size: 16px;
-  }
-  /*acciones para la publicacion*/
-  .actions-for-the-user {
+}
+.actions-for-the-user {
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
-  .add-image{
+}
+.add-image{
     display: flex;
     align-items: center;
   }
   .select-privacy {
     margin: 0px 20px;
   }
-  .image {
-    width: 40px;
-    height: auto;
-    cursor: pointer;
-  }
-  /*boton de privacidad*/
   .select-privacy select {
     font-size: 15px;
     border: none;
@@ -453,7 +416,27 @@
     cursor: pointer;
     padding: 0px 10px;
   }
-  .for-each-publication {
+  .image {
+    width: 35px;
+    height: auto;
+    cursor: pointer;
+  }
+  .imagePost{
+    width: 70px;
+}
+  .new-post textarea {
+    width: 300px;
+    height: 127px;
+    border: 1px solid #CCCCCC;
+    box-sizing: border-box;
+    border-radius: 8px;
+    padding: 10px;
+    outline: none;
+    resize: none;
+    font-size: 16px;
+}
+/*varios post*/
+.for-each-publication {
     width: 100%;
     border: 1px solid #CCCCCC;
     margin-top: 20px;
@@ -510,6 +493,7 @@
     box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
   }
+  /**/
   .commentary {
     display: flex;
     align-items: center;
@@ -517,7 +501,7 @@
     background-color: #F2F2F2;
     padding: 10px;
   }
-  
+
   .commentary input {
     min-width: 80%;
     padding: 0px 10px;
@@ -528,11 +512,11 @@
     box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
   }
-  
+
   .imageUser-comentary {
     width: 50px;
   }
-  
+
   .add-commentary {
     display: flex;
     flex-direction: row;
@@ -573,135 +557,7 @@
     text-decoration: none;
 }
 
-/*fin estilos sabi ---------------------------------------*/
-/*Media 800 y 425 sabi*/
-@media screen and (max-width:800px){
-  /*Creación boton*/
-  .buttonMenu{
-    /*margin: 0 auto;*/
-    display: block;
-    width: 35px;
-    height: 30px;
-    padding: 10px;
-    border-radius: 3px;
-    background: rgb(218, 69, 69);
-    color: white;
-    cursor: pointer;
-    position: relative;
-  }
-  .buttonMenu span{
-    display: block;
-    width: 32px;
-    height: 4px;
-    background: white;
-    margin-top: 6px;
-  }
-  .yachayWasiDesktop{
-    display:none;
-  }
-  /*--------------*/
-  .yachayWasi{
-    display: block;
-    position: absolute;
-    left: 168px;
-    top: 10px;
-    font-size: 28px;
-    color:white;
-    /*left: 10px;*/
-  }
-  header label div:hover{
-    cursor: pointer;
-    background-color: rgb(231, 128, 128);
-  }
-  /*No es visible el cuadro para hacer check*/
-  #menuBurger {
-  display: none;
-  }
-  #menu {
-  display: none;
-  text-align:left;
-  }
-  #menu li a{
-    display: block;
-    padding: 10px 0;
-    color:white;
-    margin-left: 8px;
-  }
-  header nav ul li {
-  border-bottom:2px solid rgba(255,255,255, .3);
-  width: 100%;
-  }
-  header nav ul{
-  flex-direction: column;
-  }
-  
-  /* como #menuBurger y #menu comparten en mismo padre... todos los elementos nav id="menu" que siguen un elemento label id="menuBurger"*/
-  #menuBurger:checked~#menu{
-    display: block;
-  }
-  /*Comienzo Main*/
-  /*div dentro de section*/
-  .main-content {
-    width: 100%;
-    grid-template-columns: 45% 55%;
-    justify-content: space-around;
-    padding: 5px;
-    display: grid;
-  }
-  .user-information{
-    width: 90%;
-    margin: 0px 20px;
-  }
-  .logged-user-data-container{
-    position: relative;
-  }
-  .imageUser {
-    position: absolute;
-    margin-top: -50px;
-  }
-  .user-info-container {
-    margin-top: 40px;
-  }
-  /* div columna derecha user-post(new post and recently published)*/
-  .user-post {
-      width: 90%;
-      margin: 0px 20px;
-  
-  }
-  .user-new-post{
-      padding: 7px;
-  }
-  
-}
-/*vista mas pequeña*/
-@media (max-width:425px){
-  .main-content {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr;
-    justify-items: center;
-    padding: 0;
-  }
-  .user-information {
-    text-align: center;
-    width: 95%;
-    margin: 0;
-  }
-  /* div columna derecha user-post(new post and recently published)*/
-  .user-post {
-    text-align: center;
-    width: 95%;
-    margin: 0;
-    display: none;
-  }
-  .user-new-post {
-      padding: 7px;
-  }
- 
-}
-/* Fin estilos media sabi*/
-
-  /*------------------------------------------------------------------------------*/
+  /*-------------Fin estilos sabi---------------------------------------------------*/
   @media all and (max-width: 400px){
     .homeContainer{
       width: 100%;
@@ -764,78 +620,3 @@ footer{
   height: 30px;
  
 }
-
-  /*Verificar codigo de NAV (PARTE SABINA)-----------------------
-
-  body{background-color: rgb(230, 230, 233);font-family: Arial;}
-  
-  header{
-    width:100%;
-  }
-  header nav {
-    background-color: rgb(218, 69, 69);
-  }
-  .menu_bar{
-    display:none;
-  }
-  header nav ul{
-    overflow:hidden;
-    list-style:none;
-  }
-  header nav ul li{
-    float:left;
-  }
-  
-  header nav ul li a{
-      color: white;
-      display: block;
-      padding: 20px;
-      text-decoration: none;
-  }
-  
-  header nav ul li a:hover{
-      background-color: rgb(231, 128, 128);
-  }
-  
-  section{
-    padding:20px;
-  }
-  
-  @media screen and (max-width:800px){
-    header nav {
-      display:none;
-      width:80%;
-      height:100%;
-      /*left:-100%;
-      margin:0;
-      position:fixed;
-    }
-    header nav ul li{
-      display:block;
-      float:none;
-      border-bottom:1px solid rgb(236, 151, 151);
-    }
-    .menu_bar{
-      display:block;
-      width:100%;
-      background:#ccc;
-    }
-    .menu_bar .bt-menu{
-      display:block;
-     
-      padding:20px;
-      background:rgb(218, 69, 69);
-      color:white;
-      text-decoration:none;
-      font-weight:bold;
-      font-size:25px;
-      /*-webkit-box-sizing:border-box;
-      -moz-box-sinzing:border-box;
-      box-sizing:border-box;
-    }
-    .menu_bar span{
-      float:right;
-      font-size:40px;
-    }
-  }*/
-
