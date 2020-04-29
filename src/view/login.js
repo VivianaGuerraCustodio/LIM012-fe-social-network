@@ -7,7 +7,7 @@ export default () => {
     <div class="logo"> 
     <img class="logoPrincipal" src="assets/logo-wasi.png">
       </div>
-      <p> Bienvenid@s a YachayWasi, una red social para estudiantes, padres y maestros de todo el Perú </p>
+      <p> Bienvenid@s a YachayWasi, una red social para Estudiantes, Padres y Maestros de todo el Perú </p>
       <div class="formulario">
         <input class="emailLogin" type="email" placeholder="Correo Electrónico" required> 
         <input class="passwordLogin" type="password" placeholder="Contraseña" required> 

@@ -14,13 +14,13 @@
     display: none;
   }
   .logIn, .newUser{
-  padding: 5px;
-  text-align: center;
-  border: solid 4px #DA4545;
-  width: 80%;
-  margin: 10% 7.5%;
-  border-radius: 10px;
-  font-size: 15px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 0px 4px #D81212, 0 0 20px #DA4545 inset;
+    width: 75%;
+    margin: 8% 5%;
+    border-radius: 10px;
+    font-size: 15px;
 
   }
   .logo{
@@ -79,13 +79,14 @@
     margin: 3% 6% 3% 3%;
     padding: 25px;
   }
+  .newUser {
+    width: 28%;
+    height: 50%;
+    margin: 6% 6% 3% 5%;
+    padding: 25px;
+  }
 }  
-.newUser {
-  width: 30%;
-  height: 50%;
-  margin: 6% 6% 3% 3%;
-  padding: 25px;
-}
+
 
 
 
