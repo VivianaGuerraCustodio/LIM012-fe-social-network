@@ -105,10 +105,7 @@
     width: 400px;
   }
   
-  li{
-    margin: 5px;
-    padding: 5px;
-  }
+
   
   nav a {
     padding: 15px;
@@ -156,10 +153,7 @@
     flex-direction: column;
     flex-wrap: nowrap;
   }
-  button{
-    margin: 5px;
-    padding: 5px;
-  }
+
   .top-create-post, .lower-create-post{
     display: flex;
     flex-direction: row;
@@ -274,7 +268,7 @@
     display: block;
     border: 2px solid #DA4545;
     border-radius: 3px;
-    box-shadow: 1px 5px 5px 3px#DA4545;
+    box-shadow: 1px 5px 5px 3px #DA4545;
   }
 
   li{
@@ -314,6 +308,8 @@
     width: 30%;
     text-decoration: none;
     font-size: 12px;
+    margin: 5px;
+    padding: 5px;
     }
   
   button:hover{

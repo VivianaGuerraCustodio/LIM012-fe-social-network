@@ -2,6 +2,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-alert */
 /* eslint-disable no-console */
+/* eslint-disable no-undef */
 import { changeView } from '../view-controler/router.js';
 
 const firebaseConfig = {
@@ -17,6 +18,7 @@ const firebaseConfig = {
   // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
+
 // esta función nos recuerda los datos de un usuario activo,
 // previamente logeado o registrado.
 const observador = () => {
@@ -51,7 +53,6 @@ observador();
 export const register = (email, password) => {
   firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
     alert('Registro exitoso, ¡dale! , inicia sesión ');
-    changeView('#/login');
   })
     .catch((error) => {
     // Handle Errors here.
@@ -65,20 +66,19 @@ export const register = (email, password) => {
     });
 };
 export const logIn = (emailLogin, passwordLogin) => {
-  firebase.auth().signInWithEmailAndPassword(emailLogin, passwordLogin).then(() => {
-    changeView('#/home');
-  }).catch((error) => {
+  firebase.auth().signInWithEmailAndPassword(emailLogin, passwordLogin).then()
+    .catch((error) => {
     // Handle Errors here.
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // [START_EXCLUDE]
-    if (errorCode === 'auth/wrong-password') {
-      alert('Wrong password.');
-    } else {
-      alert(errorMessage);
-      changeView('#/login');
-    }
-  });
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // [START_EXCLUDE]
+      if (errorCode === 'auth/wrong-password') {
+        alert('Wrong password.');
+      } else {
+        alert(errorMessage);
+        changeView('#/login');
+      }
+    });
 };
 
 export const signInOff = () => {
@@ -96,7 +96,6 @@ export const googleAuth = () => {
     // The signed-in user info.
     const user = result.user;
     // ...
-    changeView('#/home');
   }).catch((error) => {
     // Handle Errors here.
     const errorCode = error.code;
@@ -118,7 +117,6 @@ export const facebookAuth = () => {
     // The signed-in user info.
     const user = result.user;
     // ...
-    changeView('#/home');
   }).catch((error) => {
     // Handle Errors here.
     const errorCode = error.code;

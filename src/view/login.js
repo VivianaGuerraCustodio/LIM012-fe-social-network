@@ -37,12 +37,16 @@ export default () => {
   iconFB.addEventListener('click', (event) => {
     event.preventDefault();
     facebookAuth();
-    changeView('#/home');
+    if (facebookAuth) {
+      changeView('#/home');
+    }
   });
   iconGoogle.addEventListener('click', (event) => {
     event.preventDefault();
     googleAuth();
-    changeView('#/home');
+    if (googleAuth) {
+      changeView('#/home');
+    }
   });
   return sectionElem;
 };
