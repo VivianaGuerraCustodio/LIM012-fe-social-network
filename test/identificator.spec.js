@@ -4,7 +4,7 @@ import {
   signInOff,
   googleAuth,
   facebookAuth,
-} from '../src/controler/firebase.js';
+} from '../src/controller/firebase.js';
 
 /* falta configuración firebase */
 

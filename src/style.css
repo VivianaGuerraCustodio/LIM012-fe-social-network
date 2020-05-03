@@ -1,81 +1,96 @@
 *{
     margin: 0px;
     padding: 0px;
-
+    font-family: 'Poppins', sans-serif;
   } 
   
   body{
     background: #ffffff;
     width: 100%;
   }
-  /* ----------------------Estilos LOGIN ------------*/
-.ingreso{
-  display: flex;
-}
+  /* ----------------------Estilos LOGIN y REGISTER ---------------------------------------------------*/
 
-.logo{
-  margin-right: 10%;
-}
-
-@media (max-width:600px){
-.logo{
-  margin-top: 10%;
-  margin-left: 25%;
- }
-}
-
-.logIn{
-  margin:auto;
-  align-items: center;
-  text-align: center;
-  margin-top: 10%;
-  margin-right: 15%;
-  font-family: Helvetica, Arial, sans-serif;
-}
-
-@media (max-width:600px){
-  .logIn{
-      margin-top: 62%;
-      margin-left: 27%;
-      margin-right: 27%;
+  .imageDetail{
+    display: none;
   }
-}
+  .logIn, .newUser{
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 0px 4px #D81212, 0 0 20px #DA4545 inset;
+    width: 75%;
+    margin: 8% 5%;
+    border-radius: 10px;
+    font-size: 15px;
 
-.email, .password {
-  border-color: #BAB7B7;
-  border-radius: 9%;
-  outline: none;
-  padding: 3%;
-  margin: 5%;
-  display: grid;
-}
+  }
+  .logo{
+    width: 96%;
+    margin: 5px;
+  }
+  .formulario{
+    margin: 10px;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+  }
+  .logoPrincipal{
+    width: 190px;
+  }
+  .emailLogin, .passwordLogin, .newEmail, .newPassword {
+    border-color: rgb(230, 229, 229);
+    border-radius: 9%;
+    outline: none;
+    padding: 3%;
+    margin: 5%;
+    width: 70%;
+  }
+  .ingresar, .newRegistered-User{
+    background-color: #DA4545;
+    color: white;
+    border-radius: 9%;
+    padding: 3%;
+    outline: none;
+    width: 45%;
+  }
+  .iconFb, .iconGoogle{
+    height: 35px;
+    margin: 5%;
+  }
+  .p-intro{
+    margin: 10px;
+  }
 
-.ingresar{
-  background-color: #DA4545;
-  text-align: center;
-  color: white;
-  border-radius: 9%;
-  padding: 3%;
-  outline: none;
-}
+/*---------------------------------*/
+@media all and (min-width: 700px){
+  .login, .form-register{
+    display: flex;
+    flex-direction: row;
+  }
+  .imageDetail{
+    display: block;
+    width: 45%;
+    height: 50%;
+    margin: 10px;
+    padding: 3% 2% 3% 5%;
+  }
+  .logIn {
+    width: 30%;
+    height: 50%;
+    margin: 3% 6% 3% 3%;
+    padding: 25px;
+  }
+  .newUser {
+    width: 28%;
+    height: 50%;
+    margin: 6% 6% 3% 5%;
+    padding: 25px;
+  }
+}  
 
-.otherOptions{
-  margin:5%;
-}
-.formulario{
-  margin: auto;
-  flex-direction: column;
-  display: flex;
-  align-items: center;
-}
-.iconFb, .iconGoogle{
-  height: 10%;
-  width: 10%;
-  background-color: white;
-  margin: 0% 3% 3% 0%;
-}
 
-  /*Verificar codigo de NAV (PARTE LOURDES)-----------------------*/
+
+
+  /*Estilos del Home ----(PARTE LOURDES)--------------------------------------------------------------*/
   header{
     background: #d94545;
     height: 50px;
@@ -83,6 +98,9 @@
     justify-content: flex-end;
     align-items: center;
     flex-flow: row wrap;
+    position: sticky;
+    top:0;
+    z-index: 1;
   }
   .menubar{
     list-style: none;
@@ -102,30 +120,30 @@
     flex-grow: 1;
   }
 
-  
   header nav a:hover{
     background: #EC9797;
   }
 
-  @media all and (max-width: 400px){
-    header{
-      align-items: center;
-      flex-flow: row;
-    }
-    .menubar{
-      width: 300px;
-      align-items: center;
-    }
+/*---------------------------------*/
+@media all and (max-width: 400px){
+  header{
+    align-items: center;
+    flex-flow: row;
   }
+  .menubar{
+    width: 300px;
+    align-items: center;
+  }
+}
 
-  /* -------------------- Estilos del inicio -----------------*/
+  /* -------------------- Estilos de Crear Post ----------------------------------------------------------*/
 
   main {
     background: #F1F2F5;
   }
   .homeContainer{
     background: #ffffff;
-    width: 50%;
+    width: 100%;
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -135,16 +153,16 @@
   .createPost,
   .post-done{
     border : solid 2px #DA4545;
-    margin: 10px;
+    margin: 10px 0px;
     padding: 10px;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
   }
-   button{
-     margin: 5px;
-     padding: 5px;
-   }
+  button{
+    margin: 5px;
+    padding: 5px;
+  }
   .top-create-post, .lower-create-post{
     display: flex;
     flex-direction: row;
@@ -152,11 +170,10 @@
     justify-content: space-evenly;
     align-items: center;
   }
- 
 
   textarea{
     border : solid 2px #BAB7B7;
-    width: 85%;
+    width: 70%;
     height: 50%;
     margin: 0.5em;
     padding: 1.8em;
@@ -164,14 +181,14 @@
     text-decoration: none;
   }
   .addImg{
-    width: 30px;
-    height: auto;
-    margin: 0em 10em;
-  }
-  .user {
     width: 8%;
     height: 8%;
-    margin: 15px;
+    margin: 0em 2.5em;
+  }
+  .user {
+    width: 20%;
+    height: 20%;
+    margin: 5px;
   }
 
   .btnPost{
@@ -191,15 +208,27 @@
     font-weight: bold;
   }
 
-  .addImg{
-    width: 5%;
-    height: 5%;
-    margin: 0em 5em;
+/*---------------------------------*/
+@media all and (min-width: 700px){
+    .homeContainer{
+    width: 50%;
   }
+  .addImg{
+    width: 30px;
+    height: auto;
+    margin: 0em 2em 0em 7em;
+  }
+  .user {
+    width: 8%;
+    height: 8%;
+    margin: 15px;
+  }
+  .textarea{
+    width: 85%;
+  }
+}
 
-
-
-/* ----------------------------------------------------publicaciones */
+/* -------------------publicaciones ----------------------------------------------------------------------- */
 
   .postHeader{
     display: flex;
@@ -210,7 +239,6 @@
     position: relative;
     
   }
- 
 
   .user-info{
   display: flex;
@@ -233,7 +261,6 @@
     margin-bottom: 15px;
     margin-left: 0;
     padding-left: 50px;
-
   }
 
   .optionPost{ 
@@ -266,21 +293,18 @@
 
   .contentPost{
     border : solid 2px #BAB7B7;
-    width: 82%;
+    width: 75%;
     margin: 0.5em;
     padding: 1.8em;
     border-radius: 10px;
   }
 
   time{
-    font-size: 14px;
+    font-size: 10px;
     margin: 5px;
-    top: 20px;
+    top: 38px;
   }
 
-  .divReactions{
-    border-bottom: 3px solid rgba(235, 178, 24, 0.719);
-  }
   .reactions{
     display: flex;
     justify-content: space-around;
@@ -293,314 +317,32 @@
     width: 30%;
     text-decoration: none;
     font-size: 12px;
-    }
+  }
   
-    button:hover{
-      transform: scale(1.1);
-      transition: 0.5;
-      font-weight: bold;
-    }
-  /*------------estilos perfil Sab-----------------------------------------------------*/
-  header{
-    width: 100%;
-    position: sticky;
-    top: 0;
-    z-index: 1;
-}
-.main-content{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+  button:hover{
+    transform: scale(1.1);
+    transition: 0.5;
+    font-weight: bold;
+  }
+
+  footer{
+    background: rgb(202, 202, 206);
     text-align: center;
-    padding: 20px;
-}
-.user-post{
-    flex-grow:1;
-    flex-basis:100%;
-    padding: 10px;
-}
-.user-information{
-    flex-basis: 100%;
-    border: solid 1px rgb(185, 184, 184);
-    padding: 10px;
-   
-}
-.user-post{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    text-align: center;
-    flex-basis: 100%;
-}
-.new-post, .recently-published{
-    flex-grow: 1;
-    flex-basis: 100%;
-    padding: 10px;
-    border: solid 1px rgb(185, 184, 184);
-}
-.profile-container{
-    width: 100%;
-}
-.img-portada{
-    width: 90%;
-    height: 90%;
-}
-.imageUser{
-    width: 100px;
-    margin-top: -50px;
-
-}
-.information-user{
-    margin: 0px 20px;
-}
-.name p {
-    font-weight: bold;
-    font-size: 22px;
-}
-.type-of-user p{
-    font-size: 18px;
-    margin-left: 64px;
-}
-.information-user>p {
-    margin: 5px;
-}
-.information-user button{
-    font-size: 16px;
-    font-weight: bold;
-    outline: none;
-    width: 170px;
-    height: 25px;
-    background: rgb(218, 69, 69);
-    border-radius: 9px;
-    border: none;
-    color: #ffffff;
-    cursor: pointer;
-}
-.information-user button:hover {
-    background-color: rgb(231, 128, 128);
-}
-/*ddd*/
-.new-post button{
-    font-size: 16px;
-    font-weight: bold;
-    outline: none;
-    width: 170px;
-    height: 25px;
-    background: rgb(218, 69, 69);
-    border-radius: 9px;
-    border: none;
-    color: #ffffff;
-    cursor: pointer;
-}
-.new-post button:hover {
-    background-color: rgb(231, 128, 128);
-}
-.actions-for-the-user {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.add-image{
-    display: flex;
-    align-items: center;
   }
-  .select-privacy {
-    margin: 0px 20px;
-  }
-  .select-privacy select {
-    font-size: 15px;
-    border: none;
-    outline: none;
-    background: none;
-    appearance: none;
-    cursor: pointer;
-    padding: 0px 10px;
-  }
-  .image {
-    width: 35px;
-    height: auto;
-    cursor: pointer;
-  }
-  .imagePost{
-    width: 70px;
-}
-  .new-post textarea {
-    width: 300px;
-    height: 127px;
-    border: 1px solid #CCCCCC;
-    box-sizing: border-box;
-    border-radius: 8px;
-    padding: 10px;
-    outline: none;
-    resize: none;
-    font-size: 16px;
-}
-/*varios post*/
-.for-each-publication {
-    width: 100%;
-    border: 1px solid #CCCCCC;
-    margin-top: 20px;
-  }
-  .publication-header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-  .publication-body {
-    padding: 20px;
-    text-align: justify;
-  }
-  .actions-commentary {
-    padding: 5px 20px;
-    border-top: solid 1px #CCCCCC;
-    border-bottom: solid 1px #CCCCCC;
-  }
-  .actions-commentary div {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-  .actions-commentary p {
-    font-size: 14px;
-    color: #333333;
-    text-align: left;
-  }
-  .like {
-    width: 34px;
-    height: auto;
-    margin-right: 10px;
-    cursor: pointer;
-  }
-  .comment {
-    width: 26px;
-    height: 26px;
-    cursor: pointer;
-  }
-  .commentary {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    background-color: #F2F2F2;
-    padding: 10px;
-  }
-  .commentary input {
-    min-width: 80%;
-    padding: 0px 10px;
-    outline: none;
-    height: 42px;
-    border: 1px solid #CCCCCC;
-    box-sizing: border-box;
-    box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 20px;
-  }
-  /**/
-  .commentary {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    background-color: #F2F2F2;
-    padding: 10px;
-  }
-
-  .commentary input {
-    min-width: 80%;
-    padding: 0px 10px;
-    outline: none;
-    height: 42px;
-    border: 1px solid #CCCCCC;
-    box-sizing: border-box;
-    box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 20px;
-  }
-
-  .imageUser-comentary {
-    width: 50px;
-  }
-
-  .add-commentary {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 5px 20px;
-    text-align: left;
-    font-size: 15px;
-    position: relative;
-  }
-  .tres-puntos {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 7em;
-  }
-  .tres-puntos span {
-    margin-left: 0;
-    background: none;
-    padding-left: 3em;
-  }
-  .tres-puntos>ul {
-    display: none;
-    list-style: none;
-}
-
-.tres-puntos:hover>ul {
-    display: block;
-    padding: 3px;
-    border-radius: 0.3em;
-    background: #FFFFFF;
-
-}
-.simulator-select:hover>ul>li:hover {
-  background:palevioletred;
-}
-
-.tres-puntos a {
-    text-decoration: none;
-}
-
-  /*-------------Fin estilos sabi---------------------------------------------------*/
-  @media all and (max-width: 400px){
-    .homeContainer{
-      width: 100%;
-    }
-    .addImg{
-      width: 25px;
-      height: 25px;
-      margin: 0em 3em;
-    }
+/*---------------------------------*/
+@media all and (min-width: 700px){
   time{
-    font-size: 10px;
-    top: 38px;
-  }
-  .user {
-    width: 20%;
-    height: 20%;
+    font-size: 14px;
     margin: 5px;
+    top: 20px;
   }
-
-.contentPost{
-  width: 75%;
-}
-
-textarea{
-  width: 70%;
-}
-
-}
- 
-  /* ----------------------Estilos cuadrito perfil (en dehuso)------------*/
-
-  .portada{
-    width: 30%;
-    height: auto;
+  .contentPost{
+    width: 82%;
   }
-  
-  .cardNombre {
-    margin: 10px;
-    border : solid 2px #EC9797;
-  } 
-  
-/* ----------------------Estilos scroll ()------------*/ 
-  
+}
+
+
+/* ----------------------Estilos scroll ()------------------------------------------------------------------*/ 
 body::-webkit-scrollbar{
     width: 1.5%;
     background-color: #F6EEEE;
@@ -611,12 +353,221 @@ body::-webkit-scrollbar-thumb{
     height: 1%;
 }
 
-footer{
-  background: rgb(202, 202, 206);
-  display: flex;
-  justify-content: center;
-  bottom: 0;
-  width: 100%;
-  height: 30px;
- 
+/* ----------------------Estilos PERFIL ()------------*/ 
+
+.img-portada{
+  width: 50%;
 }
+
+/* Estilos del Perfil Parte Sabi---------------------------------------------------------------------------*/
+/*padre de user-information y user-post*/
+.main-content{
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+/*--------------------------PERFIL COL-IZQUIERDA---------------------------------------*/
+.user-information{
+ width: 100%;
+ height: 250px;
+ margin: 5px auto;
+ display: flex;
+ justify-content: center;
+ border : solid 2px #BAB7B7;
+ /*border: solid 2px #DA4545;*/
+ border-radius: 4px;
+ padding-bottom: 10px;
+}
+.profile-container{
+  display: flex;
+  flex-direction: column;
+}
+.img-portada{
+  width: 100%;
+  height: 90%;
+  border-bottom : solid 2px #BAB7B7;
+  /*border-bottom : solid 1px #DA4545;*/
+}
+figure{
+  width: 100%;
+  height: 80%;
+}
+.logged-user-data{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.img-user{
+  width: 50px;
+  position: absolute;
+  margin-top: -53px;
+}
+.information-user{
+  display: flex;
+  flex-direction: column;
+}
+.name p {
+  font-weight: bold;
+}
+.type-of-user p{
+  font-size: 13px;
+}
+.btn-Editar{
+  background: #DA4545;
+  width: 100%;
+  text-decoration: none;
+  color: #ffffff;
+  border-radius: 4px;
+  border: 2px solid #DA4545;
+  font-size: 15px;
+  text-shadow: -1px 2px 4px rgb(117, 116, 116);
+}
+.btn-Editar:hover{
+  transform: scale(1.1);
+  transition: 0.5;
+  font-weight: bold;
+}
+/*---------------------------------------------------------------------------------*/
+.my-post{
+  border : solid 2px #BAB7B7;
+  margin-bottom: 10px;
+}
+/*---------------------------------PERFIL COL-DERECHA------------------------------*/
+.user-post{
+  width:100%;
+  height: 600px;
+  margin:5px auto;
+  display: flex;
+  flex-direction: column;
+}
+.new-post{
+  border : solid 2px #BAB7B7;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+.create-post, .action-for-the-user, .action-user{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.img-post {
+  width: 20%;
+  height: 20%;
+  margin: 10px;
+}
+textarea{
+  border : solid 2px #BAB7B7;
+  width: 70%;
+  height: 50%;
+  margin: 0.5em;
+  padding: 1.8em;
+  border-radius: 10px;
+  text-decoration: none;
+}
+.btn-Post{
+  background: #DA4545;
+  width: 30%;
+  text-decoration: none;
+  color: #ffffff;
+  border-radius: 4px;
+  border: 2px solid #DA4545;
+  font-size: 15px;
+  text-shadow: -1px 2px 4px rgb(117, 116, 116);
+}
+.btn-Post:hover{
+  transform: scale(1.1);
+  transition: 0.5;
+  font-weight: bold;
+}
+
+/*-----------------------------------------------*/
+.for-each-publication{
+  border : solid 2px #BAB7B7;
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0px;
+  padding: 12px;
+}
+.publication-header, .publication-information{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.action-user{
+  border-bottom: solid 2px #BAB7B7;
+  border-top: solid 2px #BAB7B7;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+}
+/*los 3 puntos*/
+.option-editPost{
+ align-self: flex-start;
+ padding-right: 5px;
+}
+.option-editPost span {
+  font-size: 25px;
+  margin-bottom: 15px;
+  margin-left: 0;
+  padding-left: 10px;
+}
+.option-Post{ 
+  list-style: none;
+  display: none;
+}
+.option-Post>ul{
+  list-style: none;
+  display: none;
+}
+.option-editPost:hover>ul{
+  display: block;
+  border: 2px solid #DA4545;
+  border-radius: 3px;
+  box-shadow: 1px 5px 5px 3px#DA4545;
+}
+li{
+  padding: 2px;
+  margin: 2px;
+}
+#userName{
+  font-size: 12px;
+  font-weight: bold;
+  margin: 5px;
+}
+.publication-body{
+  border : solid 2px #BAB7B7;
+  margin: 10px;
+  padding: 1.8em;
+  border-radius: 10px;
+}
+time{
+  font-size: 12px;
+  margin: 5px;
+  top: 38px;
+}
+.btn-Like, .btn-Comment{
+  border: none;
+  background: #ffffff;
+  cursor: pointer;
+  width: 30%;
+  text-decoration: none;
+  font-size: 12px;
+}
+.btn-Like:hover{
+  transform: scale(1.1);
+  transition: 0.5;
+  font-weight: bold;
+}
+.btn-Comment:hover{
+  transform: scale(1.1);
+  transition: 0.5;
+  font-weight: bold;
+}
+.name-comentary{
+  display: none;
+}
+/*Fin estilos Sabi*/
