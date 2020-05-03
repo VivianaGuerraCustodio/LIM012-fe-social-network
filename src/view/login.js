@@ -2,7 +2,7 @@
 /* eslint-disable import/no-cycle */
 import { logIn, googleAuth, facebookAuth } from '../controller/firebase.js';
 // eslint-disable-next-line import/named
-import { changeView } from '../view-controler/router.js';
+// import { changeView } from '../view-controler/router.js';
 
 export default () => {
   const viewLogin = `
@@ -37,16 +37,10 @@ export default () => {
   iconFB.addEventListener('click', (event) => {
     event.preventDefault();
     facebookAuth();
-    if (facebookAuth) {
-      changeView('#/home');
-    }
   });
   iconGoogle.addEventListener('click', (event) => {
     event.preventDefault();
     googleAuth();
-    if (googleAuth) {
-      changeView('#/home');
-    }
   });
   return sectionElem;
 };

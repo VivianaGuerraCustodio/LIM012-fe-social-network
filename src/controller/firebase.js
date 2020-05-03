@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 /* eslint-disable import/no-cycle */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-alert */
@@ -5,12 +6,16 @@
 /* eslint-disable no-undef */
 import { changeView } from '../view-controler/router.js';
 
+// const firebase = require('firebase');
+// Required for side-effects
+// require('firebase/firestore');
+
 const firebaseConfig = {
   apiKey: 'AIzaSyAwXhQApvJ9tq-KWDkobxKX3eX02aJnTnY',
   authDomain: 'yachaywasiper.firebaseapp.com',
-  databaseURL: 'https://yachaywasiper.firebaseio.com',
+  // databaseURL: 'https://yachaywasiper.firebaseio.com',
   projectId: 'yachaywasiper',
-  storageBucket: 'yachaywasiper.appspot.com',
+  // storageBucket: 'yachaywasiper.appspot.com',
   messagingSenderId: '310386263852',
   appId: '1:310386263852:web:73a2899abadb931f214e89',
   measurementId: 'G-QTBC8WWL0Y',
@@ -18,10 +23,18 @@ const firebaseConfig = {
   // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
-
+// FIRESTORE
+export const firestoreData = (name, email, photo) => {
+  const db = firebase.firestore();
+  db.collection('users').add({
+    nameUser: name,
+    photoURL: photo,
+    emailUser: email,
+  });
+};
 // esta función nos recuerda los datos de un usuario activo,
 // previamente logeado o registrado.
-const observador = () => {
+export const observador = () => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       // User is signed in.
@@ -90,12 +103,10 @@ export const signInOff = () => {
 
 export const googleAuth = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
-  firebase.auth().signInWithPopup(provider).then((result) => {
-    // This gives you a Google Access Token. You can use it to access the Google API.
-    const token = result.credential.accessToken;
-    // The signed-in user info.
-    const user = result.user;
-    // ...
+  firebase.auth().signInWithPopup(provider).then(() => {
+    if (googleAuth) {
+      changeView('#/profile');
+    }
   }).catch((error) => {
     // Handle Errors here.
     const errorCode = error.code;
@@ -112,6 +123,10 @@ export const googleAuth = () => {
 export const facebookAuth = () => {
   const provider = new firebase.auth.FacebookAuthProvider();
   firebase.auth().signInWithPopup(provider).then((result) => {
+    if (facebookAuth) {
+      changeView('#/profile');
+    }
+
     // This gives you a Facebook Access Token. You can use it to access the Facebook API.
     const token = result.credential.accessToken;
     // The signed-in user info.
