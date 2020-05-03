@@ -1,3 +1,4 @@
+/* eslint-disable import/named */
 /* eslint-disable no-alert */
 /* eslint-disable import/no-cycle */
 import { signInOff } from '../controller/firebase.js';
@@ -35,10 +36,9 @@ export default () => {
             <img src="assets/ejemplo de portada.jpg" class="img-portada">
           </figure>
           <div class="logged-user-data-container">
-            <img src="assets/user.png" class="imageUser">
             <div class="user-info-container">
               <div class="name">
-                <p>Nombre de Usuari@</p>
+                <p>name of user </p>
               </div>
               <div>
                 <div class="type-of-user">
@@ -75,7 +75,7 @@ export default () => {
               <div class="publication-header">
                 <img src="assets/user.png" class="imageUser">
                 <div>
-                  <h4>Nombre de usuari@</h4>
+                  <h4></h4>
                   <div class="time">
                     <p>04/20/2020</p>
                     <div class="select-privacy">
