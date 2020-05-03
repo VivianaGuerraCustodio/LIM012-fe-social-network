@@ -52,7 +52,7 @@ observador();
 // funcion para iniciar sesion
 export const register = (email, password) => {
   firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
-    alert('Registro exitoso, ¡dale! , inicia sesión ');
+    alert('Registro exitoso, inicia sesión ');
   })
     .catch((error) => {
     // Handle Errors here.
