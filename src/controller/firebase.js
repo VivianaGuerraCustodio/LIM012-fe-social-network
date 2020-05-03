@@ -79,7 +79,11 @@ export const register = (email, password) => {
     });
 };
 export const logIn = (emailLogin, passwordLogin) => {
-  firebase.auth().signInWithEmailAndPassword(emailLogin, passwordLogin).then()
+  firebase.auth().signInWithEmailAndPassword(emailLogin, passwordLogin).then(() => {
+    if (logIn) {
+      changeView('#/home');
+    }
+  })
     .catch((error) => {
     // Handle Errors here.
       const errorCode = error.code;
@@ -105,7 +109,7 @@ export const googleAuth = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInWithPopup(provider).then(() => {
     if (googleAuth) {
-      changeView('#/profile');
+      changeView('#/home');
     }
   }).catch((error) => {
     // Handle Errors here.
@@ -124,7 +128,7 @@ export const facebookAuth = () => {
   const provider = new firebase.auth.FacebookAuthProvider();
   firebase.auth().signInWithPopup(provider).then((result) => {
     if (facebookAuth) {
-      changeView('#/profile');
+      changeView('#/home');
     }
 
     // This gives you a Facebook Access Token. You can use it to access the Facebook API.
