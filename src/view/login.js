@@ -13,6 +13,7 @@ export default () => {
       </div>
       <p> Bienvenid@s a YachayWasi, una red social para Estudiantes, Padres y Maestros de todo el Perú </p>
       <div class="formulario">
+        <div class="reg_error_inner" id="reg_error_inner"></div>
         <input class="emailLogin" type="email" placeholder="Correo Electrónico" required> 
         <input class="passwordLogin" type="password" placeholder="Contraseña" required> 
         <button class= "ingresar"> Ingresar </button>
@@ -32,15 +33,29 @@ export default () => {
     event.preventDefault();
     const emailLogin = sectionElem.querySelector('.emailLogin').value;
     const passwordLogin = sectionElem.querySelector('.passwordLogin').value;
-    logIn(emailLogin, passwordLogin);
+    logIn(emailLogin, passwordLogin).catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      if (errorCode === 'auth/wrong-password') {
+        sectionElem.querySelector('#reg_error_inner').innerHTML = 'Wrong password.';
+      } else {
+        sectionElem.querySelector('#reg_error_inner').innerHTML = errorMessage;
+      }
+    });
   });
   iconFB.addEventListener('click', (event) => {
     event.preventDefault();
-    facebookAuth();
+    facebookAuth().catch((error) => {
+      const errorMessage = error.message;
+      sectionElem.querySelector('#reg_error_inner').innerHTML = errorMessage;
+    });
   });
   iconGoogle.addEventListener('click', (event) => {
     event.preventDefault();
-    googleAuth();
+    googleAuth().catch((error) => {
+      const errorMessage = error.message;
+      sectionElem.querySelector('#reg_error_inner').innerHTML = errorMessage;
+    });
   });
   return sectionElem;
 };

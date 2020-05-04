@@ -41,7 +41,6 @@ export default () => {
     </select>
     <button class="btnPost">Publicar</button>
   </div>
-  
 </section>
 
 
