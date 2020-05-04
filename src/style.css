@@ -202,7 +202,13 @@
 /*---------------------------------*/
 @media all and (min-width: 700px){
     .homeContainer{
+    width: 100%;
+  }
+  .createPost,
+  .post-done{
     width: 50%;
+    margin: 0.5% 23%;
+    padding: 10px;
   }
   .addImg{
     width: 30px;
@@ -271,10 +277,6 @@
     box-shadow: 1px 5px 5px 3px #DA4545;
   }
 
-  li{
-    padding: 2px;
-    margin: 2px;
-  }
 
   #nameUser{
     font-size: 12px;

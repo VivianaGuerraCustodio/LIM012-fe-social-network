@@ -10,20 +10,6 @@ import { changeView } from '../view-controler/router.js';
 // Required for side-effects
 // require('firebase/firestore');
 
-const firebaseConfig = {
-  apiKey: 'AIzaSyAwXhQApvJ9tq-KWDkobxKX3eX02aJnTnY',
-  authDomain: 'yachaywasiper.firebaseapp.com',
-  // databaseURL: 'https://yachaywasiper.firebaseio.com',
-  projectId: 'yachaywasiper',
-  // storageBucket: 'yachaywasiper.appspot.com',
-  messagingSenderId: '310386263852',
-  appId: '1:310386263852:web:73a2899abadb931f214e89',
-  measurementId: 'G-QTBC8WWL0Y',
-};
-  // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-firebase.analytics();
-// FIRESTORE
 export const firestoreData = (name, email, photo) => {
   const db = firebase.firestore();
   db.collection('users').add({
@@ -39,21 +25,20 @@ export const observador = () => {
     if (user) {
       // User is signed in.
       console.log('usuario activo');
-      const displayName = user.displayName;
-      console.log(displayName);
-      const email = user.email;
-      console.log(email);
-      const emailVerified = user.emailVerified;
-      console.log(emailVerified);
-      const photoURL = user.photoURL;
-      console.log(photoURL);
-      const isAnonymous = user.isAnonymous;
-      console.log(isAnonymous);
-      const uid = user.uid;
-      console.log(uid);
-      const providerData = user.providerData;
-      console.log(providerData);
-      // ...
+      // const displayName = user.displayName;
+      // console.log(displayName);
+      // const email = user.email;
+      // console.log(email);
+      // const emailVerified = user.emailVerified;
+      // console.log(emailVerified);
+      // const photoURL = user.photoURL;
+      // console.log(photoURL);
+      // const isAnonymous = user.isAnonymous;
+      // console.log(isAnonymous);
+      // const uid = user.uid;
+      // console.log(uid);
+      // const providerData = user.providerData;
+      // console.log(providerData);
     } else {
       // User is signed out.
       console.log('Has cerrado sesión correctamente');
@@ -61,7 +46,6 @@ export const observador = () => {
   });
 };
 observador();
-// este si essta..
 // funcion para iniciar sesion
 export const register = (email, password) => {
   firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
@@ -93,7 +77,7 @@ export const logIn = (emailLogin, passwordLogin) => {
         alert('Wrong password.');
       } else {
         alert(errorMessage);
-        changeView('#/login');
+        changeView('#/home');
       }
     });
 };
@@ -107,10 +91,16 @@ export const signInOff = () => {
 
 export const googleAuth = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
-  firebase.auth().signInWithPopup(provider).then(() => {
+  firebase.auth().signInWithPopup(provider).then((result) => {
     if (googleAuth) {
       changeView('#/home');
     }
+    const user = result.user;
+    const db = firebase.firestore();
+    db.collection('users').add({
+      nameUser: user.displayName,
+      photoURL: user.photoURL,
+    });
   }).catch((error) => {
     // Handle Errors here.
     const errorCode = error.code;
@@ -127,14 +117,25 @@ export const googleAuth = () => {
 export const facebookAuth = () => {
   const provider = new firebase.auth.FacebookAuthProvider();
   firebase.auth().signInWithPopup(provider).then((result) => {
+    FB.login((response) => {
+      if (response.status === 'connected') {
+        // Logged into your webpage and Facebook.
+      } else {
+        // The person is not logged into your webpage or we are unable to tell.
+      }
+    }, { scope: 'public_profile,email' });
     if (facebookAuth) {
-      changeView('#/home');
+      changeView('#/profile');
     }
-
     // This gives you a Facebook Access Token. You can use it to access the Facebook API.
     const token = result.credential.accessToken;
     // The signed-in user info.
     const user = result.user;
+    const db = firebase.firestore();
+    db.collection('users').add({
+      nameUser: user.displayName,
+      photoURL: user.photoURL,
+    });
     // ...
   }).catch((error) => {
     // Handle Errors here.
