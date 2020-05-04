@@ -33,6 +33,9 @@
     display: flex;
     align-items: center;
   }
+  .reg_error_inner{
+    border : solid 2px #DA4545;
+  }
   .logoPrincipal{
     width: 190px;
   }
@@ -277,7 +280,7 @@
     display: block;
     border: 2px solid #DA4545;
     border-radius: 3px;
-    box-shadow: 1px 5px 5px 3px#DA4545;
+    box-shadow: 1px 5px 5px 3px #DA4545;
   }
 
   li{
@@ -325,10 +328,10 @@
     font-weight: bold;
   }
 
-  footer{
+.footer {
     background: rgb(202, 202, 206);
     text-align: center;
-  }
+}
 /*---------------------------------*/
 @media all and (min-width: 700px){
   time{
@@ -354,10 +357,6 @@ body::-webkit-scrollbar-thumb{
 }
 
 /* ----------------------Estilos PERFIL ()------------*/ 
-
-.img-portada{
-  width: 50%;
-}
 
 /* Estilos del Perfil Parte Sabi---------------------------------------------------------------------------*/
 /*padre de user-information y user-post*/
@@ -515,10 +514,6 @@ textarea{
   margin-left: 0;
   padding-left: 10px;
 }
-.option-Post{ 
-  list-style: none;
-  display: none;
-}
 .option-Post>ul{
   list-style: none;
   display: none;
@@ -527,11 +522,15 @@ textarea{
   display: block;
   border: 2px solid #DA4545;
   border-radius: 3px;
-  box-shadow: 1px 5px 5px 3px#DA4545;
+  box-shadow: 1px 5px 5px 3px #DA4545;
 }
-li{
+.option-Post li{
   padding: 2px;
   margin: 2px;
+}
+.option-Post{ 
+  list-style: none;
+  display: none;
 }
 #userName{
   font-size: 12px;

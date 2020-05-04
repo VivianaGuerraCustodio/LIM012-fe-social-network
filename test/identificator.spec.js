@@ -6,22 +6,32 @@ import {
   facebookAuth,
 } from '../src/controller/firebase.js';
 
-/* falta configuración firebase */
+
+const firebasemock = require('firebase-mock');
+
+const mockauth = new firebasemock.MockAuthentication();
+mockauth.autoFlush();
+
+global.firebase = firebasemock.MockFirebaseSdk(
+  // use null if your code does not use RTDB
+  () => null,
+  () => mockauth,
+);
 
 describe('Inicio de sesion', () => {
   it('Debe iniciar sesión', () => {
-    logIn('usuario@gmail.com', '123456').then((user) => {
-      expect().toBe('usuario@gmail.com');
-      expect().toBe(false);
+    logIn('sabi@gmail.com', '123456').then((user) => {
+      expect(user.email).toBe('sabi@gmail.com');
+      expect(user.password).toBe('123456');
     });
   });
 });
 
 describe('Registro', () => {
   it('Debe crear usuario nuevo', () => {
-    register('ejemplo@labo.com', '123456').then((user) => {
-      expect().toBe('ejemplo@labo.com');
-      expect().toBe(false);
+    register('ejemplo@labo.com', '654321').then((user) => {
+      expect(user.email).toBe('ejemplo@labo.com');
+      expect(user.password).toBe('654321');
     });
   });
 });
@@ -36,15 +46,13 @@ describe('Cierre de sesion', () => {
 describe('Inicio-Google', () => {
   it('Debe iniciar sesión Google', () => googleAuth()
     .then((user) => {
-      expect().toBe(false);
-      expect().toEqual([{ 'google.com' }]);
+      expect(user.isAnonymous).toBe(false);
     }));
 });
 
 describe('Inicio-Facebook', () => {
   it('Debe iniciar sesión Facebook', () => facebookAuth()
     .then((user) => {
-      expect().toBe(false);
-      expect().toEqual([{  'facebook.com' }]);
+      expect(user.isAnonymous).toBe(false);
     }));
 });
