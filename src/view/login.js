@@ -1,4 +1,8 @@
+/* eslint-disable no-alert */
+/* eslint-disable import/no-cycle */
 import { logIn, googleAuth, facebookAuth } from '../controller/firebase.js';
+// eslint-disable-next-line import/named
+// import { changeView } from '../view-controler/router.js';
 
 export default () => {
   const viewLogin = `

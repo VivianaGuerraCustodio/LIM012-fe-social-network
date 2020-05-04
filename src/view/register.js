@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import { register } from '../controller/firebase.js';
 
 export default () => {

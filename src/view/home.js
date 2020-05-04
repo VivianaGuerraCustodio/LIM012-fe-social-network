@@ -1,4 +1,6 @@
+/* eslint-disable import/no-cycle */
 import { signInOff } from '../controller/firebase.js';
+import { changeView } from '../view-controler/router.js';
 
 export default () => {
   const viewHome = ` <header>
@@ -13,10 +15,10 @@ export default () => {
   <nav class= "menu">
     <ul class="menubar">
     <li>
-        <a href="#/home">Inicio</a>
+        <a class="home" href="#/home">Inicio</a>
       </li>
       <li>
-        <a href="#/profile">Perfil</a>
+        <a class ="profile" href="#/profile">Perfil</a>
       </li>
       <li>
         <a class="logOut">Cerrar Sesion</a>
@@ -141,6 +143,15 @@ export default () => {
   const logOut = sectionElem.querySelector('.logOut');
   logOut.addEventListener('click', () => {
     signInOff();
+    changeView('#/login');
+  });
+  const home = sectionElem.querySelector('.home');
+  home.addEventListener('click', () => {
+    changeView('#/home');
+  });
+  const profile = sectionElem.querySelector('.profile');
+  profile.addEventListener('click', () => {
+    changeView('#/profile');
   });
   return sectionElem;
 };

@@ -1,4 +1,8 @@
+/* eslint-disable import/named */
+/* eslint-disable no-alert */
+/* eslint-disable import/no-cycle */
 import { signInOff } from '../controller/firebase.js';
+import { changeView } from '../view-controler/router.js';
 
 export default () => {
   const viewProfile = `<header>
@@ -13,10 +17,10 @@ export default () => {
   <nav class= "menu">
     <ul class="menubar">
     <li>
-        <a href="#/home">Inicio</a>
+        <a class="home" href="#/home">Inicio</a>
       </li>
       <li>
-        <a href="#/profile">Perfil</a>
+        <a class="profile" href="#/profile">Perfil</a>
       </li>
       <li>
         <a class="logOut">Cerrar Sesion</a>
@@ -25,6 +29,23 @@ export default () => {
   </nav>
 </header>
 <section class="main-section">
+<<<<<<< HEAD
+    <div class="main-content">
+      <div class="user-information">
+        <div class="profile-container">
+          <figure>
+            <img src="assets/ejemplo de portada.jpg" class="img-portada">
+          </figure>
+          <div class="logged-user-data-container">
+            <div class="user-info-container">
+              <div class="name">
+                <p>name of user </p>
+              </div>
+              <div>
+                <div class="type-of-user">
+                  <p>Maestra</p>
+                </div>
+=======
 <div class="main-content">
   <div class="user-information">
     <div class="profile-container">
@@ -67,6 +88,7 @@ export default () => {
                   <option value="private" class="styleSelect">Privado</option>
                 </select>
                 <time datetime="date">04/15/2020 </time>
+>>>>>>> 1e6606768d8ee576c065ad56eba8c60712ab7c8b
               </div>
           </div>
           <div class="option-editPost">
@@ -85,6 +107,54 @@ export default () => {
           <button class ="btn-Like"><img src="assets/like-solid-24.png">Me gusta</button>
           <button class ="btn-Comment"><img src="assets/add comment.png">Comentar</button>
         </div>
+<<<<<<< HEAD
+        <div class="recently-published">
+          <div class="for-each-publication">
+              <div class="publication-header">
+                <img src="assets/user.png" class="imageUser">
+                <div>
+                  <h4></h4>
+                  <div class="time">
+                    <p>04/20/2020</p>
+                    <div class="select-privacy">
+                      <select>
+                        <option>Público</option>
+                        <option>Privado</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="publication-body">
+                <p>Enseñar es dejar una huella en la vida de una persona.</p>
+              </div>
+              <div class="actions-commentary">
+                <div>
+                  <img src="assets/like-solid-24.png" alt="" class="like">
+                  <img src="assets/add comment.png" alt="" class="comment">
+                  <button id="btn">Comentario</button>
+                </div>
+                <p> 6 Me Gusta</p>
+              </div>
+              <div class="commentary">
+                <img src="assets/user.png" class="imageUser-comentary">
+                <input type="text" placeholder="Agrega un comentario.">
+              </div>
+              <div class="add-commentary">
+                <img src="assets/user.png" class="imageUser-comentary">
+                <div class="">
+                  <h4>Otr@ usuari@</h4>
+                  <p>"Porque te quiero abrazar más adelante, me distancio ahora": La motivadora frase de Martín Vizcarra
+                  </p>
+                </div>
+                <div class="tres-puntos">
+                  <span>...</span>
+                  <ul>
+                    <li><a href="#">Editar</a></li>
+                    <li><a href="#">Eliminar</a></li>
+                  </ul>
+                </div>
+=======
         <div class="name-comentary">
           <img src="assets/userbb.png" class="img-miniUser">
           <p> <strong>Otr@ Usuari@ :</strong> <br> Profe!!</p>
@@ -121,6 +191,7 @@ export default () => {
                   <option value="private" class="styleSelect">Privado</option>
                 </select>
                 <time datetime="date">04/28/2020 </time>
+>>>>>>> 1e6606768d8ee576c065ad56eba8c60712ab7c8b
               </div>
           </div>
           <div class="option-editPost">
@@ -150,6 +221,14 @@ export default () => {
   const logOut = divElem.querySelector('.logOut');
   logOut.addEventListener('click', () => {
     signInOff();
+  });
+  const home = divElem.querySelector('.home');
+  home.addEventListener('click', () => {
+    changeView('#/home');
+  });
+  const profile = divElem.querySelector('.profile');
+  profile.addEventListener('click', () => {
+    changeView('#/profile');
   });
   return divElem;
 };

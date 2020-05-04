@@ -205,7 +205,13 @@
 /*---------------------------------*/
 @media all and (min-width: 700px){
     .homeContainer{
+    width: 100%;
+  }
+  .createPost,
+  .post-done{
     width: 50%;
+    margin: 0.5% 23%;
+    padding: 10px;
   }
   .addImg{
     width: 30px;
@@ -304,7 +310,7 @@
     font-size: 12px;
     margin: 5px;
     padding: 5px;
-  }
+    }
   
   button:hover{
     transform: scale(1.1);
