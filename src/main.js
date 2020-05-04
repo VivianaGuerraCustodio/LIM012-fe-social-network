@@ -22,6 +22,7 @@ const init = () => {
 
 window.addEventListener('load', init);
 
+
 /* eslint-disable no-console */
 /* eslint-disable no-alert */
 /* import { example } from './example.js';
