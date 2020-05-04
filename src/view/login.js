@@ -52,10 +52,7 @@ export default () => {
   }); */
   iconGoogle.addEventListener('click', (event) => {
     event.preventDefault();
-    googleAuth().catch((error) => {
-      const errorMessage = error.message;
-      sectionElem.querySelector('#reg_error_inner').innerHTML = errorMessage;
-    });
+    googleAuth();
   });
   return sectionElem;
 };
