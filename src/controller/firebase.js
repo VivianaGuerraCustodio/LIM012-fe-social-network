@@ -85,3 +85,39 @@ export const facebookAuth = () => {
   const credential = error.credential;
   // ...
 }); */
+
+
+/* const db = firebase.firestore();
+    db.collection('users').add({
+      nameUser: user.displayName,
+      photoURL: user.photoURL,
+    });
+*/
+/* const db = firebase.firestore();
+    db.collection('users').add({
+      nameUser: user.displayName,
+      photoURL: user.photoURL,
+    });
+const provider = new firebase.auth.GoogleAuthProvider();
+  firebase.auth().signInWithPopup(provider).then((result) => {
+    if (googleAuth) {
+      changeView('#/profile');
+    }
+    const user = result.user;
+    const db = firebase.firestore();
+    db.collection('users').add({
+      nameUser: user.displayName,
+      photoURL: user.photoURL,
+    });
+const provider = new firebase.auth.GoogleAuthProvider();
+  firebase.auth().signInWithPopup(provider).then((result) => {
+    if (googleAuth) {
+      changeView('#/profile');
+    }
+    const user = result.user;
+    const db = firebase.firestore();
+    db.collection('users').add({
+      nameUser: user.displayName,
+      photoURL: user.photoURL,
+    });
+ */

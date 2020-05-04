@@ -111,11 +111,6 @@
     width: 400px;
   }
   
-  li{
-    margin: 5px;
-    padding: 5px;
-  }
-  
   nav a {
     padding: 15px;
     color: #ffffff;
@@ -161,10 +156,6 @@
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-  }
-  button{
-    margin: 5px;
-    padding: 5px;
   }
   .top-create-post, .lower-create-post{
     display: flex;
@@ -226,9 +217,6 @@
     height: 8%;
     margin: 15px;
   }
-  .textarea{
-    width: 85%;
-  }
 }
 
 /* -------------------publicaciones ----------------------------------------------------------------------- */
@@ -275,17 +263,11 @@
     list-style: none;
     display: none;
   }
-
   .option-edit-post:hover>ul{
     display: block;
     border: 2px solid #DA4545;
     border-radius: 3px;
     box-shadow: 1px 5px 5px 3px #DA4545;
-  }
-
-  li{
-    padding: 2px;
-    margin: 2px;
   }
 
   #nameUser{
@@ -320,6 +302,8 @@
     width: 30%;
     text-decoration: none;
     font-size: 12px;
+    margin: 5px;
+    padding: 5px;
   }
   
   button:hover{
@@ -457,15 +441,6 @@ figure{
   height: 20%;
   margin: 10px;
 }
-textarea{
-  border : solid 2px #BAB7B7;
-  width: 70%;
-  height: 50%;
-  margin: 0.5em;
-  padding: 1.8em;
-  border-radius: 10px;
-  text-decoration: none;
-}
 .btn-Post{
   background: #DA4545;
   width: 30%;
@@ -514,10 +489,6 @@ textarea{
   margin-left: 0;
   padding-left: 10px;
 }
-.option-Post>ul{
-  list-style: none;
-  display: none;
-}
 .option-editPost:hover>ul{
   display: block;
   border: 2px solid #DA4545;
@@ -542,11 +513,6 @@ textarea{
   margin: 10px;
   padding: 1.8em;
   border-radius: 10px;
-}
-time{
-  font-size: 12px;
-  margin: 5px;
-  top: 38px;
 }
 .btn-Like, .btn-Comment{
   border: none;
