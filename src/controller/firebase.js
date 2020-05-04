@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 
 // esta función nos recuerda los datos de un usuario activo,
 // previamente logeado o registrado.
@@ -28,21 +29,29 @@
 // };
 // observador();
 
+import { changeView } from '../view-controler/router.js';
+import home from '../view/home.js';
+
 
 // eslint-disable-next-line max-len
 export const register = (email, password) => firebase.auth().createUserWithEmailAndPassword(email, password);
 
 // eslint-disable-next-line max-len
-export const logIn = (emailLogin, passwordLogin) => firebase.auth().signInWithEmailAndPassword(emailLogin, passwordLogin);
+export const logIn = (emailLogin, passwordLogin) => firebase.auth().signInWithEmailAndPassword(emailLogin, passwordLogin)
+  .then(() => {
+    if (logIn) {
+      changeView(home);
+    }
+  });
 
 
 export const signInOff = () => firebase.auth().signOut().then().catch();
 
 export const googleAuth = () => {
-  const provider = new firebase.auth.GoogleAuthProvider();
-  return firebase.auth().signInWithPopup(provider);
-};
-export const facebookAuth = () => {
-  const provider = new firebase.auth.FacebookAuthProvider();
+  const provider = new firebase.auth.GoogleAuthProvider().then(() => {
+    if (googleAuth) {
+      changeView(home);
+    }
+  });
   return firebase.auth().signInWithPopup(provider);
 };
