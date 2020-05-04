@@ -1,6 +1,6 @@
 /* eslint-disable no-alert */
 /* eslint-disable import/no-cycle */
-import { logIn, googleAuth, facebookAuth } from '../controller/firebase.js';
+import { logIn, googleAuth } from '../controller/firebase.js';
 // eslint-disable-next-line import/named
 // import { changeView } from '../view-controler/router.js';
 
@@ -27,7 +27,7 @@ export default () => {
   sectionElem.className = 'login';
   sectionElem.innerHTML = viewLogin;
   const login = sectionElem.querySelector('.ingresar');
-  const iconFB = sectionElem.querySelector('.iconFb');
+  // const iconFB = sectionElem.querySelector('.iconFb');
   const iconGoogle = sectionElem.querySelector('.iconGoogle');
   login.addEventListener('click', (event) => {
     event.preventDefault();
@@ -43,13 +43,13 @@ export default () => {
       }
     });
   });
-  iconFB.addEventListener('click', (event) => {
+  /* iconFB.addEventListener('click', (event) => {
     event.preventDefault();
     facebookAuth().catch((error) => {
       const errorMessage = error.message;
       sectionElem.querySelector('#reg_error_inner').innerHTML = errorMessage;
     });
-  });
+  }); */
   iconGoogle.addEventListener('click', (event) => {
     event.preventDefault();
     googleAuth().catch((error) => {
