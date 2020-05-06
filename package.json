@@ -38,7 +38,6 @@
   },
   "dependencies": {
     "firebase": "^7.14.1",
-    "jsdom": "^16.2.2",
-    "firebase-mock": "^2.3.2"
+    "jsdom": "^16.2.2"
   }
 }

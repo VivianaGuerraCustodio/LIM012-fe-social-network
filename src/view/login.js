@@ -19,7 +19,6 @@ export default () => {
         <button class= "ingresar"> Ingresar </button>
       </div>
       <p class="otherOptions">O puedes ingresar con ...</p>
-      <img class="iconFb" src="assets/iconFb.jpg"/>
       <img class="iconGoogle" src="assets/iconG.png"/>
       <p class="p-Options">¿No tienes cuenta?,<a class="register"  href="#/register">Regístrate</a> </p>
   </form>`;
