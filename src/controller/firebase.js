@@ -1,23 +1,12 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-restricted-globals */
+/* eslint-disable no-global-assign */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable max-len */
 /* eslint-disable import/no-cycle */
 
-
 import { changeView } from '../view-controler/router.js';
 
-const user = () => {
-  firebase.auth().currentUser;
-  let name; let email; let photoUrl; let uid; let
-    emailVerified;
-  if (user != null) {
-    name = user.displayName;
-    email = user.email;
-    photoUrl = user.photoURL;
-    emailVerified = user.emailVerified;
-    uid = user.uid;
-  }
-};
-// import profile from '../view/profile.js';
 
 export const register = (email, password) => firebase.auth().createUserWithEmailAndPassword(email, password);
 
@@ -34,7 +23,15 @@ export const signInOff = () => firebase.auth().signOut().then(() => {
 
 export const googleAuth = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
-  firebase.auth().signInWithPopup(provider).then(() => {
+  firebase.auth().signInWithPopup(provider).then((user) => {
+    firebase.auth().currentUser;
+    if (user != null) {
+      name = user.displayName;
+      email = user.email;
+      photoUrl = user.photoURL;
+      emailVerified = user.emailVerified;
+      uid = user.uid;
+    }
     const db = firebase.firestore();
     db.collection('usuarios').add({
       name: user.displayName,
