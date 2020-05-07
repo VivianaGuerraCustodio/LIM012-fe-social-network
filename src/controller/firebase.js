@@ -2,6 +2,8 @@
 
 
 import { changeView } from '../view-controler/router.js';
+import { saveUser, getUser } from './firestore.js';
+
 // import home from '../view/home.js';
 
 
@@ -21,9 +23,12 @@ export const signInOff = () => firebase.auth().signOut().then().catch();
 
 export const googleAuth = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
-  firebase.auth().signInWithPopup(provider).then(() => {
+  firebase.auth().signInWithPopup(provider).then((user) => {
+    console.log(user.additionalUserInfo.profile.email);
+    saveUser(user.additionalUserInfo.profile);
     if (googleAuth) {
       changeView('#/home');
+      getUser();
     }
   }).catch();
   return provider;

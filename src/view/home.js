@@ -36,7 +36,8 @@ export default () => {
       </div>
     </div>    
     <div class="lower-create-post"> 
-      <input type="image" class= "addImg" src="assets/agregarIng.png"> 
+      <div class="progress"> </div>
+      <input type="image" class= "addImg"  src="assets/agregarIng.png"> 
       <select name="options" class="selectPrivacy">
         <option value="public"  class="styleSelect">Público</option>
         <option value="private" class="styleSelect">Privado</option>
@@ -166,15 +167,13 @@ export default () => {
   profile.addEventListener('click', () => {
     changeView('#/profile');
   });
-  return sectionElem;
-};
-
-const bntAddImg = document.getElementById('.addImg');
-
-if (bntAddImg) {
-  bntAddImg.addEventListener(('change'), (e) => {
-    const file = e.target.files[0];
+  const btnAddImg = sectionElem.querySelector('.addImg');
+  btnAddImg.addEventListener(('click'), (e) => {
+    const file = e.target.files;
     const userPost = firebase.auth().currentUser;
     addImgPost(file, userPost.uid);
   });
-}
+
+
+  return sectionElem;
+};
