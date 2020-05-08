@@ -3,6 +3,7 @@
 
 import { changeView } from '../view-controler/router.js';
 import { saveUser, getUser } from './firestore.js';
+import { modelProfile } from '../templates/templateProfile.js';
 
 // import home from '../view/home.js';
 
@@ -18,17 +19,18 @@ export const logIn = (emailLogin, passwordLogin) => firebase.auth().signInWithEm
     }
   });
 
+export const currentUser = () => firebase.auth().currentUser;
 
 export const signInOff = () => firebase.auth().signOut().then().catch();
 
 export const googleAuth = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
-  firebase.auth().signInWithPopup(provider).then((user) => {
-    console.log(user.additionalUserInfo.profile.email);
-    saveUser(user.additionalUserInfo.profile);
+  firebase.auth().signInWithPopup(provider).then(() => {
+    saveUser(currentUser());
     if (googleAuth) {
       changeView('#/home');
       getUser();
+      modelProfile();
     }
   }).catch();
   return provider;

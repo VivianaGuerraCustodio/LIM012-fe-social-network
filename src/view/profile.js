@@ -3,7 +3,7 @@
 /* eslint-disable import/no-cycle */
 import { signInOff } from '../controller/firebase.js';
 import { changeView } from '../view-controler/router.js';
-import { modelProfile } from '../templatesPrueba/templateProfile.js';
+import { modelProfile } from '../templates/templateProfile.js';
 
 export default () => {
   const viewProfile = `<header>
@@ -110,3 +110,5 @@ export default () => {
   });
   return divElem;
 };
+
+alert('hello');
