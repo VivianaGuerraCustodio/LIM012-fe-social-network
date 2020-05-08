@@ -2,7 +2,7 @@
 import { signInOff } from '../controller/firebase.js';
 import { changeView } from '../view-controler/router.js';
 import { savePost, deletePost } from '../controller/firestore.js';
-import { templatePost } from '../view/templateHome.js';
+import { templatePost } from './templateHome.js';
 
 export default () => {
   const viewHome = ` <header>
@@ -82,7 +82,7 @@ export default () => {
     const user = 'sabina';
     savePost(user, date, textToPost);
 
-    firebase.firestore().collection('users').get().then((querySnapshot) => {
+    firebase.firestore().collection('posts').get().then((querySnapshot) => {
       let postList = '';
       querySnapshot.forEach((doc) => {
         postList += templatePost(doc.data().user, doc.data().date, doc.data().content);

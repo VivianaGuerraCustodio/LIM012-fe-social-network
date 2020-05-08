@@ -1,7 +1,7 @@
 
 export const savePost = (user, date, content) => {
   const firestore = firebase.firestore();
-  firestore.collection('users').add({
+  firestore.collection('posts').add({
     user,
     date,
     content,
