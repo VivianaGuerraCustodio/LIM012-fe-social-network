@@ -3,6 +3,7 @@
 /* eslint-disable import/no-cycle */
 import { signInOff } from '../controller/firebase.js';
 import { changeView } from '../view-controler/router.js';
+import { modelProfile } from '../templatesPrueba/templateProfile.js';
 
 export default () => {
   const viewProfile = `<header>
@@ -30,20 +31,7 @@ export default () => {
 </header>
 
 <section class="main-content">
-    <div class="user-information">
-      <div class="profile-container">
-          <figure><img src="assets/ejemplo de portada.jpg" class="img-portada"></figure>
-      </div>
-      <div class="logged-user-data">
-          <img src="assets/user.png" class="img-user">
-          <div class="information-user">
-              <div class="name">
-              <p>Laura Benites</p>
-              <p> Prof. Educ. Inicial</p></div>
-              <button class="btn-Editar-Perfil">Editar Perfil</button>
-          </div>
-      </div>
-    </div> 
+    <div class="user-information"> </div> 
     <div class="user-post">
       <p class="my-post"> °Mis Publicaciones </p>
       <section class="createPost">
@@ -111,6 +99,14 @@ export default () => {
   const profile = divElem.querySelector('.profile');
   profile.addEventListener('click', () => {
     changeView('#/profile');
+  });
+  const userInformation = divElem.querySelector('.user-information');
+  firebase.firestore().collection('usuarios').get().then((onSnapshot) => {
+    let photoList = '';
+    onSnapshot.forEach((doc) => {
+      photoList += modelProfile(doc.data().nameUser, doc.data().photoURL);
+    });
+    userInformation.innerHTML = photoList;
   });
   return divElem;
 };
