@@ -2,7 +2,8 @@
 import { signInOff } from '../controller/firebase.js';
 import { changeView } from '../view-controler/router.js';
 // import { addImgPost } from '../controller/post-storage.js';
-import { modelHome } from '../templates/templateHome.js'
+import { modelHome } from '../templates/templateHome.js';
+import { modelPost } from '../templates/templatePost.js';
 
 export default () => {
   const viewHome = ` <header>
@@ -61,13 +62,31 @@ export default () => {
   //   addImgPost(file, userPost.uid);
   // });
   const userCreatePost = sectionElem.querySelector('.createPost');
-  firebase.firestore().collection('usuarios').get().then((onSnapshot) => {
-    let postList = '';
-    onSnapshot.forEach((doc) => {
-      postList += modelHome(doc.data().photoURL);
+  const db = firebase.firestore();
+  const usuariosDB = db.collection('usuarios');
+  const userPostNew = firebase.auth().currentUser;
+  if (userPostNew !== null) {
+    usuariosDB.where('emailUser', '==', userPostNew.providerData[0].email).get().then((onSnapshot) => {
+      let userList = '';
+      onSnapshot.forEach((doc) => {
+        userList += modelHome(doc.data().photoURL);
+      });
+      userCreatePost.innerHTML = userList;
     });
-    userCreatePost.innerHTML = postList;
-  });
+  }
+
+
+  const userPostDone = sectionElem.querySelector('.post-done');
+  const userLogueado = firebase.auth().currentUser;
+  if (userLogueado !== null) {
+    usuariosDB.where('emailUser', '==', userLogueado.providerData[0].email).get().then((onSnapshot) => {
+      let userListPost = '';
+      onSnapshot.forEach((doc) => {
+        userListPost += modelPost(doc.data().nameUser, doc.data().photoURL);
+      });
+      userPostDone.innerHTML = userListPost;
+    });
+  }
 
   return sectionElem;
 };

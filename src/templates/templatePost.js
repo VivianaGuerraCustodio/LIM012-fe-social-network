@@ -1,9 +1,8 @@
-export const modelPost = (name, picture) => {
-    <div class="postHeader">
+export const modelPost = (name, picture) => `<div class="postHeader">
       <div class="user-info">
-        <img class = "user" src="assets/user.png">
+        <img class = "user" src="${picture}">
         <div class= "dateUser">
-          <p id="nameUser">Publicado por: Laura Benites | Prof. Educ. Inicial </p>
+          <p id="nameUser">Publicado por: ${name} | Prof. Educ. Inicial </p>
           <select name="options" class="selectPrivacy">
             <option value="public"  class="styleSelect">Público</option>
             <option value="private" class="styleSelect">Privado</option>
@@ -29,5 +28,4 @@ export const modelPost = (name, picture) => {
     <div class="name-Commentary">
     <textarea class="text-Comment" rows="1" cols="40"></textarea>
     <input type="image" class= "send-Comment" src="assets/send.png"> 
-    </div>
-}
+    </div>`;

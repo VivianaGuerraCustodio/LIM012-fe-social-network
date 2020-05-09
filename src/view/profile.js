@@ -100,13 +100,20 @@ export default () => {
   profile.addEventListener('click', () => {
     changeView('#/profile');
   });
-  const userInformation = divElem.querySelector('.user-information');
-  firebase.firestore().collection('usuarios').get().then((onSnapshot) => {
-    let photoList = '';
-    onSnapshot.forEach((doc) => {
-      photoList += modelProfile(doc.data().nameUser, doc.data().photoURL);
+  const userInfor = divElem.querySelector('.user-information');
+  const db = firebase.firestore();
+  const usuariosDB = db.collection('usuarios');
+  const userLogueado = firebase.auth().currentUser;
+  if (userLogueado !== null) {
+    usuariosDB.where('emailUser', '==', userLogueado.providerData[0].email).get().then((onSnapshot) => {
+      let photoList = '';
+      onSnapshot.forEach((doc) => {
+        photoList += modelProfile(doc.data().nameUser, doc.data().photoURL);
+      });
+      userInfor.innerHTML = photoList;
     });
-    userInformation.innerHTML = photoList;
-  });
+  }
+
+
   return divElem;
 };

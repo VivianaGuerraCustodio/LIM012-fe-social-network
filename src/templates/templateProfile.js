@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-expressions */
-export const modelProfile = (name, picture) => {
-  return `<div class="profile-container">
+export const modelProfile = (name, picture) => `<div class="profile-container">
                 <figure><img src="assets/ejemplo de portada.jpg" class="img-portada"></figure>
             </div>
             <div class="logged-user-data">
@@ -13,4 +12,3 @@ export const modelProfile = (name, picture) => {
                 </div>
             </div>
 </div>`;
-};
