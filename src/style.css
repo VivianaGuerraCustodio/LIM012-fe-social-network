@@ -23,6 +23,9 @@
     font-size: 15px;
 
   }
+  .change-login{
+    display:none;
+  }
   .logo{
     width: 96%;
     margin: 5px;
