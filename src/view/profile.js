@@ -3,6 +3,7 @@
 /* eslint-disable import/no-cycle */
 import { signInOff } from '../controller/firebase.js';
 import { changeView } from '../view-controler/router.js';
+import { modelProfile } from '../templates/templateProfile.js';
 
 export default () => {
   const viewProfile = `<header>
@@ -30,37 +31,10 @@ export default () => {
 </header>
 
 <section class="main-content">
-    <div class="user-information">
-      <div class="profile-container">
-          <figure><img src="assets/ejemplo de portada.jpg" class="img-portada"></figure>
-      </div>
-      <div class="logged-user-data">
-          <img src="assets/user.png" class="img-user">
-          <div class="information-user">
-              <div class="name">
-              <p>Laura Benites</p>
-              <p> Prof. Educ. Inicial</p></div>
-              <button class="btn-Editar-Perfil">Editar Perfil</button>
-          </div>
-      </div>
-    </div> 
+    <div class="user-information"> </div> 
     <div class="user-post">
       <p class="my-post"> °Mis Publicaciones </p>
       <section class="createPost">
-        <div class="top-create-post"> 
-          <img class = "user" src= "assets/user.png">
-          <div class="writePost">
-            <textarea class="textarea" rows="5" cols="50"></textarea>
-          </div>
-        </div>    
-        <div class="lower-create-post"> 
-        <input type="image" class= "addImg" src="assets/agregarIng.png"> 
-          <select name="options" class="selectPrivacy">
-            <option value="public"  class="styleSelect">Público</option>
-            <option value="private" class="styleSelect">Privado</option>
-          </select>
-          <button class="btnPost">Publicar</button>
-        </div>
       </section>
       <section class="post-done">
         <div class="postHeader">
@@ -103,6 +77,7 @@ export default () => {
   const logOut = divElem.querySelector('.logOut');
   logOut.addEventListener('click', () => {
     signInOff();
+    changeView('#/login');
   });
   const home = divElem.querySelector('.home');
   home.addEventListener('click', () => {
@@ -112,5 +87,17 @@ export default () => {
   profile.addEventListener('click', () => {
     changeView('#/profile');
   });
-  return divElem;
+  const userInformation = divElem.querySelector('.user-information');
+  const db = firebase.firestore();
+  const usuariosDB = db.collection('usuarios');
+  const userLogueado = firebase.auth().currentUser;
+  if (userLogueado !== null) {
+    usuariosDB.where('emailUser', '==', userLogueado.providerData[0].email).get().then((onSnapshot) => {
+      let photoList = '';
+      onSnapshot.forEach((doc) => {
+        photoList += modelProfile(doc.data().nameUser, doc.data().photoURL);
+      });
+      userInformation.innerHTML = photoList;
+    });
+  } return divElem;
 };
