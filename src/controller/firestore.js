@@ -19,3 +19,22 @@ export const getUser = (user) => {
       });
     });
 };
+
+export const savePost = (user, email, photo, date, datetime, content) => {
+  const firestore = firebase.firestore();
+  firestore.collection('posts').add({
+    user,
+    email,
+    photo,
+    date,
+    datetime,
+    content,
+  });// .then((posts) => {
+  // console.log('Document written with ID', posts.id);
+  // }).catch((error) => {
+  // console.error('Error adding document: ', error);
+  // });
+};
+
+// export const deletePost = idPost => firebase.firestore()
+// .collection('users').doc(idPost).delete();

@@ -1,13 +1,13 @@
-export const modelPost = (name, picture) => `<div class="postHeader">
+export const modelPost = (name, photo, date, content) => `<div class="postHeader">
       <div class="user-info">
-        <img class = "user" src="${picture}">
+        <img class = "user" src="${photo}">
         <div class= "dateUser">
           <p id="nameUser">Publicado por: ${name} | Prof. Educ. Inicial </p>
           <select name="options" class="selectPrivacy">
             <option value="public"  class="styleSelect">Público</option>
             <option value="private" class="styleSelect">Privado</option>
           </select>
-          <time datetime="date">21/04/2020 </time>
+          <time datetime="date">${date} </time>
         </div>
       </div>
       <div class="option-edit-post">
@@ -19,7 +19,7 @@ export const modelPost = (name, picture) => `<div class="postHeader">
       </div>       
     </div>
     <div class="contentPost">
-      <p>Aviso importante: Las clases de Educacion Inicial 3,4 y 5 años están programadas para las 10.00am.</p>
+      <p>${content}</p>
     </div>
     <div class="reactions">
       <button type= "button" class ="btnLike"><img src="assets/like-solid-24.png">Me gusta</button>
