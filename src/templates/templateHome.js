@@ -7,7 +7,8 @@ export const modelHome = picture => `<div class="top-create-post">
     </div>    
     <div class="lower-create-post"> 
         <div class="progress"> </div>
-        <input type="image" class= "addImg"  src="assets/agregarIng.png"> 
+        <input type="file" class= "addImg"  src="assets/agregarIng.png"> 
+<progress value="0" max="100" class="uploader"> 0% </progress>
         <select name="options" class="selectPrivacy">
         <option value="public"  class="styleSelect">Público</option>
         <option value="private" class="styleSelect">Privado</option>

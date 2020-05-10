@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable import/no-cycle */
 import { signInOff } from '../controller/firebase.js';
 import { changeView } from '../view-controler/router.js';
@@ -84,6 +85,33 @@ export default () => {
       let userListPost = '';
       onSnapshot.forEach((doc) => {
         userListPost += modelPost(doc.data().nameUser, doc.data().photoURL);
+        // const storage = firebase.storage();
+        const uploader = sectionElem.querySelector('.uploader');
+        const btnAddImg = sectionElem.querySelector('.addImg');
+        btnAddImg.addEventListener('change', (e) => {
+          // alert('si funciona');
+          // abre una ventana para que elijas el archivo desde tu dispositivo
+          const file = e.target.files[0];
+          // crea una carpeta de referencia donde se guardar el archivo que deseas subir
+          const storageRef = firebase.storage().ref(`postImg/${file.name}`);
+          // subiendo archivo
+          const task = storageRef.put(file);
+          // subiendo archivo ( barra de progreso)
+          task.on('state_changed',
+            (snapshot) => {
+              const percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+              uploader.value = percentage;
+            },
+            function error(err) {
+              console.log(error(err));
+            },
+            () => {
+              console.log('archivo cargado');
+            });
+          // en todo esto, el archivo se sube automaticamente a storage sin necesidad de hacer click
+          // en publicar,
+          // en la funcionalidad del boton publicar se debe llamar al archivo subido por el usuario.
+        });
       });
       userPostDone.innerHTML = userListPost;
     });
