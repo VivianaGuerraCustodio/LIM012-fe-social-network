@@ -7,7 +7,7 @@ const init = () => {
   const firebaseConfig = {
     apiKey: 'AIzaSyAwXhQApvJ9tq-KWDkobxKX3eX02aJnTnY',
     authDomain: 'yachaywasiper.firebaseapp.com',
-    // databaseURL: 'https://yachaywasiper.firebaseio.com',
+    databaseURL: 'https://yachaywasiper.firebaseio.com',
     projectId: 'yachaywasiper',
     storageBucket: 'yachaywasiper.appspot.com',
     messagingSenderId: '310386263852',
@@ -17,13 +17,7 @@ const init = () => {
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
   firebase.storage();
-  // const profileImg = storage.ref()
   changeView(window.location.hash);
   window.addEventListener('hashchange', () => changeView(window.location.hash));
 };
 window.addEventListener('load', init);
-
-/* iniicializar storage o crear referencias */
-/* import { example } from './example.js';
- */
-// Your web app's Firebase configuration

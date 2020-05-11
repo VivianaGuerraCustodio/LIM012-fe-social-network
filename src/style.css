@@ -23,6 +23,9 @@
     font-size: 15px;
 
   }
+  .outline {
+    outline: none;
+  }
   .change-login{
     display:none;
   }

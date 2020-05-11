@@ -15,7 +15,6 @@ export const templatePost = (user, date, content) => `
     <div class="option-edit-post">
       <span>...</span>
       <ul class="optionPost"> 
-        <li class="btnSave">Guardar </li>
         <li class="btnEdit">Editar </li>
         <li class="btnRemove">Eliminar </li>
       </ul>
