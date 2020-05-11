@@ -12,6 +12,14 @@ export const savePost = (user, date, content) => {
   });
 };
 
+export const deletePost = (id) => {
+  firebase.firestore().collection('posts').doc(id).delete()
+    .then(() => {
+      console.log("Document successfully deleted!");
+    }).catch((error) => {
+      console.error("Error removing document: ", error);
+    });
+};
 /*
 // instantánea del documento en firestore
 export const getRealtimeUpdates = () => {
@@ -25,4 +33,26 @@ export const getRealtimeUpdates = () => {
 getRealtimeUpdates(); */
 
 // borrar post falta implementar
-export const deletePost = idPost => firebase.firestore().collection('users').doc(idPost).delete();
+// export const deletePost = idPost => 
+// firebase.firestore().collection('users').doc(idPost).delete();
+
+export const saveUser = (user) => {
+  const db = firebase.firestore();
+  db.collection('usuarios').doc(user.email).set({
+    nameUser: user.displayName,
+    photoURL: user.photoURL,
+    emailUser: user.email,
+  });
+};
+
+
+export const getUser = (user) => {
+  console.log(user);
+  const db = firebase.firestore();
+  db.collection('usuarios')
+    .onSnapshot((doc) => {
+      doc.forEach((usuarios) => {
+        console.log('Current data: ', usuarios.data());
+      });
+    });
+};

@@ -13,6 +13,7 @@ export default () => {
       <input class="newEmail" type="email" placeholder="Correo Electrónico" required> 
       <input class="newPassword" type="password" placeholder="Contraseña" required> 
       <button class= "newRegistered-User"> Registrar </button>
+      <p> <a class="change-login"  href="#/login">Inicia sesión </a> </p>
     </div>
   </form>`;
 
@@ -20,12 +21,17 @@ export default () => {
   divElem.className = 'form-register';
   divElem.innerHTML = viewRegister;
   const registrar = divElem.querySelector('button');
+  const login = divElem.querySelector('.change-login');
   // funcion para registrarse.
   registrar.addEventListener('click', (event) => {
     event.preventDefault();
     const email = divElem.querySelector('.newEmail').value;
     const password = divElem.querySelector('.newPassword').value;
-    register(email, password).catch((error) => {
+    register(email, password).then(() =>{
+      if (register) {
+        login.style.display = 'block';
+      }
+    }).catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
       if (errorCode === 'auth/weak-password') {

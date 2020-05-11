@@ -34,7 +34,9 @@
     align-items: center;
   }
   .reg_error_inner{
-    border : solid 2px #DA4545;
+    border: solid 2px rgb(238, 217, 33);
+    border-radius: 15px;
+    background: rgb(238, 217, 33);
   }
   .logoPrincipal{
     width: 190px;
@@ -150,12 +152,12 @@
   
   .createPost,
   .post-done{
-    border : solid 2px #DA4545;
+    border : solid 2px #BAB7B7;
     margin: 10px 0px;
-    padding: 10px;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
+
   }
   .top-create-post, .lower-create-post{
     display: flex;
@@ -163,9 +165,10 @@
     flex-wrap: nowrap;
     justify-content: space-evenly;
     align-items: center;
+    margin: 5px;
   }
 
-  textarea{
+  .textarea{
     border : solid 2px #BAB7B7;
     width: 70%;
     height: 50%;
@@ -178,11 +181,15 @@
     width: 8%;
     height: 8%;
     margin: 0em 2.5em;
+    outline: none;
+
   }
   .user {
     width: 20%;
     height: 20%;
-    margin: 5px;
+    margin: 15px;
+    border-radius: 110px;
+    border: solid 2px #BAB7B7;
   }
 
   .btnPost{
@@ -207,11 +214,13 @@
     .homeContainer{
     width: 100%;
   }
-  .createPost,
-  .post-done{
-    width: 50%;
-    margin: 0.5% 23%;
-    padding: 10px;
+  .post-Container{
+    width: 60%;
+    margin: 0px 290px;
+  }
+  .createPost, .post-done {
+    margin: 2% 0% 0% 2%;
+    width: 90%;
   }
   .addImg{
     width: 30px;
@@ -219,9 +228,13 @@
     margin: 0em 2em 0em 7em;
   }
   .user {
-    width: 8%;
+    width: 10%;
     height: 8%;
     margin: 15px;
+
+  }
+  .textarea{
+    width: 95%;
   }
 }
 
@@ -234,7 +247,10 @@
     justify-content: space-between;
     align-items: center;
     position: relative;
-    
+    background: #dedede;
+  }
+  select{
+    background: #dedede;
   }
 
   .user-info{
@@ -242,15 +258,9 @@
   justify-content: flex-start;
   }
 
-  .dateUser{
-    padding: 0em 1em;
-    position: relative;
-  }
   .option-edit-post{
-    font-size: 15px;
-    right: 0;
-    top: 0;
-    position: absolute;
+    align-self: flex-start;
+    padding-right: 5px;
   }
 
   span{
@@ -275,6 +285,10 @@
     border-radius: 3px;
     box-shadow: 1px 5px 5px 3px #DA4545;
   }
+  .option-Post li{
+    padding: 2px;
+    margin: 2px;
+  }
 
   #nameUser{
     font-size: 12px;
@@ -283,10 +297,10 @@
   }
 
   .contentPost{
-    border : solid 2px #BAB7B7;
+    border: solid 2px #BAB7B7;
     width: 75%;
-    margin: 0.5em;
-    padding: 1.8em;
+    margin: 1em 2em 1em 1.3em;
+    padding: 1em;
     border-radius: 10px;
   }
 
@@ -300,28 +314,30 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    border-top: solid 2px #BAB7B7;
+    border-bottom: solid 2px #BAB7B7;
   }
-  button{
+  .btnLike, .btnComment{
     border: none;
     background: #ffffff;
     cursor: pointer;
-    width: 30%;
+    width: 40%;
     text-decoration: none;
     font-size: 12px;
     margin: 5px;
-    padding: 5px;
+    transform: scale(1.1);
     }
   
-  button:hover{
+    .btnLike .btnComment:hover{
     transform: scale(1.1);
     transition: 0.5;
     font-weight: bold;
   }
 
-.footer {
+  .footer {
     background: rgb(202, 202, 206);
     text-align: center;
-}
+  }
 /*---------------------------------*/
 @media all and (min-width: 700px){
   time{
@@ -330,80 +346,80 @@
     top: 20px;
   }
   .contentPost{
-    width: 82%;
+    width: 89%;
   }
 }
 
 
-/* ----------------------Estilos scroll ()------------------------------------------------------------------*/ 
-body::-webkit-scrollbar{
+/* ----------------------Estilos scroll ()------------------------------------------------------------*/ 
+  body::-webkit-scrollbar{
     width: 1.5%;
     background-color: #F6EEEE;
-}
-body::-webkit-scrollbar-thumb{
+  }
+  body::-webkit-scrollbar-thumb{
     border-radius: 0.4rem;
     background: #ED8D8D;
     height: 1%;
-}
+  }
 
-/* ----------------------Estilos PERFIL ()------------*/ 
+/* ----------------------Estilos PERFIL ()--------------------------------------------------------------*/ 
 
-/* Estilos del Perfil Parte Sabi---------------------------------------------------------------------------*/
-/*padre de user-information y user-post*/
 .main-content{
   display: flex;
   flex-direction: column;
-  padding: 20px;
 }
-/*--------------------------PERFIL COL-IZQUIERDA---------------------------------------*/
+
 .user-information{
- width: 100%;
- height: 250px;
- margin: 5px auto;
- display: flex;
- justify-content: center;
- border : solid 2px #BAB7B7;
- /*border: solid 2px #DA4545;*/
- border-radius: 4px;
- padding-bottom: 10px;
+height: 235px;
+margin: 1px ;
+border: solid 2px #BAB7B7;
+padding-bottom: 5px;
+margin-bottom: 5px;
+
 }
 .profile-container{
   display: flex;
   flex-direction: column;
 }
+
 .img-portada{
-  width: 100%;
-  height: 90%;
-  border-bottom : solid 2px #BAB7B7;
-  /*border-bottom : solid 1px #DA4545;*/
+  width: 63%;
 }
+
 figure{
-  width: 100%;
-  height: 80%;
+  display: flex;
+  justify-content: center;
+  border-bottom: solid 2px #BAB7B7;
 }
 .logged-user-data{
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 12px;
 }
 .img-user{
-  width: 50px;
+  width: 65px;
   position: absolute;
-  margin-top: -53px;
+  border-radius: 110px;
+  margin-top: -65px;
+  border: 2px solid #BAB7B7;
 }
 .information-user{
   display: flex;
   flex-direction: column;
+  margin-top: 6%;
+  width: 50%;
+  align-items: center;
 }
-.name p {
+.name {
   font-weight: bold;
-}
-.type-of-user p{
   font-size: 13px;
 }
-.btn-Editar{
+.btn-Editar-Perfil{
   background: #DA4545;
-  width: 100%;
+  margin: 5px;
+  padding: 3px;
+  width: 80%;
   text-decoration: none;
   color: #ffffff;
   border-radius: 4px;
@@ -411,134 +427,71 @@ figure{
   font-size: 15px;
   text-shadow: -1px 2px 4px rgb(117, 116, 116);
 }
-.btn-Editar:hover{
+.btn-Editar-Perfil:hover{
   transform: scale(1.1);
   transition: 0.5;
   font-weight: bold;
 }
 /*---------------------------------------------------------------------------------*/
 .my-post{
-  border : solid 2px #BAB7B7;
-  margin-bottom: 10px;
+  border: solid 2px #BAB7B7;
+  margin-bottom: 5px;
 }
-/*---------------------------------PERFIL COL-DERECHA------------------------------*/
+/*---------------------------------Estilos publcacion perfil------------------------------*/
 .user-post{
   width:100%;
-  height: 600px;
   margin:5px auto;
   display: flex;
   flex-direction: column;
 }
-.new-post{
-  border : solid 2px #BAB7B7;
-  border-radius: 4px;
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
-}
-.create-post, .action-for-the-user, .action-user{
+ .action-user{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
 }
-.img-post {
-  width: 20%;
-  height: 20%;
-  margin: 10px;
-}
-.btn-Post{
-  background: #DA4545;
-  width: 30%;
+.text-Comment{
+  border: solid 2px #EB5757;
+  width: 80%;
+  margin: 0.5em;
+  padding: 1%;
+  border-radius: 10px;
   text-decoration: none;
-  color: #ffffff;
-  border-radius: 4px;
-  border: 2px solid #DA4545;
-  font-size: 15px;
-  text-shadow: -1px 2px 4px rgb(117, 116, 116);
 }
-.btn-Post:hover{
-  transform: scale(1.1);
-  transition: 0.5;
-  font-weight: bold;
+.name-Commentary{
+  align-items: center;
+  margin-top: 6px;
+}
+.send-Comment{
+  margin-bottom: 10px;
 }
 
 /*-----------------------------------------------*/
-.for-each-publication{
-  border : solid 2px #BAB7B7;
-  display: flex;
-  flex-direction: column;
-  margin: 15px 0px;
-  padding: 12px;
-}
-.publication-header, .publication-information{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-}
-.action-user{
-  border-bottom: solid 2px #BAB7B7;
-  border-top: solid 2px #BAB7B7;
-  padding-top: 10px;
-  padding-bottom: 10px;
+
+@media all and (min-width: 700px){
+  .main-content {
+    display: flex;
+    flex-direction: row;
+  }
+  .user-information {
+    width: 60%;
+    margin: 10px;
+    height: 100%;
+  }
+  .img-portada {
+      width: 60%;
+  }
+  .my-post {
+    width: 90%;
+    margin: 0.5% 3% 0% 2%;
+  }
+
+  .img-user{
+    left: 50px;
+   margin-top: 0px;
+  }
+  .text-Comment{
+    width: 90%;
+  }
 
 }
-/*los 3 puntos*/
-.option-editPost{
- align-self: flex-start;
- padding-right: 5px;
-}
-.option-editPost span {
-  font-size: 25px;
-  margin-bottom: 15px;
-  margin-left: 0;
-  padding-left: 10px;
-}
-.option-editPost:hover>ul{
-  display: block;
-  border: 2px solid #DA4545;
-  border-radius: 3px;
-  box-shadow: 1px 5px 5px 3px #DA4545;
-}
-.option-Post li{
-  padding: 2px;
-  margin: 2px;
-}
-.option-Post{ 
-  list-style: none;
-  display: none;
-}
-#userName{
-  font-size: 12px;
-  font-weight: bold;
-  margin: 5px;
-}
-.publication-body{
-  border : solid 2px #BAB7B7;
-  margin: 10px;
-  padding: 1.8em;
-  border-radius: 10px;
-}
-.btn-Like, .btn-Comment{
-  border: none;
-  background: #ffffff;
-  cursor: pointer;
-  width: 30%;
-  text-decoration: none;
-  font-size: 12px;
-}
-.btn-Like:hover{
-  transform: scale(1.1);
-  transition: 0.5;
-  font-weight: bold;
-}
-.btn-Comment:hover{
-  transform: scale(1.1);
-  transition: 0.5;
-  font-weight: bold;
-}
-.name-comentary{
-  display: none;
-}
-/*Fin estilos Sabi*/

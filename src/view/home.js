@@ -1,8 +1,11 @@
 /* eslint-disable import/no-cycle */
 import { signInOff } from '../controller/firebase.js';
 import { changeView } from '../view-controler/router.js';
-import { savePost, deletePost } from '../controller/firestore.js';
+import { savePost, deletePost} from '../controller/firestore.js';
 import { templatePost } from './templateHome.js';
+// import { addImgPost } from '../controller/post-storage.js';
+import { modelHome } from '../templates/templateHome.js';
+import { modelPost } from '../templates/templatePost.js';
 
 export default () => {
   const viewHome = ` <header>
@@ -70,7 +73,7 @@ export default () => {
 
   const btnNewPost = sectionElem.querySelector('#btnNewPublication');
   const inputTexTarea = sectionElem.querySelector('#newPublication');
-  const btnDeletePost = sectionElem.querySelector('#btnDeletePublication');
+  // const btnDeletePost = sectionElem.querySelector('#btnDeletePublication');
   const newPost = sectionElem.querySelector('#insertPost');
 
   const f = new Date();
@@ -82,83 +85,56 @@ export default () => {
     const user = 'sabina';
     savePost(user, date, textToPost);
 
-    firebase.firestore().collection('posts').get().then((querySnapshot) => {
+    firebase.firestore().collection('posts').onSnapshot((querySnapshot) => {
       let postList = '';
       querySnapshot.forEach((doc) => {
-        postList += templatePost(doc.data().user, doc.data().date, doc.data().content);
+        // eslint-disable-next-line max-len
+        postList += templatePost(doc.data().user, doc.data().date, doc.data().content, doc.data().id);
         newPost.innerHTML = postList;
       });
     });
   });
 
-
-  btnDeletePost.addEventListener('click', (event) => {
-    event.preventDefault();
-    deletePost();
+  document.addEventListener('click', (event) => {
+    if (event.target.id === 'btnDeletePublication') {
+      deletePost('EORpnMdAHWUpoVVcI1KL');
+    }
   });
+  // const btnAddImg = sectionElem.querySelector('.addImg');
+  // btnAddImg.addEventListener(('click'), (e) => {
+  //   const file = e.target.files;
+  //   const userPost = firebase.auth().currentUser;
+  //   addImgPost(file, userPost.uid);
+  // });
+  /*
+  const userCreatePost = sectionElem.querySelector('.createPost');
+  const db = firebase.firestore();
+  const usuariosDB = db.collection('usuarios');
+  const userPostNew = firebase.auth().currentUser;
+  if (userPostNew !== null) {
+    usuariosDB.where('emailUser', '==', userPostNew.providerData[0].email)
+    .get().then((onSnapshot) => {
+      let userList = '';
+      onSnapshot.forEach((doc) => {
+        userList += modelHome(doc.data().photoURL);
+      });
+      userCreatePost.innerHTML = userList;
+    });
+  }
+
+
+  const userPostDone = sectionElem.querySelector('.post-done');
+  const userLogueado = firebase.auth().currentUser;
+  if (userLogueado !== null) {
+    usuariosDB.where('emailUser', '==', userLogueado.providerData[0].email)
+    .get().then((onSnapshot) => {
+      let userListPost = '';
+      onSnapshot.forEach((doc) => {
+        userListPost += modelPost(doc.data().nameUser, doc.data().photoURL);
+      });
+      userPostDone.innerHTML = userListPost;
+    });
+  } */
+
   return sectionElem;
 };
-
-/* <section class="post-done">
-  <div class="postHeader">
-    <div class="user-info">
-      <img class = "user" src="assets/user.png">
-      <div class= "dateUser">
-        <p id="nameUser">Publicado por: María Rodriguez | Prof. Comunicación </p>
-        <select name="options" class="selectPrivacy">
-          <option value="public"  class="styleSelect">Público</option>
-          <option value="private" class="styleSelect">Privado</option>
-        </select>
-        <time datetime="date">21/04/2020 </time>
-      </div>
-    </div>
-    <div class="option-edit-post">
-      <span>...</span>
-      <ul class="optionPost">
-        <li class="btnSave">Guardar </li>
-        <li class="btnEdit">Editar </li>
-        <li class="btnRemove">Eliminar </li>
-      </ul>
-    </div>
-  </div>
-  <div class="contentPost">
-   <p>Lo más bonito de todo es que no hay nada irrealizable: con trabajo y esfuerzo,
-   puedes convertir cualquier sueño en realidad</p>
-  </div>
-  <div class="reactions">
-    <button type= "button" class ="btnLike"><img src="assets/like-solid-24.png">Me gusta</button>
-    <button type= "button" class ="btnComment"><img src="assets/add comment.png">Comentar</button>
-  </div>
-</section>
-
-<section class="post-done">
-  <div class="postHeader">
-    <div class="user-info">
-      <img class = "user" src="assets/user.png">
-      <div class= "dateUser">
-        <p id="nameUser">Publicado por: José Alvarado | Prof. Ciencias Sociales </p>
-        <select name="options" class="selectPrivacy">
-          <option value="public"  class="styleSelect">Público</option>
-          <option value="private" class="styleSelect">Privado</option>
-        </select>
-        <time datetime="date">21/04/2020 </time>
-      </div>
-    </div>
-    <div class="option-edit-post">
-      <span>...</span>
-      <ul class="optionPost">
-        <li class="btnSave">Guardar </li>
-        <li class="btnEdit">Editar </li>
-        <li class="btnRemove">Eliminar </li>
-      </ul>
-    </div>
-  </div>
-  <div class="contentPost">
-    <p>Recuerden que APRENDO EN CASA, se puede sintonizar por TVPERÚ y Radio Nacional </p>
-  </div>
-  <div class="reactions">
-    <button type= "button" class ="btnLike"><img src="assets/like-solid-24.png">Me gusta</button>
-    <button type= "button" class ="btnComment"><img src="assets/add comment.png">Comentar</button>
-  </div>
-</section>
-*/

@@ -27,6 +27,7 @@ export const templatePost = (user, date, content) => `
   <div class="reactions">
     <button type= "button" class ="btnLike"><img src="assets/like-solid-24.png">Me gusta</button>
     <button type= "button" class ="btnComment"><img src="assets/add comment.png">Comentar</button>
+    <button id="btnDeletePublication" class="btnPost">Eliminar</button>
   </div>
 </section>
 `;
