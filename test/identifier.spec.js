@@ -1,3 +1,4 @@
+
 import {
   register,
   logIn,
@@ -49,9 +50,10 @@ describe('Inicio de Sesión con Google', () => {
     }));
 });
 
-// describe('Inicio de Sesión con Facebook', () => {
-//   it('Deberia iniciar sesión Facebook', () => facebookAuth()
-//     .then((user) => {
-//       expect(user.isAnonymous).toBe(false);
-//     }));
-// });
+/*
+describe('Inicio de Sesión con Facebook', () => {
+  it('Deberia iniciar sesión Facebook', () => facebookAuth()
+    .then((user) => {
+      expect(user.isAnonymous).toBe(false);
+    }));
+}); */

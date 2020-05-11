@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 
 
 export const saveUser = (user) => {
@@ -10,12 +11,12 @@ export const saveUser = (user) => {
 };
 
 export const getUser = (user) => {
-  console.log(user);
+  // console.log(user);
   const db = firebase.firestore();
   db.collection('usuarios')
     .onSnapshot((doc) => {
       doc.forEach((usuarios) => {
-        console.log('Current data: ', usuarios.data());
+        // console.log('Current data: ', usuarios.data());
       });
     });
 };

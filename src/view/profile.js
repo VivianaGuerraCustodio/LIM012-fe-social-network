@@ -36,20 +36,6 @@ export default () => {
     <div class="user-post">
       <p class="my-post"> °Mis Publicaciones </p>
       <section class="createPost">
-        <div class="top-create-post"> 
-          <img class = "user" src= "assets/user.png">
-          <div class="writePost">
-            <textarea class="textarea" rows="5" cols="50"></textarea>
-          </div>
-        </div>    
-        <div class="lower-create-post"> 
-        <input type="image" class= "addImg" src="assets/agregarIng.png"> 
-          <select name="options" class="selectPrivacy">
-            <option value="public"  class="styleSelect">Público</option>
-            <option value="private" class="styleSelect">Privado</option>
-          </select>
-          <button class="btnPost">Publicar</button>
-        </div>
       </section>
       <section id="insertPost" class="post-done">
         
@@ -62,6 +48,7 @@ export default () => {
   const logOut = divElem.querySelector('.logOut');
   logOut.addEventListener('click', () => {
     signInOff();
+    changeView('#/login');
   });
   const home = divElem.querySelector('.home');
   home.addEventListener('click', () => {
@@ -71,7 +58,7 @@ export default () => {
   profile.addEventListener('click', () => {
     changeView('#/profile');
   });
-  const userInfor = divElem.querySelector('.user-information');
+  const userInformation = divElem.querySelector('.user-information');
   const db = firebase.firestore();
   const usuariosDB = db.collection('usuarios');
   const userLogueado = firebase.auth().currentUser;
@@ -81,7 +68,7 @@ export default () => {
       onSnapshot.forEach((doc) => {
         photoList += modelProfile(doc.data().nameUser, doc.data().photoURL);
       });
-      userInfor.innerHTML = photoList;
+      userInformation.innerHTML = photoList;
     });
   }
   const newPost = divElem.querySelector('#insertPost');

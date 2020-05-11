@@ -59,7 +59,8 @@ export default () => {
   sectionElem.innerHTML = viewHome;
 
   const logOut = sectionElem.querySelector('.logOut');
-  logOut.addEventListener('click', () => {
+  logOut.addEventListener('click', (event) => {
+    event.preventDefault();
     signInOff();
     changeView('#/login');
   });
