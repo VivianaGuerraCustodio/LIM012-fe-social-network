@@ -1,5 +1,5 @@
 
-export const savePost = (user, date, content) => {
+/* export const savePost = (user, date, content) => {
   const firestore = firebase.firestore();
   firestore.collection('posts').add({
     user,
@@ -10,16 +10,7 @@ export const savePost = (user, date, content) => {
   }).catch((error) => {
     console.error('Error adding document: ', error);
   });
-};
-
-export const deletePost = (id) => {
-  firebase.firestore().collection('posts').doc(id).delete()
-    .then(() => {
-      console.log("Document successfully deleted!");
-    }).catch((error) => {
-      console.error("Error removing document: ", error);
-    });
-};
+}; */
 /*
 // instantánea del documento en firestore
 export const getRealtimeUpdates = () => {
@@ -56,3 +47,29 @@ export const getUser = (user) => {
       });
     });
 };
+
+export const savePost = (user, email, photo, date, datetime, content) => {
+  const firestore = firebase.firestore();
+  firestore.collection('posts').add({
+    user,
+    email,
+    photo,
+    date,
+    datetime,
+    content,
+  });// .then((posts) => {
+  // console.log('Document written with ID', posts.id);
+  // }).catch((error) => {
+  // console.error('Error adding document: ', error);
+  // });
+};
+export const deletePost = (id) => {
+  firebase.firestore().collection('posts').doc(id).delete()
+    .then(() => {
+      console.log("Document successfully deleted!");
+    }).catch((error) => {
+      console.error("Error removing document: ", error);
+    });
+};
+// export const deletePost = idPost => firebase.firestore()
+// .collection('users').doc(idPost).delete();

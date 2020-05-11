@@ -1,13 +1,13 @@
-export const modelPost = (name, picture, date, content) => `<div class="postHeader">
+export const templatePost = (name, photo, date, content) => `<div class="postHeader">
       <div class="user-info">
-        <img class = "user" src="${picture}">
+        <img class = "user" src="${photo}">
         <div class= "dateUser">
           <p id="nameUser">Publicado por: ${name} | Prof. Educ. Inicial </p>
           <select name="options" class="selectPrivacy">
             <option value="public"  class="styleSelect">Público</option>
             <option value="private" class="styleSelect">Privado</option>
           </select>
-          <time datetime="date">${date}</time>
+          <time datetime="date">${date} </time>
         </div>
       </div>
       <div class="option-edit-post">
@@ -24,6 +24,7 @@ export const modelPost = (name, picture, date, content) => `<div class="postHead
     <div class="reactions">
       <button type= "button" class ="btnLike"><img src="assets/like-solid-24.png">Me gusta</button>
       <button type= "button" class ="btnComment"><img src="assets/add comment.png">Comentar</button>
+      <button id="btnDeletePublication" class="btnPost">Eliminar</button>
     </div>
     <div class="name-Commentary">
     <textarea class="text-Comment" rows="1" cols="40"></textarea>
