@@ -50,7 +50,7 @@ export const getUser = (user) => {
 
 export const savePost = (user, email, photo, date, datetime, content) => {
   const firestore = firebase.firestore();
-  firestore.collection('posts').add({
+  return firestore.collection('posts').add({
     user,
     email,
     photo,

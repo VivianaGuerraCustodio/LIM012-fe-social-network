@@ -133,10 +133,11 @@ export default () => {
     const textToPost = inputTexTarea.value;
     const hours = new Date();
     const datetime = (`${hours.getFullYear()}${hours.getMonth() + 1}${hours.getDate()}${hours.getHours()}${hours.getMinutes()}${hours.getSeconds()}`);
-    savePost(user, email, photo, date, datetime, textToPost);
-    if (userLogueado !== null) {
-      loadPostHome();
-    }
+    savePost(user, email, photo, date, datetime, textToPost).then(() => {
+      if (userLogueado !== null) {
+        loadPostHome();
+      }
+    });
   });
   loadPostHome();
   // btnDeletePost.addEventListener('click', (event) => {
