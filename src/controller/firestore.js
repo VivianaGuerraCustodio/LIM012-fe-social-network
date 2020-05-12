@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 
-
 export const saveUser = (user) => {
   const db = firebase.firestore();
   db.collection('usuarios').doc(user.email).set({
@@ -9,6 +8,7 @@ export const saveUser = (user) => {
     emailUser: user.email,
   });
 };
+
 
 export const getUser = (user) => {
   // console.log(user);
@@ -23,7 +23,7 @@ export const getUser = (user) => {
 
 export const savePost = (user, email, photo, date, datetime, content) => {
   const firestore = firebase.firestore();
-  firestore.collection('posts').add({
+  return firestore.collection('posts').add({
     user,
     email,
     photo,
@@ -36,20 +36,26 @@ export const savePost = (user, email, photo, date, datetime, content) => {
   // console.error('Error adding document: ', error);
   // });
 };
+export const deletePost = id => firebase.firestore().collection('posts').doc(id).delete();
 
-// export const deletePost = idPost => firebase.firestore()
-// .collection('users').doc(idPost).delete();
+export const editPost = (id, content) => firebase.firestore().collection('posts').doc(id).update({ content });
 
-export const saveComment = (user, email, photo, date, datetime, posts, comment) => {
-  const firestore = firebase.firestore();
-  firestore.collection('comments').add({
-    user,
-    email,
-    photo,
-    date,
-    datetime,
-    posts,
-    comment,
+export const saveComent = (id, coment) => {
+  firebase.firestore().collection('comments').add({
+    id,
+    coment,
   });
-  console.log('hola');
 };
+
+/* export const savePost = (user, date, content) => {
+  const firestore = firebase.firestore();
+  firestore.collection('posts').add({
+    user,
+    date,
+    content,
+  }).then((posts)=>{
+    console.log('Document written with ID', posts.id);
+  }).catch((error) => {
+    console.error('Error adding document: ', error);
+  });
+}; */

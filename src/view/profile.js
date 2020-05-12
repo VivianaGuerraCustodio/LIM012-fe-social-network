@@ -1,10 +1,11 @@
 /* eslint-disable import/named */
 /* eslint-disable no-alert */
 /* eslint-disable import/no-cycle */
-import { signInOff } from '../controller/firebase.js';
+import { signInOff, currentUser } from '../controller/firebase.js';
 import { changeView } from '../view-controler/router.js';
+import { savePost, deletePost } from '../controller/firestore.js';
 import { modelProfile } from '../templates/templateProfile.js';
-import { modelPost } from '../templates/templatePost.js';
+import { templatePost } from '../templates/templatePost.js';
 
 export default () => {
   const viewProfile = `<header>
@@ -36,8 +37,23 @@ export default () => {
     <div class="user-post">
       <p class="my-post"> °Mis Publicaciones </p>
       <section class="createPost">
+        <div class="top-create-post"> 
+        <img src= "${currentUser().photoURL}" class = "user" >
+          <div class="writePost">
+              <textarea id="newPublication" class="textarea" rows="5" cols="50"></textarea>
+          </div>
+        </div>    
+        <div class="lower-create-post"> 
+          <div class="progress"> </div>
+          <input type="image" id="addImage" class= "addImg"  src="assets/agregarIng.png"> 
+          <select name="options" class="selectPrivacy">
+            <option value="public"  class="styleSelect">Público</option>
+            <option value="private" class="styleSelect">Privado</option>
+          </select>
+          <button id="btnNewPublication" class="btnPost">Publicar</button>
+        </div>
       </section>
-      <section id="insertPost" class="post-done">
+      <section id="allPost" class="post-done">
         
       </section>    
     </div>
@@ -58,7 +74,8 @@ export default () => {
   profile.addEventListener('click', () => {
     changeView('#/profile');
   });
-  const userInformation = divElem.querySelector('.user-information');
+
+  const userInfor = divElem.querySelector('.user-information');
   const db = firebase.firestore();
   const usuariosDB = db.collection('usuarios');
   const userLogueado = firebase.auth().currentUser;
@@ -68,23 +85,52 @@ export default () => {
       onSnapshot.forEach((doc) => {
         photoList += modelProfile(doc.data().nameUser, doc.data().photoURL);
       });
-      userInformation.innerHTML = photoList;
+      userInfor.innerHTML = photoList;
     });
   }
-  const newPost = divElem.querySelector('#insertPost');
+
   const loadPostProfile = () => {
+    const allPostProfile = divElem.querySelector('#allPost');
+    allPostProfile.innerHTML = '';
     if (userLogueado !== null) {
       const postDB = db.collection('posts');
-      postDB.where('email', '==', userLogueado.providerData[0].email).get().then((querySnapshot) => {
-        let postList = '';
+      postDB.where('email', '==', userLogueado.providerData[0].email).onSnapshot((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-          postList += modelPost(doc.data().user, doc.data().photo,
-            doc.data().date, doc.data().content);
-          newPost.innerHTML = postList;
+          const post = doc.data();
+          post.id = doc.id;
+          const postElement = templatePost(post);
+          const btnDelete = postElement.querySelector('.btnRemove');
+          btnDelete.addEventListener('click', () => {
+            deletePost(post.id).then(() => {
+              console.log('eliminando');
+              loadPostProfile();
+            });
+          });
+          allPostProfile.appendChild(postElement);
         });
       });
     }
   };
+  const btnNewPost = divElem.querySelector('#btnNewPublication');
+  const inputTexTarea = divElem.querySelector('#newPublication');
+  // const selectImg = sectionElem.querySelector('#addImage');
+  const f = new Date();
+  const date = (`${f.getDate()}/${f.getMonth() + 1}/${f.getFullYear()}`);
+
+  btnNewPost.addEventListener('click', (event) => {
+    event.preventDefault();
+    const user = userLogueado.providerData[0].displayName;
+    const email = userLogueado.providerData[0].email;
+    const photo = userLogueado.providerData[0].photoURL;
+    const textToPost = inputTexTarea.value;
+    const hours = new Date();
+    const datetime = (`${hours.getFullYear()}${hours.getMonth() + 1}${hours.getDate()}${hours.getHours()}${hours.getMinutes()}${hours.getSeconds()}`);
+    savePost(user, email, photo, date, datetime, textToPost).then(() => {
+      if (userLogueado !== null) {
+        loadPostProfile();
+      }
+    });
+  });
   loadPostProfile();
   return divElem;
 };
