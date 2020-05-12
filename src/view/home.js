@@ -32,21 +32,21 @@ export default () => {
 </header> 
 <section class="post-Container">
   <section class="createPost">
-  <div class="top-create-post"> 
-  <img src= "assets/user.png" class = "user" >
-  <div class="writePost">
-      <textarea id="newPublication" class="textarea" rows="5" cols="50"></textarea>
-  </div>
-</div>    
-<div class="lower-create-post"> 
-  <div class="progress"> </div>
-  <input type="image" id="addImage" class= "addImg"  src="assets/agregarIng.png"> 
-  <select name="options" class="selectPrivacy">
-  <option value="public"  class="styleSelect">Público</option>
-  <option value="private" class="styleSelect">Privado</option>
-  </select>
-  <button id="btnNewPublication" class="btnPost">Publicar</button>
-</div>
+    <div class="top-create-post"> 
+      <img src= "assets/user.png" class = "user" >
+      <div class="writePost">
+          <textarea id="newPublication" class="textarea" rows="5" cols="50"></textarea>
+      </div>
+    </div>    
+    <div class="lower-create-post"> 
+      <div class="progress"> </div>
+      <input type="image" id="addImage" class= "addImg"  src="assets/agregarIng.png"> 
+      <select name="options" class="selectPrivacy">
+        <option value="public"  class="styleSelect">Público</option>
+        <option value="private" class="styleSelect">Privado</option>
+      </select>
+      <button id="btnNewPublication" class="btnPost">Publicar</button>
+    </div>
   </section>
 
   <section id="allPost" class="post-done">
