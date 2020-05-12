@@ -1,7 +1,7 @@
 /* eslint-disable import/no-cycle */
 import { signInOff } from '../controller/firebase.js';
 import { changeView } from '../view-controler/router.js';
-import { savePost, deletePost} from '../controller/firestore.js';
+import { savePost, deletePost } from '../controller/firestore.js';
 // import { addImgPost } from '../controller/post-storage.js';
 import { templatePost } from '../templates/templatePost.js';
 
@@ -40,7 +40,7 @@ export default () => {
 </div>    
 <div class="lower-create-post"> 
   <div class="progress"> </div>
-  <input type="image" class= "addImg"  src="assets/agregarIng.png"> 
+  <input type="image" id="addImage" class= "addImg"  src="assets/agregarIng.png"> 
   <select name="options" class="selectPrivacy">
   <option value="public"  class="styleSelect">Público</option>
   <option value="private" class="styleSelect">Privado</option>
@@ -49,7 +49,7 @@ export default () => {
 </div>
   </section>
 
-  <section id="insertPost" class="post-done">
+  <section id="allPost" class="post-done">
   </section>
   
 </section>`;
@@ -57,6 +57,7 @@ export default () => {
   const sectionElem = document.createElement('section');
   sectionElem.className = 'homeContainer';
   sectionElem.innerHTML = viewHome;
+
   const logOut = sectionElem.querySelector('.logOut');
   logOut.addEventListener('click', () => {
     signInOff();
@@ -97,26 +98,32 @@ export default () => {
 
   const btnNewPost = sectionElem.querySelector('#btnNewPublication');
   const inputTexTarea = sectionElem.querySelector('#newPublication');
-  const newPost = sectionElem.querySelector('#insertPost');
+  // const selectImg = sectionElem.querySelector('#addImage');
   const f = new Date();
   const date = (`${f.getDate()}/${f.getMonth() + 1}/${f.getFullYear()}`);
+
   const loadPostHome = () => {
+    const allPost = sectionElem.querySelector('#allPost');
+    allPost.innerHTML = '';
     const db = firebase.firestore();
     const postDB = db.collection('posts');
-    postDB.orderBy('datetime', 'desc').get().then((querySnapshot) => {
-      let postList = '';
+    postDB.orderBy('datetime', 'desc').onSnapshot((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        postList += templatePost(doc.data().user, doc.data().photo,
-          doc.data().date, doc.data().content);
-        newPost.innerHTML = postList;
+        const post = doc.data();
+        post.id = doc.id;
+        const postElement = templatePost(post);
+        const btnDelete = postElement.querySelector('.btnRemove');
+        btnDelete.addEventListener('click', () => {
+          deletePost(post.id).then(() => {
+            console.log('eliminando');
+            loadPostHome();
+          });
+        });
+        allPost.appendChild(postElement);
       });
     });
   };
-  document.addEventListener('click', (event) => {
-    if (event.target.id === 'btnDeletePublication') {
-      deletePost('84oRT3LHOShtOKNKpVUM');
-    }
-  });
+
   btnNewPost.addEventListener('click', (event) => {
     event.preventDefault();
     const userLogueado = firebase.auth().currentUser;

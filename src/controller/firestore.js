@@ -63,13 +63,21 @@ export const savePost = (user, email, photo, date, datetime, content) => {
   // console.error('Error adding document: ', error);
   // });
 };
-export const deletePost = (id) => {
-  firebase.firestore().collection('posts').doc(id).delete()
-    .then(() => {
-      console.log("Document successfully deleted!");
-    }).catch((error) => {
-      console.error("Error removing document: ", error);
-    });
-};
-// export const deletePost = idPost => firebase.firestore()
+export const deletePost = id => firebase.firestore().collection('posts').doc(id).delete();
+
 // .collection('users').doc(idPost).delete();
+/* const editNote = (idDoc, pElementToEdit) => {
+  document.querySelector('#').value = pElementToEdit;
+  const textareaEdited = document.querySelector('#inputPost').value;
+  firebase.firestore().collection('post').doc(idDoc).update({
+    status: textareaEdited,
+    // img: file,
+  })
+    .then(() => {
+      console.log('Document successfully updated!');
+    })
+    .catch((error) => {
+      // The document probably doesn't exist.
+      console.error('Error updating document: ', error);
+    });
+}; */
