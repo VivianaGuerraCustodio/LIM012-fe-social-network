@@ -1,7 +1,7 @@
 /* eslint-disable import/no-cycle */
-import { signInOff } from '../controller/firebase.js';
+import { signInOff, currentUser } from '../controller/firebase.js';
 import { changeView } from '../view-controler/router.js';
-import { savePost, deletePost } from '../controller/firestore.js';
+import { savePost, deletePost, editPost, saveComent } from '../controller/firestore.js';
 // import { addImgPost } from '../controller/post-storage.js';
 import { templatePost } from '../templates/templatePost.js';
 
@@ -33,7 +33,7 @@ export default () => {
 <section class="post-Container">
   <section class="createPost">
     <div class="top-create-post"> 
-      <img src= "assets/user.png" class = "user" >
+    <img src= "${currentUser().photoURL}" class = "user" >
       <div class="writePost">
           <textarea id="newPublication" class="textarea" rows="5" cols="50"></textarea>
       </div>
@@ -118,6 +118,18 @@ export default () => {
             console.log('eliminando');
             loadPostHome();
           });
+        });
+        const btnEdit = postElement.querySelector('.btnEdit');
+        btnEdit.addEventListener('click', () => {
+        // editPost(post.id, inputTexTarea.value).then(() => {
+          console.log('editando');
+          // });
+        });
+        const btnComentario = postElement.querySelector('.send-Comment');
+        const inputComent = postElement.querySelector('.text-Comment');
+        btnComentario.addEventListener('click', () => {
+          console.log('click coment');
+          saveComent(post.id, inputComent.value);
         });
         allPost.appendChild(postElement);
       });

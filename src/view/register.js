@@ -27,7 +27,7 @@ export default () => {
     event.preventDefault();
     const email = divElem.querySelector('.newEmail').value;
     const password = divElem.querySelector('.newPassword').value;
-    register(email, password).then(() =>{
+    register(email, password).then(() => {
       if (register) {
         login.style.display = 'block';
       }

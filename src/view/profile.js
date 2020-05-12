@@ -1,7 +1,7 @@
 /* eslint-disable import/named */
 /* eslint-disable no-alert */
 /* eslint-disable import/no-cycle */
-import { signInOff } from '../controller/firebase.js';
+import { signInOff, currentUser} from '../controller/firebase.js';
 import { changeView } from '../view-controler/router.js';
 import { savePost, deletePost } from '../controller/firestore.js';
 import { modelProfile } from '../templates/templateProfile.js';
@@ -38,7 +38,7 @@ export default () => {
       <p class="my-post"> °Mis Publicaciones </p>
       <section class="createPost">
         <div class="top-create-post"> 
-          <img src= "assets/user.png" class = "user" >
+        <img src= "${currentUser().photoURL}" class = "user" >
           <div class="writePost">
               <textarea id="newPublication" class="textarea" rows="5" cols="50"></textarea>
           </div>
