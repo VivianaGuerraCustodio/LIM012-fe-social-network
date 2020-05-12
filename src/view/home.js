@@ -1,5 +1,5 @@
 /* eslint-disable import/no-cycle */
-import { signInOff } from '../controller/firebase.js';
+import { signInOff, currentUser } from '../controller/firebase.js';
 import { changeView } from '../view-controler/router.js';
 import { savePost } from '../controller/firestore.js';
 // import { addImgPost } from '../controller/post-storage.js';
@@ -33,7 +33,7 @@ export default () => {
 <section class="post-Container">
   <section class="createPost">
   <div class="top-create-post"> 
-  <img src= "assets/user.png" class = "user" >
+  <img src= "${currentUser().photoURL}" class = "user" >
   <div class="writePost">
       <textarea id="newPublication" class="textarea" rows="5" cols="50"></textarea>
   </div>
@@ -59,8 +59,7 @@ export default () => {
   sectionElem.innerHTML = viewHome;
 
   const logOut = sectionElem.querySelector('.logOut');
-  logOut.addEventListener('click', (event) => {
-    event.preventDefault();
+  logOut.addEventListener('click', () => {
     signInOff();
     changeView('#/login');
   });

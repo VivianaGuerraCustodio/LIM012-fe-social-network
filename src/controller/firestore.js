@@ -39,3 +39,17 @@ export const savePost = (user, email, photo, date, datetime, content) => {
 
 // export const deletePost = idPost => firebase.firestore()
 // .collection('users').doc(idPost).delete();
+
+export const saveComment = (user, email, photo, date, datetime, posts, comment) => {
+  const firestore = firebase.firestore();
+  firestore.collection('comments').add({
+    user,
+    email,
+    photo,
+    date,
+    datetime,
+    posts,
+    comment,
+  });
+  console.log('hola');
+};
