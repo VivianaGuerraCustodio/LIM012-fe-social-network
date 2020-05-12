@@ -131,6 +131,15 @@ export default () => {
           console.log('click coment');
           saveComent(post.id, inputComent.value);
         });
+        const btnLike = postElement.querySelector('.btnLike');
+        let click = 0;
+        const countClick = () => {
+          click += 1;
+        };
+        btnLike.addEventListener('click', () => {
+          countClick();
+          console.log(click);
+        });
         allPost.appendChild(postElement);
       });
     });
