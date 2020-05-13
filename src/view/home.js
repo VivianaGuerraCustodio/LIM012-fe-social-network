@@ -1,7 +1,9 @@
 /* eslint-disable import/no-cycle */
 import { signInOff, currentUser } from '../controller/firebase.js';
 import { changeView } from '../view-controler/router.js';
-import { savePost, deletePost, editPost, saveComent } from '../controller/firestore.js';
+import {
+  savePost, deletePost, editPost, saveComent, saveLikes,
+} from '../controller/firestore.js';
 // import { addImgPost } from '../controller/post-storage.js';
 import { templatePost } from '../templates/templatePost.js';
 
@@ -97,7 +99,7 @@ export default () => {
   // realizar una publicacion
 
   const btnNewPost = sectionElem.querySelector('#btnNewPublication');
-  const inputTexTarea = sectionElem.querySelector('#newPublication');
+  const inputTextArea = sectionElem.querySelector('#newPublication');
   // const selectImg = sectionElem.querySelector('#addImage');
   const f = new Date();
   const date = (`${f.getDate()}/${f.getMonth() + 1}/${f.getFullYear()}`);
@@ -112,18 +114,31 @@ export default () => {
         const post = doc.data();
         post.id = doc.id;
         const postElement = templatePost(post);
+
         const btnDelete = postElement.querySelector('.btnRemove');
         btnDelete.addEventListener('click', () => {
           deletePost(post.id).then(() => {
-            console.log('eliminando');
             loadPostHome();
           });
         });
+
         const btnEdit = postElement.querySelector('.btnEdit');
         btnEdit.addEventListener('click', () => {
-        // editPost(post.id, inputTexTarea.value).then(() => {
-          console.log('editando');
-          // });
+          const editable = postElement.querySelector('#editPost');
+          editable.contentEditable = 'true';
+        });
+
+        const btnUpdatePost = postElement.querySelector('#btnSave');
+        btnUpdatePost.addEventListener('click', () => {
+          const prueba = postElement.querySelector('#editPost').innerHTML;
+          editPost(post.id, prueba).then(() => {
+            loadPostHome();
+          });
+        });
+
+        const btnCancelEdit = postElement.querySelector('#btnCancel');
+        btnCancelEdit.addEventListener('click', () => {
+          loadPostHome();
         });
         const btnComentario = postElement.querySelector('.send-Comment');
         const inputComent = postElement.querySelector('.text-Comment');
@@ -135,9 +150,11 @@ export default () => {
         let click = 0;
         const countClick = () => {
           click += 1;
+          postElement.querySelector('.count').innerHTML = click;
         };
         btnLike.addEventListener('click', () => {
           countClick();
+          saveLikes(post.id);
           console.log(click);
         });
         allPost.appendChild(postElement);
@@ -151,7 +168,7 @@ export default () => {
     const user = userLogueado.providerData[0].displayName;
     const email = userLogueado.providerData[0].email;
     const photo = userLogueado.providerData[0].photoURL;
-    const textToPost = inputTexTarea.value;
+    const textToPost = inputTextArea.value;
     const hours = new Date();
     const datetime = (`${hours.getFullYear()}${hours.getMonth() + 1}${hours.getDate()}${hours.getHours()}${hours.getMinutes()}${hours.getSeconds()}`);
     savePost(user, email, photo, date, datetime, textToPost).then(() => {
@@ -159,6 +176,7 @@ export default () => {
         loadPostHome();
       }
     });
+    inputTextArea.value = '';
   });
   loadPostHome();
   // btnDeletePost.addEventListener('click', (event) => {

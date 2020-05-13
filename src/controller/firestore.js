@@ -45,6 +45,12 @@ export const saveComent = (id, coment) => {
     coment,
   });
 };
+export const saveLikes = (id) => {
+  firebase.firestore().collection('likes').add({
+    id,
+    count: '01',
+  });
+};
 
 /* export const savePost = (user, date, content) => {
   const firestore = firebase.firestore();
