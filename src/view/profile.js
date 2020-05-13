@@ -34,14 +34,13 @@ export default () => {
       </ul>
   </nav>
 </header>
-
 <section class="main-content">
     <div class="user-information"> </div> 
     <div class="user-post">
       <p class="my-post"> °Mis Publicaciones </p>
       <section class="createPost">
         <div class="top-create-post"> 
-        <img src= "${currentUser().photoURL}" class = "user" >
+        <img src= "${currentUser.photoURL}" class = "user" >
           <div class="writePost">
               <textarea id="newPublication" class="textarea" rows="5" cols="50"></textarea>
           </div>
