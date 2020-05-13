@@ -1,10 +1,11 @@
+
 export const modelComment = (Obj) => {
   const divElement = document.createElement('div');
   divElement.className = 'comentario';
   divElement.innerHTML = `<div class="new-Commentary">
-    <div>
-    <img src="${Obj.photo}" class = "user" > </div>
-    <div>
+    
+    <img src="${Obj.photo}" class = "userComentImg" > 
+    <div class= "dataCommentUser">
     <p id="nameUser">${Obj.user} </p>  <time datetime="date">${Obj.date} </time>
     <p class="text-Comment" rows="1" cols="40"> ${Obj.coment}</p>  </div>
     </div>

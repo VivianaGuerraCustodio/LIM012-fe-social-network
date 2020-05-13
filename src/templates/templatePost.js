@@ -18,15 +18,20 @@ export const templatePost = (objPost) => {
       <span>...</span>
       <ul class="optionPost"> 
         <li class="btnEdit">Editar</li>
-        <li postId="${objPost.id}" class="btnRemove">Eliminar</li>
+        <li class="btnRemove">Eliminar</li>
       </ul>
     </div>       
   </div>
   <div class="contentPost">
-    <p>${objPost.content}</p>
+    <p contenteditable="false" id="editPost" >${objPost.content}</p>
   </div>
+  <button class="hide" id="btnSave">💾</button>
+  <button class="hide" id="btnCancel">✖️</button>
   <div class="reactions">
-    <button type= "button" class ="btnLike"><img src="assets/like-solid-24.png">Me gusta</button>
+    <div class="countLikes">
+      <label class="count" >0</label>
+      <button type= "button" class ="btnLike"><img src="assets/like-solid-24.png">Me gusta</button>
+    </div>
     <button type= "button" class ="btnComment"><img src="assets/add comment.png">Comentar</button>
   </div>
   <div class="name-Commentary">

@@ -7,7 +7,6 @@ import { modelProfile } from '../templates/templateProfile.js';
 
 // import home from '../view/home.js';
 
-
 // eslint-disable-next-line max-len
 export const register = (email, password) => firebase.auth().createUserWithEmailAndPassword(email, password);
 
