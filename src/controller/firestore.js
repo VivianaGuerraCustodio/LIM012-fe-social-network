@@ -13,7 +13,6 @@ export const saveUser = (user) => {
 
 
 export const getUser = (user) => {
-  // console.log(user);
   const db = firebase.firestore();
   db.collection('usuarios')
     .onSnapshot((doc) => {
@@ -47,16 +46,15 @@ export const loadComment = (idpost) => {
   firebase.firestore().collection('comments').where('id', '==', idpost).onSnapshot((querySnapshot) => {
     querySnapshot.forEach((posts) => {
       const post = posts.data();
-      // console.log(post);
       modelComment(post);
     });
   });
 };
 
-export const saveComent = (id, coment, user, email, photo, date, datetime) => {
+export const saveComent = (id, comment, user, email, photo, date, datetime) => {
   firebase.firestore().collection('comments').add({
     id,
-    coment,
+    comment,
     user,
     email,
     photo,
@@ -65,6 +63,11 @@ export const saveComent = (id, coment, user, email, photo, date, datetime) => {
   });
   loadComment(id);
 };
+
+export const deleteComment = id => firebase.firestore().collection('comments').doc(id).delete();
+
+export const editComment = (id, comment) => firebase.firestore().collection('comments').doc(id).update({ comment });
+
 export const saveLikes = (id) => {
   firebase.firestore().collection('likes').add({
     id,

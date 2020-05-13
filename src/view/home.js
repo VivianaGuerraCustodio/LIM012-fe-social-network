@@ -51,7 +51,6 @@ export default () => {
       <button id="btnNewPublication" class="btnPost">Publicar</button>
     </div>
   </section>
-
   <section id="allPost" class="post-done">
   </section>
   

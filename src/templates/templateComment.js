@@ -6,13 +6,15 @@ export const modelComment = (Obj) => {
     <img src="${Obj.photo}" class = "user" > </div>
     <div>
     <p id="nameUser">${Obj.user} </p>  <time datetime="date">${Obj.date} </time>
-    <p class="text-Comment" rows="1" cols="40"> ${Obj.coment}</p>  </div>
+    <p contenteditable="false" id="editComment"class="text-Comment" rows="1" cols="40"> ${Obj.coment}</p>  </div>
     </div>
+    <button class="hide" id="btnSaveComment">Guardar</button>
+    <button class="hide" id="btnCancelComment">Cancelar</button>
     <div class="option-edit-post">
     <span>...</span>
     <ul class="optionPost"> 
-      <li class="btnEdit">Editar</li>
-      <li  class="btnRemove">Eliminar</li>
+      <li class="btnEditComment">Editar</li>
+      <li  class="btnRemoveComment">Eliminar</li>
     </ul>
   </div> `;
   return divElement;
