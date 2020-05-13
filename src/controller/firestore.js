@@ -1,5 +1,7 @@
 /* eslint-disable no-unused-vars */
 
+import { modelComment } from '../templates/templateComment.js';
+
 export const saveUser = (user) => {
   const db = firebase.firestore();
   db.collection('usuarios').doc(user.email).set({
@@ -40,11 +42,28 @@ export const deletePost = id => firebase.firestore().collection('posts').doc(id)
 
 export const editPost = (id, content) => firebase.firestore().collection('posts').doc(id).update({ content });
 
-export const saveComent = (id, coment) => {
+
+export const loadComment = (idpost) => {
+  firebase.firestore().collection('comments').where('id', '==', idpost).onSnapshot((querySnapshot) => {
+    querySnapshot.forEach((posts) => {
+      const post = posts.data();
+      // console.log(post);
+      modelComment(post);
+    });
+  });
+};
+
+export const saveComent = (id, coment, user, email, photo, date, datetime) => {
   firebase.firestore().collection('comments').add({
     id,
     coment,
+    user,
+    email,
+    photo,
+    date,
+    datetime,
   });
+  loadComment(id);
 };
 
 /* export const savePost = (user, date, content) => {
