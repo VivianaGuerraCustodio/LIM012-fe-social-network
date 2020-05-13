@@ -3,7 +3,9 @@
 /* eslint-disable import/no-cycle */
 import { signInOff, currentUser } from '../controller/firebase.js';
 import { changeView } from '../view-controler/router.js';
-import { savePost, deletePost, saveComent } from '../controller/firestore.js';
+import {
+  savePost, deletePost, editPost, saveComent, saveLikes,
+} from '../controller/firestore.js';
 import { modelProfile } from '../templates/templateProfile.js';
 import { templatePost } from '../templates/templatePost.js';
 import { modelComment } from '../templates/templateComment.js';
@@ -39,7 +41,7 @@ export default () => {
       <p class="my-post"> °Mis Publicaciones </p>
       <section class="createPost">
         <div class="top-create-post"> 
-        <img src= "" class = "user" >
+        <img src= "${currentUser().photoURL}" class = "user" >
           <div class="writePost">
               <textarea id="newPublication" class="textarea" rows="5" cols="50"></textarea>
           </div>
@@ -102,6 +104,7 @@ export default () => {
           const post = doc.data();
           post.id = doc.id;
           const postElement = templatePost(post);
+
           const pruebaComment = document.createElement('div');
           let listComment = '';
           const commentDB = db.collection('comments');
@@ -118,11 +121,28 @@ export default () => {
           const btnDelete = postElement.querySelector('.btnRemove');
           btnDelete.addEventListener('click', () => {
             deletePost(post.id).then(() => {
-              console.log('eliminando');
               loadPostProfile();
             });
           });
 
+          const btnEdit = postElement.querySelector('.btnEdit');
+          btnEdit.addEventListener('click', () => {
+            const editable = postElement.querySelector('#editPost');
+            editable.contentEditable = 'true';
+          });
+
+          const btnUpdatePost = postElement.querySelector('#btnSave');
+          btnUpdatePost.addEventListener('click', () => {
+            const prueba = postElement.querySelector('#editPost').innerHTML;
+            editPost(post.id, prueba).then(() => {
+              loadPostProfile();
+            });
+          });
+
+          const btnCancelEdit = postElement.querySelector('#btnCancel');
+          btnCancelEdit.addEventListener('click', () => {
+            loadPostProfile();
+          });
           const btnComentario = postElement.querySelector('.send-Comment');
           const inputComent = postElement.querySelector('.text-Comment');
           btnComentario.addEventListener('click', () => {
@@ -139,9 +159,11 @@ export default () => {
           let click = 0;
           const countClick = () => {
             click += 1;
+            postElement.querySelector('.count').innerHTML = click;
           };
           btnLike.addEventListener('click', () => {
             countClick();
+            saveLikes(post.id);
             console.log(click);
           });
           allPostProfile.appendChild(postElement);
@@ -150,7 +172,7 @@ export default () => {
     }
   };
   const btnNewPost = divElem.querySelector('#btnNewPublication');
-  const inputTexTarea = divElem.querySelector('#newPublication');
+  const inputTextArea = divElem.querySelector('#newPublication');
   // const selectImg = sectionElem.querySelector('#addImage');
 
   btnNewPost.addEventListener('click', (event) => {
@@ -158,7 +180,7 @@ export default () => {
     const user = userLogueado.providerData[0].displayName;
     const email = userLogueado.providerData[0].email;
     const photo = userLogueado.providerData[0].photoURL;
-    const textToPost = inputTexTarea.value;
+    const textToPost = inputTextArea.value;
     const hours = new Date();
     const datetime = (`${hours.getFullYear()}${hours.getMonth() + 1}${hours.getDate()}${hours.getHours()}${hours.getMinutes()}${hours.getSeconds()}`);
     savePost(user, email, photo, date, datetime, textToPost).then(() => {
@@ -166,6 +188,7 @@ export default () => {
         loadPostProfile();
       }
     });
+    inputTextArea.value = '';
   });
   loadPostProfile();
   return divElem;

@@ -1,7 +1,9 @@
 /* eslint-disable import/no-cycle */
 import { signInOff, currentUser } from '../controller/firebase.js';
 import { changeView } from '../view-controler/router.js';
-import { savePost, deletePost, saveComent } from '../controller/firestore.js';
+import {
+  savePost, deletePost, editPost, saveComent, saveLikes,
+} from '../controller/firestore.js';
 // import { addImgPost } from '../controller/post-storage.js';
 import { templatePost } from '../templates/templatePost.js';
 import { modelComment } from '../templates/templateComment.js';
@@ -98,7 +100,8 @@ export default () => {
   // realizar una publicacion
 
   const btnNewPost = sectionElem.querySelector('#btnNewPublication');
-  const inputTexTarea = sectionElem.querySelector('#newPublication');
+  const inputTextArea = sectionElem.querySelector('#newPublication');
+
   const f = new Date();
   const date = (`${f.getDate()}/${f.getMonth() + 1}/${f.getFullYear()}`);
 
