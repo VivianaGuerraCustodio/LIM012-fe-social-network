@@ -34,7 +34,7 @@ export default () => {
 <section class="post-Container">
   <section class="createPost">
     <div class="top-create-post"> 
-    <img src= "${currentUser().photoURL}" class = "user" >
+    <img src= "" class = "user" >
       <div class="writePost">
           <textarea id="newPublication" class="textarea" rows="5" cols="50"></textarea>
       </div>
@@ -99,7 +99,6 @@ export default () => {
 
   const btnNewPost = sectionElem.querySelector('#btnNewPublication');
   const inputTexTarea = sectionElem.querySelector('#newPublication');
-  // const selectImg = sectionElem.querySelector('#addImage');
   const f = new Date();
   const date = (`${f.getDate()}/${f.getMonth() + 1}/${f.getFullYear()}`);
 
@@ -113,15 +112,12 @@ export default () => {
         const post = doc.data();
         post.id = doc.id;
         const postElement = templatePost(post);
-
         const pruebaComment = document.createElement('div');
         let listComment = '';
         const commentDB = db.collection('comments');
         commentDB.where('id', '==', doc.id).onSnapshot((comment) => {
           comment.forEach((objComment) => {
-            // alert('hola');
             const dataComment = objComment.data();
-            // console.log(post);
             listComment = modelComment(dataComment);
             pruebaComment.appendChild(listComment);
           });
