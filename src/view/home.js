@@ -51,7 +51,6 @@ export default () => {
       <button id="btnNewPublication" class="btnPost">Publicar</button>
     </div>
   </section>
-
   <section id="allPost" class="post-done">
   </section>
   
@@ -115,6 +114,7 @@ export default () => {
         const post = doc.data();
         post.id = doc.id;
         const postElement = templatePost(post);
+
         const pruebaComment = document.createElement('div');
         let listComment = '';
         const commentDB = db.collection('comments');
@@ -132,15 +132,27 @@ export default () => {
         const btnDelete = postElement.querySelector('.btnRemove');
         btnDelete.addEventListener('click', () => {
           deletePost(post.id).then(() => {
-            console.log('eliminando');
             loadPostHome();
           });
         });
+
         const btnEdit = postElement.querySelector('.btnEdit');
         btnEdit.addEventListener('click', () => {
-        // editPost(post.id, inputTexTarea.value).then(() => {
-          console.log('editando');
-          // });
+          const editable = postElement.querySelector('#editPost');
+          editable.contentEditable = 'true';
+        });
+
+        const btnUpdatePost = postElement.querySelector('#btnSave');
+        btnUpdatePost.addEventListener('click', () => {
+          const prueba = postElement.querySelector('#editPost').innerHTML;
+          editPost(post.id, prueba).then(() => {
+            loadPostHome();
+          });
+        });
+
+        const btnCancelEdit = postElement.querySelector('#btnCancel');
+        btnCancelEdit.addEventListener('click', () => {
+          loadPostHome();
         });
 
         // const commentElement = modelComment(coment);
@@ -163,9 +175,11 @@ export default () => {
         let click = 0;
         const countClick = () => {
           click += 1;
+          postElement.querySelector('.count').innerHTML = click;
         };
         btnLike.addEventListener('click', () => {
           countClick();
+          saveLikes(post.id);
           console.log(click);
         });
 
@@ -181,7 +195,7 @@ export default () => {
     const user = userLogueado.providerData[0].displayName;
     const email = userLogueado.providerData[0].email;
     const photo = userLogueado.providerData[0].photoURL;
-    const textToPost = inputTexTarea.value;
+    const textToPost = inputTextArea.value;
     const hours = new Date();
     const datetime = (`${hours.getFullYear()}${hours.getMonth() + 1}${hours.getDate()}${hours.getHours()}${hours.getMinutes()}${hours.getSeconds()}`);
     savePost(user, email, photo, date, datetime, textToPost).then(() => {
@@ -189,6 +203,7 @@ export default () => {
         loadPostHome();
       }
     });
+    inputTextArea.value = '';
   });
   loadPostHome();
   // btnDeletePost.addEventListener('click', (event) => {
