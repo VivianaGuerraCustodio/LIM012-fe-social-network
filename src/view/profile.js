@@ -1,11 +1,14 @@
 /* eslint-disable import/named */
 /* eslint-disable no-alert */
 /* eslint-disable import/no-cycle */
-import { signInOff, currentUser} from '../controller/firebase.js';
+import { signInOff, currentUser } from '../controller/firebase.js';
 import { changeView } from '../view-controler/router.js';
-import { savePost, deletePost } from '../controller/firestore.js';
+import {
+  savePost, deletePost, editPost, saveComent, saveLikes,
+} from '../controller/firestore.js';
 import { modelProfile } from '../templates/templateProfile.js';
 import { templatePost } from '../templates/templatePost.js';
+import { modelComment } from '../templates/templateComment.js';
 
 export default () => {
   const viewProfile = `<header>
@@ -64,6 +67,7 @@ export default () => {
   const logOut = divElem.querySelector('.logOut');
   logOut.addEventListener('click', () => {
     signInOff();
+    changeView('#/login');
   });
   const home = divElem.querySelector('.home');
   home.addEventListener('click', () => {
@@ -76,6 +80,8 @@ export default () => {
 
   const userInfor = divElem.querySelector('.user-information');
   const db = firebase.firestore();
+  const f = new Date();
+  const date = (`${f.getDate()}/${f.getMonth() + 1}/${f.getFullYear()}`);
   const usuariosDB = db.collection('usuarios');
   const userLogueado = firebase.auth().currentUser;
   if (userLogueado !== null) {
@@ -98,12 +104,67 @@ export default () => {
           const post = doc.data();
           post.id = doc.id;
           const postElement = templatePost(post);
+
+          const pruebaComment = document.createElement('div');
+          let listComment = '';
+          const commentDB = db.collection('comments');
+          commentDB.where('id', '==', doc.id).onSnapshot((comment) => {
+            comment.forEach((objComment) => {
+              const dataComment = objComment.data();
+              listComment = modelComment(dataComment);
+              pruebaComment.appendChild(listComment);
+            });
+          });
+          // pruebaComment.innerHTML = listComment;
+          postElement.appendChild(pruebaComment);
+
           const btnDelete = postElement.querySelector('.btnRemove');
           btnDelete.addEventListener('click', () => {
             deletePost(post.id).then(() => {
-              console.log('eliminando');
               loadPostProfile();
             });
+          });
+
+          const btnEdit = postElement.querySelector('.btnEdit');
+          btnEdit.addEventListener('click', () => {
+            const editable = postElement.querySelector('#editPost');
+            editable.contentEditable = 'true';
+          });
+
+          const btnUpdatePost = postElement.querySelector('#btnSave');
+          btnUpdatePost.addEventListener('click', () => {
+            const prueba = postElement.querySelector('#editPost').innerHTML;
+            editPost(post.id, prueba).then(() => {
+              loadPostProfile();
+            });
+          });
+
+          const btnCancelEdit = postElement.querySelector('#btnCancel');
+          btnCancelEdit.addEventListener('click', () => {
+            loadPostProfile();
+          });
+          const btnComentario = postElement.querySelector('.send-Comment');
+          const inputComent = postElement.querySelector('.text-Comment');
+          btnComentario.addEventListener('click', () => {
+            console.log('click coment');
+            const user = userLogueado.providerData[0].displayName;
+            const email = userLogueado.providerData[0].email;
+            const photo = userLogueado.providerData[0].photoURL;
+            const hours = new Date();
+            const datetime = (`${hours.getFullYear()}${hours.getMonth() + 1}${hours.getDate()}${hours.getHours()}${hours.getMinutes()}${hours.getSeconds()}`);
+            saveComent(post.id, inputComent.value, user, email, photo, date, datetime);
+          });
+
+          const btnLike = postElement.querySelector('.btnLike');
+          let click = 0;
+          const countClick = () => {
+            click += 1;
+            postElement.querySelector('.count').innerHTML = click;
+          };
+          btnLike.addEventListener('click', () => {
+            countClick();
+            saveLikes(post.id);
+            console.log(click);
           });
           allPostProfile.appendChild(postElement);
         });
@@ -111,17 +172,15 @@ export default () => {
     }
   };
   const btnNewPost = divElem.querySelector('#btnNewPublication');
-  const inputTexTarea = divElem.querySelector('#newPublication');
+  const inputTextArea = divElem.querySelector('#newPublication');
   // const selectImg = sectionElem.querySelector('#addImage');
-  const f = new Date();
-  const date = (`${f.getDate()}/${f.getMonth() + 1}/${f.getFullYear()}`);
 
   btnNewPost.addEventListener('click', (event) => {
     event.preventDefault();
     const user = userLogueado.providerData[0].displayName;
     const email = userLogueado.providerData[0].email;
     const photo = userLogueado.providerData[0].photoURL;
-    const textToPost = inputTexTarea.value;
+    const textToPost = inputTextArea.value;
     const hours = new Date();
     const datetime = (`${hours.getFullYear()}${hours.getMonth() + 1}${hours.getDate()}${hours.getHours()}${hours.getMinutes()}${hours.getSeconds()}`);
     savePost(user, email, photo, date, datetime, textToPost).then(() => {
@@ -129,6 +188,7 @@ export default () => {
         loadPostProfile();
       }
     });
+    inputTextArea.value = '';
   });
   loadPostProfile();
   return divElem;

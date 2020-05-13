@@ -23,6 +23,9 @@
     font-size: 15px;
 
   }
+  .change-login{
+    display:none;
+  }
   .logo{
     width: 96%;
     margin: 5px;
@@ -57,7 +60,7 @@
     outline: none;
     width: 45%;
   }
-  .iconFb, .iconGoogle{
+  .iconGoogle{
     height: 35px;
     margin: 5%;
   }
@@ -181,8 +184,6 @@
     width: 8%;
     height: 8%;
     margin: 0em 2.5em;
-    outline: none;
-
   }
   .user {
     width: 20%;
@@ -462,11 +463,11 @@ figure{
   border-radius: 10px;
   text-decoration: none;
 }
-.name-Commentary{
+.nameCommentary{
   align-items: center;
   margin-top: 6px;
 }
-.send-Comment{
+.sendComment{
   margin-bottom: 10px;
 }
 

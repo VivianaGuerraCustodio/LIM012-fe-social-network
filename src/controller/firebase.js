@@ -20,6 +20,7 @@ export const logIn = (emailLogin, passwordLogin) => firebase.auth().signInWithEm
 
 export const currentUser = () => firebase.auth().currentUser;
 
+
 export const signInOff = () => firebase.auth().signOut().then().catch();
 
 export const googleAuth = () => {
@@ -28,7 +29,7 @@ export const googleAuth = () => {
     saveUser(currentUser());
     if (googleAuth) {
       changeView('#/home');
-      // getUser();
+      getUser();
       modelProfile();
     }
   }).catch();
