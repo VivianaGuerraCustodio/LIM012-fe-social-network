@@ -195,11 +195,11 @@ export default () => {
         }; */
         const btnLike = postElement.querySelector('.btnLike');
         btnLike.addEventListener('click', () => {
-          const like = [];
+          const like = [1];
           editLike(post.id, like);
           // countClick();
           // saveLikes(post.id);
-          console.log(click);
+          console.log('click like');
         });
 
         allPost.appendChild(postElement);
