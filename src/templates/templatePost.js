@@ -25,8 +25,8 @@ export const templatePost = (objPost) => {
   <div class="contentPost">
     <p contenteditable="false" id="editPost" >${objPost.content}</p>
   </div>
-  <button class="hide" id="btnSave">💾</button>
-  <button class="hide" id="btnCancel">✖️</button>
+  <button class="hide" hidden id="btnSave">💾</button>
+  <button class="hide" hidden id="btnCancel">✖️</button>
   <div class="reactions">
     <div class="countLikes">
       <label class="count" >0</label>

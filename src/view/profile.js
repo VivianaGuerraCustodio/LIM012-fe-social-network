@@ -4,11 +4,11 @@
 import { signInOff, currentUser } from '../controller/firebase.js';
 import { changeView } from '../view-controler/router.js';
 import {
-  savePost, deletePost, editPost, saveComent, saveLikes,
+  savePost, deletePost, editPost, saveLikes,
 } from '../controller/firestore.js';
 import { modelProfile } from '../templates/templateProfile.js';
 import { templatePost } from '../templates/templatePost.js';
-import { modelComment } from '../templates/templateComment.js';
+// import { modelComment } from '../templates/templateComment.js';
 
 export default () => {
   const viewProfile = `<header>
@@ -40,7 +40,7 @@ export default () => {
       <p class="my-post"> °Mis Publicaciones </p>
       <section class="createPost">
         <div class="top-create-post"> 
-        <img src= "${currentUser.photoURL}" class = "user" >
+        <img src= "${currentUser().photoURL}" class = "user" >
           <div class="writePost">
               <textarea id="newPublication" class="textarea" rows="5" cols="50"></textarea>
           </div>
@@ -104,7 +104,7 @@ export default () => {
           post.id = doc.id;
           const postElement = templatePost(post);
 
-          const pruebaComment = document.createElement('div');
+          /* const pruebaComment = document.createElement('div');
           let listComment = '';
           const commentDB = db.collection('comments');
           commentDB.where('id', '==', doc.id).onSnapshot((comment) => {
@@ -115,7 +115,7 @@ export default () => {
             });
           });
           // pruebaComment.innerHTML = listComment;
-          postElement.appendChild(pruebaComment);
+          postElement.appendChild(pruebaComment); */
 
           const btnDelete = postElement.querySelector('.btnRemove');
           btnDelete.addEventListener('click', () => {
@@ -142,7 +142,7 @@ export default () => {
           btnCancelEdit.addEventListener('click', () => {
             loadPostProfile();
           });
-          const btnComentario = postElement.querySelector('.send-Comment');
+          /* const btnComentario = postElement.querySelector('.send-Comment');
           const inputComent = postElement.querySelector('.text-Comment');
           btnComentario.addEventListener('click', () => {
             console.log('click coment');
@@ -152,7 +152,7 @@ export default () => {
             const hours = new Date();
             const datetime = (`${hours.getFullYear()}${hours.getMonth() + 1}${hours.getDate()}${hours.getHours()}${hours.getMinutes()}${hours.getSeconds()}`);
             saveComent(post.id, inputComent.value, user, email, photo, date, datetime);
-          });
+          }); */
 
           const btnLike = postElement.querySelector('.btnLike');
           let click = 0;

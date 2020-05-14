@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 
-import { modelComment } from '../templates/templateComment.js';
+// import { modelComment } from '../templates/templateComment.js';
 
 export const saveUser = (user) => {
   const db = firebase.firestore();
@@ -13,6 +13,7 @@ export const saveUser = (user) => {
 
 
 export const getUser = (user) => {
+  // console.log(user);
   const db = firebase.firestore();
   db.collection('usuarios')
     .onSnapshot((doc) => {
@@ -41,19 +42,10 @@ export const deletePost = id => firebase.firestore().collection('posts').doc(id)
 
 export const editPost = (id, content) => firebase.firestore().collection('posts').doc(id).update({ content });
 
-
-export const loadComment = (idpost) => {
-  firebase.firestore().collection('comments').where('id', '==', idpost).onSnapshot((querySnapshot) => {
-    querySnapshot.forEach((posts) => {
-      const post = posts.data();
-      modelComment(post);
-    });
-  });
-};
-
-export const saveComent = (id, comment, user, email, photo, date, datetime) => {
-  firebase.firestore().collection('comments').add({
-    id,
+export const saveComment = (postId, comment, user, email, photo, date, datetime) => {
+  const firestore = firebase.firestore();
+  return firestore.collection('comments').add({
+    postId,
     comment,
     user,
     email,
@@ -61,13 +53,36 @@ export const saveComent = (id, comment, user, email, photo, date, datetime) => {
     date,
     datetime,
   });
-  loadComment(id);
 };
 
 export const deleteComment = id => firebase.firestore().collection('comments').doc(id).delete();
 
 export const editComment = (id, comment) => firebase.firestore().collection('comments').doc(id).update({ comment });
 
+
+/* export const loadComment = (idpost) => {
+  firebase.firestore().collection('comments').where('id', '==', idpost)
+  .onSnapshot((querySnapshot) => {
+    querySnapshot.forEach((posts) => {
+      const post = posts.data();
+      // console.log(post);
+      modelComment(post);
+    });
+  });
+};
+
+export const saveComent = (id, coment, user, email, photo, date, datetime) => {
+  firebase.firestore().collection('comments').add({
+    id,
+    coment,
+    user,
+    email,
+    photo,
+    date,
+    datetime,
+  });
+  loadComment(id);
+}; */
 export const saveLikes = (id) => {
   firebase.firestore().collection('likes').add({
     id,

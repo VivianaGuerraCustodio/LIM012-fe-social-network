@@ -2,11 +2,12 @@
 import { signInOff, currentUser } from '../controller/firebase.js';
 import { changeView } from '../view-controler/router.js';
 import {
-  savePost, deletePost, editPost, saveComent, saveLikes,
+  savePost, deletePost, editPost, saveComment, deleteComment, editComment, saveLikes,
 } from '../controller/firestore.js';
 // import { addImgPost } from '../controller/post-storage.js';
 import { templatePost } from '../templates/templatePost.js';
 import { modelComment } from '../templates/templateComment.js';
+// import { modelComment } from '../templates/templateComment.js';
 
 
 export default () => {
@@ -36,7 +37,7 @@ export default () => {
 <section class="post-Container">
   <section class="createPost">
     <div class="top-create-post"> 
-    <img src= "" class = "user" >
+    <img src= "${currentUser().photoURL}" class = "user" >
       <div class="writePost">
           <textarea id="newPublication" class="textarea" rows="5" cols="50"></textarea>
       </div>
@@ -112,10 +113,57 @@ export default () => {
     postDB.orderBy('datetime', 'desc').onSnapshot((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         const post = doc.data();
+        // console.log(post); TIENE LA DATA + EL ID
         post.id = doc.id;
+        // console.log(post.id); EL ID DEL POST
         const postElement = templatePost(post);
 
-        const pruebaComment = document.createElement('div');
+        const commentContainer = document.createElement('div');
+        const commentDB = db.collection('comments');
+        commentDB.where('postId', '==', post.id).onSnapshot((querySnapshotComment) => {
+          querySnapshotComment.forEach((objComment) => {
+            const comment = objComment.data();
+            comment.id = objComment.id;
+            // comment.id es EL ID DEL COMMENT
+            const comentElement = modelComment(comment);
+            commentContainer.appendChild(comentElement);
+
+            const btnDeleteComment = postElement.querySelector('.btnRemoveComment');
+            btnDeleteComment.addEventListener('click', () => {
+              console.log('clickeando eliminar');
+              deleteComment(comment.id).then(() => {
+                loadPostHome();
+              });
+            });
+
+            const btnEditComment = postElement.querySelector('.btnEditComment');
+            const btnSaveComment = postElement.querySelector('#btnSaveComment');
+            const btnCancelComment = postElement.querySelector('#btnCancelComment');
+            btnEditComment.addEventListener('click', () => {
+              console.log('clickeando editar');
+              const editableComment = postElement.querySelector('#editComment');
+              editableComment.contentEditable = 'true';
+              btnSaveComment.hidden = false;
+              btnCancelComment.hidden = false;
+            });
+
+            const btnCancelEditComment = postElement.querySelector('#btnCancelComment');
+            btnCancelEditComment.addEventListener('click', () => {
+              loadPostHome();
+            });
+
+            const btnUpdateComment = postElement.querySelector('#btnSaveComment');
+            btnUpdateComment.addEventListener('click', () => {
+              console.log('UPDATE');
+              const commentary = postElement.querySelector('#editComment').innerHTML;
+              editComment(comment.id, commentary).then(() => {
+                loadPostHome();
+              });
+            });
+          });
+        });
+        postElement.appendChild(commentContainer);
+        /* const pruebaComment = document.createElement('div');
         let listComment = '';
         const commentDB = db.collection('comments');
         commentDB.where('id', '==', doc.id).onSnapshot((comment) => {
@@ -126,7 +174,7 @@ export default () => {
           });
         });
         // pruebaComment.innerHTML = listComment;
-        postElement.appendChild(pruebaComment);
+        postElement.appendChild(pruebaComment); */
 
 
         const btnDelete = postElement.querySelector('.btnRemove');
@@ -137,9 +185,13 @@ export default () => {
         });
 
         const btnEdit = postElement.querySelector('.btnEdit');
+        const btnSave = postElement.querySelector('#btnSave');
+        const btnCancel = postElement.querySelector('#btnCancel');
         btnEdit.addEventListener('click', () => {
           const editable = postElement.querySelector('#editPost');
           editable.contentEditable = 'true';
+          btnSave.hidden = false;
+          btnCancel.hidden = false;
         });
 
         const btnUpdatePost = postElement.querySelector('#btnSave');
@@ -155,10 +207,23 @@ export default () => {
           loadPostHome();
         });
 
-        // const commentElement = modelComment(coment);
+        const btnNewComment = postElement.querySelector('.send-Comment');
+        const inputComent = postElement.querySelector('.text-Comment');
+        btnNewComment.addEventListener('click', () => {
+          const userLogueado = firebase.auth().currentUser;
+          const user = userLogueado.providerData[0].displayName;
+          const email = userLogueado.providerData[0].email;
+          const photo = userLogueado.providerData[0].photoURL;
+          const hours = new Date();
+          const datetime = (`${hours.getFullYear()}${hours.getMonth() + 1}${hours.getDate()}${hours.getHours()}${hours.getMinutes()}${hours.getSeconds()}`);
+          saveComment(post.id, inputComent.value, user, email, photo, date, datetime).then(() => {
+            if (userLogueado !== null) {
+              loadPostHome();
+            }
+          });
+        });
 
-
-        const btnComentario = postElement.querySelector('.send-Comment');
+        /* const btnComentario = postElement.querySelector('.send-Comment');
         const inputComent = postElement.querySelector('.text-Comment');
         btnComentario.addEventListener('click', () => {
           console.log('click coment');
@@ -167,9 +232,15 @@ export default () => {
           const email = userLogueado.providerData[0].email;
           const photo = userLogueado.providerData[0].photoURL;
           const hours = new Date();
-          const datetime = (`${hours.getFullYear()}${hours.getMonth() + 1}${hours.getDate()}${hours.getHours()}${hours.getMinutes()}${hours.getSeconds()}`);
+          const datetime = (`${hours.getFullYear()}${hours.getMonth() +
+            1}${hours.getDate()}${hours.getHours()}${hours.getMinutes()}${hours.getSeconds()}`);
           saveComent(post.id, inputComent.value, user, email, photo, date, datetime);
-        });
+          /* .then(() => {
+          if (userLogueado !== null) {
+              loadPostHome();
+            }
+          })
+        }); */
 
         const btnLike = postElement.querySelector('.btnLike');
         let click = 0;
