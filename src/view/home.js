@@ -2,7 +2,7 @@
 import { signInOff, currentUser } from '../controller/firebase.js';
 import { changeView } from '../view-controler/router.js';
 import {
-  savePost, deletePost, editPost, saveComment, deleteComment, editComment, editLike, saveLikes,
+  savePost, deletePost, editPost, saveComment, deleteComment, editComment, editLike,
 } from '../controller/firestore.js';
 // import { addImgPost } from '../controller/post-storage.js';
 import { templatePost } from '../templates/templatePost.js';
@@ -86,6 +86,7 @@ export default () => {
     allPost.innerHTML = '';
     const db = firebase.firestore();
     const postDB = db.collection('posts');
+    // READ post
     postDB.orderBy('datetime', 'desc').onSnapshot((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         const post = doc.data();

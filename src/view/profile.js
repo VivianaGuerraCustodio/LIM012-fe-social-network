@@ -4,10 +4,11 @@
 import { signInOff, currentUser } from '../controller/firebase.js';
 import { changeView } from '../view-controler/router.js';
 import {
-  savePost, deletePost, editPost, saveLikes,
+  savePost, deletePost, editPost, saveComment, deleteComment, editComment, saveLikes,
 } from '../controller/firestore.js';
 import { modelProfile } from '../templates/templateProfile.js';
 import { templatePost } from '../templates/templatePost.js';
+import { modelComment } from '../templates/templateComment.js';
 // import { modelComment } from '../templates/templateComment.js';
 
 export default () => {
@@ -104,18 +105,53 @@ export default () => {
           post.id = doc.id;
           const postElement = templatePost(post);
 
-          /* const pruebaComment = document.createElement('div');
-          let listComment = '';
+          const commentContainer = document.createElement('div');
           const commentDB = db.collection('comments');
-          commentDB.where('id', '==', doc.id).onSnapshot((comment) => {
-            comment.forEach((objComment) => {
-              const dataComment = objComment.data();
-              listComment = modelComment(dataComment);
-              pruebaComment.appendChild(listComment);
+          commentDB.where('postId', '==', post.id).onSnapshot((querySnapshotComment) => {
+            querySnapshotComment.forEach((objComment) => {
+              const comment = objComment.data();
+              comment.id = objComment.id;
+              console.log(comment.id);
+              // comment.id es EL ID DEL COMMENT
+              const comentElement = modelComment(comment);
+              commentContainer.appendChild(comentElement);
+
+              const btnDeleteComment = comentElement.querySelector('.btnRemoveComment');
+              btnDeleteComment.addEventListener('click', () => {
+                console.log('clickeando eliminar');
+                deleteComment(comment.id).then(() => {
+                  loadPostProfile();
+                });
+              });
+
+              const btnEditComment = comentElement.querySelector('.btnEditComment');
+              const btnSaveComment = comentElement.querySelector('#btnSaveComment');
+              const btnCancelComment = comentElement.querySelector('#btnCancelComment');
+              btnEditComment.addEventListener('click', () => {
+                console.log('clickeando editar');
+                const editableComment = comentElement.querySelector('#editComment');
+                editableComment.contentEditable = 'true';
+                btnSaveComment.hidden = false;
+                btnCancelComment.hidden = false;
+              });
+
+              const btnCancelEditComment = comentElement.querySelector('#btnCancelComment');
+              btnCancelEditComment.addEventListener('click', () => {
+                loadPostProfile();
+              });
+
+              const btnUpdateComment = comentElement.querySelector('#btnSaveComment');
+              btnUpdateComment.addEventListener('click', () => {
+                console.log('UPDATE');
+                const commentary = comentElement.querySelector('#editComment').innerHTML;
+                editComment(comment.id, commentary).then(() => {
+                  loadPostProfile();
+                });
+              });
             });
           });
-          // pruebaComment.innerHTML = listComment;
-          postElement.appendChild(pruebaComment); */
+          postElement.appendChild(commentContainer);
+
 
           const btnDelete = postElement.querySelector('.btnRemove');
           btnDelete.addEventListener('click', () => {
@@ -125,9 +161,13 @@ export default () => {
           });
 
           const btnEdit = postElement.querySelector('.btnEdit');
+          const btnSave = postElement.querySelector('#btnSave');
+          const btnCancel = postElement.querySelector('#btnCancel');
           btnEdit.addEventListener('click', () => {
             const editable = postElement.querySelector('#editPost');
             editable.contentEditable = 'true';
+            btnSave.hidden = false;
+            btnCancel.hidden = false;
           });
 
           const btnUpdatePost = postElement.querySelector('#btnSave');
@@ -142,17 +182,21 @@ export default () => {
           btnCancelEdit.addEventListener('click', () => {
             loadPostProfile();
           });
-          /* const btnComentario = postElement.querySelector('.send-Comment');
+
+          const btnNewComment = postElement.querySelector('.send-Comment');
           const inputComent = postElement.querySelector('.text-Comment');
-          btnComentario.addEventListener('click', () => {
-            console.log('click coment');
+          btnNewComment.addEventListener('click', () => {
             const user = userLogueado.providerData[0].displayName;
             const email = userLogueado.providerData[0].email;
             const photo = userLogueado.providerData[0].photoURL;
             const hours = new Date();
             const datetime = (`${hours.getFullYear()}${hours.getMonth() + 1}${hours.getDate()}${hours.getHours()}${hours.getMinutes()}${hours.getSeconds()}`);
-            saveComent(post.id, inputComent.value, user, email, photo, date, datetime);
-          }); */
+            saveComment(post.id, inputComent.value, user, email, photo, date, datetime).then(() => {
+              if (userLogueado !== null) {
+                loadPostProfile();
+              }
+            });
+          });
 
           const btnLike = postElement.querySelector('.btnLike');
           let click = 0;
@@ -172,7 +216,6 @@ export default () => {
   };
   const btnNewPost = divElem.querySelector('#btnNewPublication');
   const inputTextArea = divElem.querySelector('#newPublication');
-  // const selectImg = sectionElem.querySelector('#addImage');
 
   btnNewPost.addEventListener('click', (event) => {
     event.preventDefault();

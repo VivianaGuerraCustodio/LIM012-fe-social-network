@@ -31,16 +31,11 @@ export const savePost = (user, email, photo, date, datetime, content) => {
     datetime,
     content,
     likes: [],
-  });// .then((posts) => {
-  // console.log('Document written with ID', posts.id);
-  // }).catch((error) => {
-  // console.error('Error adding document: ', error);
-  // });
+  });
 };
+export const editPost = (id, content) => firebase.firestore().collection('posts').doc(id).update({ content });
 export const deletePost = id => firebase.firestore().collection('posts').doc(id).delete();
 
-export const editPost = (id, content) => firebase.firestore().collection('posts').doc(id).update({ content });
-export const editLike = (id, likes) => firebase.firestore().collection('posts').doc(id).update({ likes });
 
 export const saveComment = (postId, comment, user, email, photo, date, datetime) => {
   const firestore = firebase.firestore();
@@ -54,11 +49,11 @@ export const saveComment = (postId, comment, user, email, photo, date, datetime)
     datetime,
   });
 };
-
+export const editComment = (id, comment) => firebase.firestore().collection('comments').doc(id).update({ comment });
 export const deleteComment = id => firebase.firestore().collection('comments').doc(id).delete();
 
-export const editComment = (id, comment) => firebase.firestore().collection('comments').doc(id).update({ comment });
 
+export const editLike = (id, likes) => firebase.firestore().collection('posts').doc(id).update({ likes });
 
 export const saveLikes = (id) => {
   firebase.firestore().collection('likes').add({
