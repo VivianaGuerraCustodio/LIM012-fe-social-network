@@ -37,7 +37,7 @@ export const templatePost = (objPost) => {
   </div>
   <div class="name-Commentary">
   <textarea class="text-CommentPost" rows="1" cols="40"></textarea>
-  <input type="image" class= "send-Comment" src="assets/send.png"> 
+  <input type="image" class= "send-CommentPost" src="assets/send.png"> 
   </div>`;
   return divElement;
 };

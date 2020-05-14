@@ -21,7 +21,7 @@ export const modelComment = (Obj) => {
     </div>
     <button class="hide" hidden id="btnSaveComment">💾</button>
     <button class="hide" hidden id="btnCancelComment">✖️</button>
-    <p contenteditable="false" id="editComment" class="text-Comment" rows="1" cols="40"> ${Obj.comment}</p>
+    <p contenteditable="false" id="editComment" class="text-CommentC" rows="1" cols="40"> ${Obj.comment}</p>
   </div>
 </div>`;
   return divElement;
