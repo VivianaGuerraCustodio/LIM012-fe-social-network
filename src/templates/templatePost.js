@@ -22,11 +22,13 @@ export const templatePost = (objPost) => {
       </ul>
     </div>       
   </div>
+  <div class= "editPostOption">
   <div class="contentPost">
     <p contenteditable="false" id="editPost" >${objPost.content}</p>
   </div>
   <button class="hide" id="btnSave">💾</button>
   <button class="hide" id="btnCancel">✖️</button>
+  </div>
   <div class="reactions">
     <div class="countLikes">
       <label class="count" >0</label>
