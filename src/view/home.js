@@ -173,7 +173,7 @@ export default () => {
         });
 
         const btnNewComment = postElement.querySelector('.send-Comment');
-        const inputComent = postElement.querySelector('.text-Comment');
+        const inputComent = postElement.querySelector('.text-CommentPost');
         btnNewComment.addEventListener('click', () => {
           const userLogueado = firebase.auth().currentUser;
           const user = userLogueado.providerData[0].displayName;

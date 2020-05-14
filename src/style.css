@@ -76,10 +76,10 @@
   }
   .imageDetail{
     display: block;
-    width: 45%;
+    width: 40%;
     height: 50%;
     margin: 10px;
-    padding: 3% 2% 3% 5%;
+    padding: 3% 8%;
   }
   .logIn {
     width: 30%;
@@ -404,7 +404,7 @@ margin-bottom: 5px;
 }
 
 .img-portada{
-  width: 63%;
+  width: 67%;
 }
 
 figure{
@@ -472,13 +472,16 @@ figure{
   justify-content: space-around;
   align-items: center;
 }
-.text-Comment{
-  width: 80%;
-  margin: 0.5em;
+.text-CommentPost{
+  width: 84%;
+  margin: 1em 0em 0.5em 0.5em;
   padding: 1%;
   border-radius: 10px;
   text-decoration: none;
   background: #dedede;
+}
+.send-Comment{
+  margin-bottom: 8px;
 }
 .nameCommentary{
   align-items: center;
@@ -512,7 +515,7 @@ figure{
     left: 50px;
    margin-top: 0px;
   }
-  .text-Comment{
+  .text-CommentPost{
     width: 90%;
   }
 
@@ -531,17 +534,49 @@ figure{
  .userComentImg{
   width: 15%;
   height: 20%;
-  margin: 5px;
+  margin: 8px;
   border-radius: 110px;
   border: solid 2px #BAB7B7;
 }
+.dataCommentUser{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#nameUserC{
+  font-size: 12px;
+  font-weight: bold;
+  margin: 5px 0px 0px 5px;
+  width: max-content;
+}
+.text-Comment{
+  width: 94%;
+  margin: 0em 0em 0.5em 0.5em;
+  padding: 1%;
+  border-radius: 10px;
+  text-decoration: none;
+  background: #dedede;
+}
+
+.boxComment{
+  width: 100%;
+}
+
+.headerComment{
+  display: flex;
+}
 
 
-/*.nameUser{
-
-}  .date{
+@media all and (min-width: 700px){
+  .userComentImg{
+    width: 7%;
+  }
+  .text-Comment {
+    width: 90%;
+    margin: 0em 0em 0.5em 0.5em;
+}
 
 }
-p{
-
-} */

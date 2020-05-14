@@ -184,7 +184,7 @@ export default () => {
           });
 
           const btnNewComment = postElement.querySelector('.send-Comment');
-          const inputComent = postElement.querySelector('.text-Comment');
+          const inputComent = postElement.querySelector('.text-CommentPost');
           btnNewComment.addEventListener('click', () => {
             const user = userLogueado.providerData[0].displayName;
             const email = userLogueado.providerData[0].email;
