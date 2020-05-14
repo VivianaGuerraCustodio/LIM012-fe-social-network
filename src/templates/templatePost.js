@@ -1,4 +1,4 @@
-export const modelPost = (name, photo, date, content) => `<div class="postHeader">
+export const modelPost = (name, photo, date, content, postImg) => `<div class="postHeader">
       <div class="user-info">
         <img class = "user" src="${photo}">
         <div class= "dateUser">
@@ -20,6 +20,7 @@ export const modelPost = (name, photo, date, content) => `<div class="postHeader
     </div>
     <div class="contentPost">
       <p>${content}</p>
+      <img src= ${postImg}>
     </div>
     <div class="reactions">
       <button type= "button" class ="btnLike outline"><img src="assets/like-solid-24.png">Me gusta</button>

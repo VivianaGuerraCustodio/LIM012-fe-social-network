@@ -1,10 +1,13 @@
+/* eslint-disable no-shadow */
+/* eslint-disable func-names */
 /* eslint-disable no-console */
 /* eslint-disable import/no-cycle */
 import { signInOff } from '../controller/firebase.js';
 import { changeView } from '../view-controler/router.js';
 import { savePost } from '../controller/firestore.js';
-// import { addImgPost } from '../controller/post-storage.js';
+// import { addImg } from '../controller/post-storage.js';
 import { modelPost } from '../templates/templatePost.js';
+// import { addImg } from '../../public/src/controller/post-storage.js';
 // import { modelHome } from '../templates/templateHome.js';
 
 
@@ -41,9 +44,11 @@ export default () => {
   </div>
 </div>    
 <div class="lower-create-post"> 
-  <div class="progress"> </div>
-  <input type="file" class= "addImg"  src="assets/agregarIng.png"> 
-  <progress value="0" max="100" class="uploader"> 0% </progress>
+<input type="file"  id="addImg" accept ="image/*" class= " uploader addImg"> 
+  <label for= "addImg">
+  <img src="assets/agregarIng.png">
+  </label>
+  <div class="preview"> </div>
   <select name="options" class="selectPrivacy">
   <option value="public"  class="styleSelect">Público</option>
   <option value="private" class="styleSelect">Privado</option>
@@ -77,88 +82,20 @@ export default () => {
   });
 
   // STORAGE
-  const uploader = sectionElem.querySelector('.uploader');
   const btnAddImg = sectionElem.querySelector('.addImg');
   btnAddImg.addEventListener(('change'), (e) => {
-    const file = e.target.files[0];
-    const storageRef = firebase.storage().ref(`postImg/${file.name}`);
-    const task = storageRef.put(file);
-    task.on('state_changed',
-      (snapshot) => {
-        const percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        uploader.value = percentage;
-      },
-      function error(err) {
-        console.log(error(err));
-      },
-      () => {
-        console.log('archivo cargado');
-      });
+    const inputFile = e.target.files[0];
+    const reader = new FileReader();
+    reader.onload = function (input) {
+      console.log(input);
+      localStorage.setItem('img', `${input.target.result}`);
+      console.log(localStorage.getItem('img'));
+    };
+    reader.readAsDataURL(inputFile);
+    const preview = sectionElem.querySelector('.preview');
+    localStorage.setItem('imgName', `${inputFile.name}`);
+    preview.innerHTML = `${inputFile.name}`;
   });
-
-  //   //  const uploader = sectionElem.querySelector('.uploader');
-  //   const btnAddImg = sectionElem.querySelector('.addImg');
-  //   btnAddImg.addEventListener('change', (e) => {
-  //     // alert('si funciona');
-  //     // abre una ventana para que elijas el archivo desde tu dispositivo
-  //     const file = e.target.files[0];
-  //     // crea una carpeta de referencia donde se guardar el archivo que deseas subir
-  //     const storageRef = firebase.storage().ref(`postImg/${file.name}`);
-  //     // subiendo archivo
-  //     const task = storageRef.put(file);
-  //     // subiendo archivo ( barra de progreso)
-  //     task.on('state_changed',
-  //       (snapshot) => {
-  //         const percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-  //         uploader.value = percentage;
-  //       },
-  //       function error(err) {
-  //         console.log(error(err));
-  //       },
-  //       () => {
-  //         console.log('archivo cargado');
-  //       });
-  //     // en todo esto, el archivo se sube automaticamente a storage sin necesidad de hacer click
-  //     // en publicar,
-  //     // en la funcionalidad del boton publicar se debe llamar al archivo subido por el usuario.
-  //   });alert('si funciona');
-  //   // const file = e.target.files[0];
-  //   // const userPost = firebase.auth().currentUser;
-  //   // addImgPost(file, userPost.uid);
-  // });
-
-  // const userCreatePost = sectionElem.querySelector('.createPost');
-  // const db = firebase.firestore();
-  // const usuariosDB = db.collection('usuarios');
-  // const userPostNew = firebase.auth().currentUser;
-  // if (userPostNew !== null) {
-  // usuariosDB.where('emailUser', '==', userPostNew.providerData[0].email)
-  // .get().then((onSnapshot) => {
-  //     let userList = '';
-  //     onSnapshot.forEach((doc) => {
-  //       userList += modelPost(doc.data().photoURL);
-  //     });
-  //     userCreatePost.innerHTML = userList;
-  //   });
-  // }
-
-
-  // const userPostDone = sectionElem.querySelector('.post-done');
-  // const db = firebase.firestore();
-  // const usuariosDB = db.collection('usuarios');
-  // const userLogueado = firebase.auth().currentUser;
-  // if (userLogueado !== null) {
-  //   usuariosDB.where('emailUser', '==', userLogueado.providerData[0].email)
-  // .get().then((onSnapshot) => {
-  //     let userListPost = '';
-  //     onSnapshot.forEach((doc) => {
-  //       userListPost += modelPost(doc.data().nameUser, doc.data().photoURL);
-  //     });
-  //     userPostDone.innerHTML = userListPost;
-  //   });
-  // }
-
-  // realizar una publicacion
 
   const btnNewPost = sectionElem.querySelector('#btnNewPublication');
   const inputTexTarea = sectionElem.querySelector('#newPublication');
@@ -172,11 +109,13 @@ export default () => {
       let postList = '';
       querySnapshot.forEach((doc) => {
         postList += modelPost(doc.data().user, doc.data().photo,
-          doc.data().date, doc.data().content);
+          doc.data().date, doc.data().content, doc.data().postImg);
         newPost.innerHTML = postList;
       });
     });
   };
+  const imgPost = localStorage.getItem('img');
+  const nameImage = localStorage.getItem('imgName');
   btnNewPost.addEventListener('click', (event) => {
     event.preventDefault();
     const userLogueado = firebase.auth().currentUser;
@@ -186,7 +125,13 @@ export default () => {
     const textToPost = inputTexTarea.value;
     const hours = new Date();
     const datetime = (`${hours.getFullYear()}${hours.getMonth() + 1}${hours.getDate()}${hours.getHours()}${hours.getMinutes()}${hours.getSeconds()}`);
-    savePost(user, email, photo, date, datetime, textToPost);
+    const imgRef = firebase.storage().ref(`postImg/${nameImage}`);
+    imgRef.putString(imgPost, 'data_url').then((snapshot) => {
+      console.log('archivo cargado');
+      return snapshot.ref.getDownloadURL();
+    }).then((url) => {
+      savePost(user, email, photo, date, datetime, textToPost, url);
+    });
     if (userLogueado !== null) {
       loadPostHome();
     }

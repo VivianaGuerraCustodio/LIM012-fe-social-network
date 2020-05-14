@@ -15,8 +15,6 @@ const init = () => {
     measurementId: 'G-QTBC8WWL0Y',
   };
   firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
-  firebase.storage();
   changeView(window.location.hash);
   window.addEventListener('hashchange', () => changeView(window.location.hash));
 };

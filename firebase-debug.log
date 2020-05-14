@@ -1,0 +1,25 @@
+[debug] [2020-05-12T21:33:00.699Z] ----------------------------------------------------------------------
+[debug] [2020-05-12T21:33:00.701Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\PROPIETARIO\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve
+[debug] [2020-05-12T21:33:00.701Z] CLI Version:   8.2.0
+[debug] [2020-05-12T21:33:00.701Z] Platform:      win32
+[debug] [2020-05-12T21:33:00.701Z] Node Version:  v12.16.0
+[debug] [2020-05-12T21:33:00.702Z] Time:          Tue May 12 2020 16:33:00 GMT-0500 (GMT-05:00)
+[debug] [2020-05-12T21:33:00.703Z] ----------------------------------------------------------------------
+[debug] [2020-05-12T21:33:00.703Z] 
+[debug] [2020-05-12T21:33:00.710Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-05-12T21:33:00.711Z] > authorizing via signed-in user
+[debug] [2020-05-12T21:33:00.711Z] [iam] checking project yachaywasiper for permissions ["firebase.projects.get"]
+[debug] [2020-05-12T21:33:00.714Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/yachaywasiper:testIamPermissions  
+ {"permissions":["firebase.projects.get"]}
+[debug] [2020-05-12T21:33:02.080Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 12 May 2020 21:33:02 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=114","alt-svc":"h3-27=\":443\"; ma=2592000,h3-25=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-05-12T21:33:02.083Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/yachaywasiper  
+ 
+[debug] [2020-05-12T21:33:03.188Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 12 May 2020 21:33:03 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-27=\":443\"; ma=2592000,h3-25=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+[info] === Serving from 'C:\Users\PROPIETARIO\Documents\GitHub\LIM012-fe-social-network'...
+[info] 
+[debug] [2020-05-12T21:33:03.193Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/yachaywasiper/webApps/-/config  
+ 
+[debug] [2020-05-12T21:33:04.095Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 12 May 2020 21:33:04 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-27=\":443\"; ma=2592000,h3-25=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  hosting: Serving hosting files from: public
+[info] +  hosting: Local server: http://localhost:5000

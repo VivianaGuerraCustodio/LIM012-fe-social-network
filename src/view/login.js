@@ -42,13 +42,6 @@ export default () => {
       }
     });
   });
-  /* iconFB.addEventListener('click', (event) => {
-    event.preventDefault();
-    facebookAuth().catch((error) => {
-      const errorMessage = error.message;
-      sectionElem.querySelector('#reg_error_inner').innerHTML = errorMessage;
-    });
-  }); */
   iconGoogle.addEventListener('click', (event) => {
     event.preventDefault();
     googleAuth();

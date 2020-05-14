@@ -22,7 +22,7 @@ export const getUser = (user) => {
     });
 };
 
-export const savePost = (user, email, photo, date, datetime, content) => {
+export const savePost = (user, email, photo, date, datetime, content, postImg) => {
   const firestore = firebase.firestore();
   firestore.collection('posts').add({
     user,
@@ -31,11 +31,8 @@ export const savePost = (user, email, photo, date, datetime, content) => {
     date,
     datetime,
     content,
-  });// .then((posts) => {
-  // console.log('Document written with ID', posts.id);
-  // }).catch((error) => {
-  // console.error('Error adding document: ', error);
-  // });
+    postImg,
+  });
 };
 
 // export const deletePost = idPost => firebase.firestore().collection('posts').doc(idPost).delete();
