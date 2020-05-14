@@ -1,7 +1,7 @@
 /* eslint-disable import/named */
 /* eslint-disable no-alert */
 /* eslint-disable import/no-cycle */
-import { signInOff, currentUser } from '../controller/firebase.js';
+import { signInOff } from '../controller/firebase.js';
 import { changeView } from '../view-controler/router.js';
 import {
   savePost, deletePost, editPost, saveLikes,
@@ -40,7 +40,7 @@ export default () => {
       <p class="my-post"> °Mis Publicaciones </p>
       <section class="createPost">
         <div class="top-create-post"> 
-        <img src= "${currentUser().photoURL}" class = "user" >
+        <img src= "" class = "user" >
           <div class="writePost">
               <textarea id="newPublication" class="textarea" rows="5" cols="50"></textarea>
           </div>
@@ -142,17 +142,6 @@ export default () => {
           btnCancelEdit.addEventListener('click', () => {
             loadPostProfile();
           });
-          /* const btnComentario = postElement.querySelector('.send-Comment');
-          const inputComent = postElement.querySelector('.text-Comment');
-          btnComentario.addEventListener('click', () => {
-            console.log('click coment');
-            const user = userLogueado.providerData[0].displayName;
-            const email = userLogueado.providerData[0].email;
-            const photo = userLogueado.providerData[0].photoURL;
-            const hours = new Date();
-            const datetime = (`${hours.getFullYear()}${hours.getMonth() + 1}${hours.getDate()}${hours.getHours()}${hours.getMinutes()}${hours.getSeconds()}`);
-            saveComent(post.id, inputComent.value, user, email, photo, date, datetime);
-          }); */
 
           const btnLike = postElement.querySelector('.btnLike');
           let click = 0;

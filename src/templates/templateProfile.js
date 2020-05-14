@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-expressions */
 export const modelProfile = (name, picture) => `<div class="profile-container">
-                <figure><img src="assets/ejemplo de portada.jpg" class="img-portada"></figure>
+                <figure><img src="assets/portada5.jpg" class="img-portada"></figure>
             </div>
             <div class="logged-user-data">
                 <img src ="${picture}" class="img-user">;
