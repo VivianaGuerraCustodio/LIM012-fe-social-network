@@ -22,6 +22,7 @@ export const templatePost = (objPost) => {
       </ul>
     </div>       
   </div>
+  <div class= "editPostOption">
   <div class="contentPost">
     <p contenteditable="false" id="editPost" >${objPost.content}</p>
   </div>

@@ -117,14 +117,14 @@
   }
   
   nav a {
-    padding: 15px;
+    padding: 12px;
     color: #ffffff;
     text-decoration: none;
-    flex-grow: 1;
+  
   }
 
   header nav a:hover{
-    background: #EC9797;
+    background: rgb(236, 120, 78);
   }
 
 /*---------------------------------*/
@@ -153,15 +153,20 @@
     flex-wrap: nowrap;
   }
   
-  .createPost,
-  .post-done{
-    border : solid 2px #BAB7B7;
+  .createPost{
+    border : solid 2px rgb(145, 144, 144);
     margin: 10px 0px;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-
   }
+  .post-done{
+    margin: 10px 0px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+
   .top-create-post, .lower-create-post{
     display: flex;
     flex-direction: row;
@@ -196,6 +201,7 @@
   .btnPost{
     background: #DA4545;
     width: 30%;
+    cursor: pointer;
     text-decoration: none;
     color: #ffffff;
     border-radius: 4px;
@@ -241,7 +247,7 @@
 
 /* -------------------publicaciones ----------------------------------------------------------------------- */
   .posteo{
-    border: solid 2px #BAB7B7;
+    border: solid 1px rgb(145, 144, 144);
     margin: 0px 0px 10px 0px;
   }
   .postHeader{
@@ -251,10 +257,14 @@
     justify-content: space-between;
     align-items: center;
     position: relative;
-    background: #dedede;
+    background: #EB8763;
+    /* background: rgb(236, 120, 78); */
+
   }
   select{
-    background: #dedede;
+    background: #EB8763;
+    outline: none;  
+
   }
 
   .user-info{
@@ -285,13 +295,18 @@
   }
   .option-edit-post:hover>ul{
     display: block;
-    border: 2px solid #DA4545;
+    cursor: pointer;
+    border: 2px solid rgb(204, 202, 202);
     border-radius: 3px;
-    box-shadow: 1px 5px 5px 3px #DA4545;
+    /* box-shadow: 1px 5px 5px 3px rgb(233, 171, 171); */
   }
-  .option-Post li{
+
+  li:hover{
     padding: 2px;
     margin: 2px;
+    transform: scale(1.1);
+    transition: 0.5;
+    background: rgb(192, 197, 199);
   }
 
   #nameUser{
@@ -303,9 +318,20 @@
   .contentPost{
     border: solid 2px #BAB7B7;
     width: 75%;
-    margin: 1em 2em 1em 1.3em;
+    margin: 1em 1em 1em 1.3em;
     padding: 1em;
     border-radius: 10px;
+  }
+  .editPostOption{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+  .hide{
+    left: 20%;
   }
 
   time{
@@ -318,8 +344,8 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    border-top: solid 2px #BAB7B7;
-    border-bottom: solid 2px #BAB7B7;
+    border-top: solid 1px #BAB7B7;
+    border-bottom: solid 1px #BAB7B7;
   }
   .btnLike, .btnComment{
     border: none;
@@ -361,7 +387,7 @@
   }
   body::-webkit-scrollbar-thumb{
     border-radius: 0.4rem;
-    background: #ED8D8D;
+    background: rgb(236, 120, 78);
     height: 1%;
   }
 
@@ -375,7 +401,7 @@
 .user-information{
 height: 235px;
 margin: 1px ;
-border: solid 2px #BAB7B7;
+border: solid 2px rgb(145, 144, 144);
 padding-bottom: 5px;
 margin-bottom: 5px;
 
@@ -423,6 +449,7 @@ figure{
   margin: 5px;
   padding: 3px;
   width: 80%;
+  cursor: pointer;
   text-decoration: none;
   color: #ffffff;
   border-radius: 4px;
@@ -437,7 +464,7 @@ figure{
 }
 /*---------------------------------------------------------------------------------*/
 .my-post{
-  border: solid 2px #BAB7B7;
+  border: solid 2px rgb(145, 144, 144);
   margin-bottom: 5px;
 }
 /*---------------------------------Estilos publcacion perfil------------------------------*/
@@ -454,7 +481,6 @@ figure{
   align-items: center;
 }
 .text-Comment{
-  border: solid 2px #dedede;
   width: 80%;
   margin: 0.5em;
   padding: 1%;
@@ -507,6 +533,7 @@ figure{
   flex-wrap: nowrap;
   align-items: center;
   position: relative;
+  border-top: solid 1px #BAB7B7;
 
 }
  .userComentImg{
@@ -517,9 +544,7 @@ figure{
   border: solid 2px #BAB7B7;
 }
 
-/* .dataCommentUser{
- 
-} */
+
 /*.nameUser{
 
 }  .date{
