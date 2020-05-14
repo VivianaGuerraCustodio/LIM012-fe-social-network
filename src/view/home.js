@@ -2,7 +2,7 @@
 import { signInOff, currentUser } from '../controller/firebase.js';
 import { changeView } from '../view-controler/router.js';
 import {
-  savePost, deletePost, editPost, saveComment, deleteComment, editComment, saveLikes,
+  savePost, deletePost, editPost, saveComment, deleteComment, editComment, editLike, saveLikes,
 } from '../controller/firestore.js';
 // import { addImgPost } from '../controller/post-storage.js';
 import { templatePost } from '../templates/templatePost.js';
@@ -75,30 +75,6 @@ export default () => {
     changeView('#/profile');
   });
 
-  // STORAGE
-  // const btnAddImg = sectionElem.querySelector('.addImg');
-  // btnAddImg.addEventListener(('click'), (e) => {
-  //   const file = e.target.files;
-  //   const userPost = firebase.auth().currentUser;
-  //   addImgPost(file, userPost.uid);
-  // });
-
-  // const userCreatePost = sectionElem.querySelector('.createPost');
-  // const db = firebase.firestore();
-  // const usuariosDB = db.collection('usuarios');
-  // const userPostNew = firebase.auth().currentUser;
-  // if (userPostNew !== null) {
-  // usuariosDB.where('emailUser', '==', userPostNew.providerData[0].email)
-  // .get().then((onSnapshot) => {
-  //     let userList = '';
-  //     onSnapshot.forEach((doc) => {
-  //       userList += modelPost(doc.data().photoURL);
-  //     });
-  //     userCreatePost.innerHTML = userList;
-  //   });
-  // }
-  // realizar una publicacion
-
   const btnNewPost = sectionElem.querySelector('#btnNewPublication');
   const inputTextArea = sectionElem.querySelector('#newPublication');
 
@@ -124,11 +100,12 @@ export default () => {
           querySnapshotComment.forEach((objComment) => {
             const comment = objComment.data();
             comment.id = objComment.id;
+            console.log(comment.id);
             // comment.id es EL ID DEL COMMENT
             const comentElement = modelComment(comment);
             commentContainer.appendChild(comentElement);
 
-            const btnDeleteComment = postElement.querySelector('.btnRemoveComment');
+            const btnDeleteComment = comentElement.querySelector('.btnRemoveComment');
             btnDeleteComment.addEventListener('click', () => {
               console.log('clickeando eliminar');
               deleteComment(comment.id).then(() => {
@@ -136,26 +113,26 @@ export default () => {
               });
             });
 
-            const btnEditComment = postElement.querySelector('.btnEditComment');
-            const btnSaveComment = postElement.querySelector('#btnSaveComment');
-            const btnCancelComment = postElement.querySelector('#btnCancelComment');
+            const btnEditComment = comentElement.querySelector('.btnEditComment');
+            const btnSaveComment = comentElement.querySelector('#btnSaveComment');
+            const btnCancelComment = comentElement.querySelector('#btnCancelComment');
             btnEditComment.addEventListener('click', () => {
               console.log('clickeando editar');
-              const editableComment = postElement.querySelector('#editComment');
+              const editableComment = comentElement.querySelector('#editComment');
               editableComment.contentEditable = 'true';
               btnSaveComment.hidden = false;
               btnCancelComment.hidden = false;
             });
 
-            const btnCancelEditComment = postElement.querySelector('#btnCancelComment');
+            const btnCancelEditComment = comentElement.querySelector('#btnCancelComment');
             btnCancelEditComment.addEventListener('click', () => {
               loadPostHome();
             });
 
-            const btnUpdateComment = postElement.querySelector('#btnSaveComment');
+            const btnUpdateComment = comentElement.querySelector('#btnSaveComment');
             btnUpdateComment.addEventListener('click', () => {
               console.log('UPDATE');
-              const commentary = postElement.querySelector('#editComment').innerHTML;
+              const commentary = comentElement.querySelector('#editComment').innerHTML;
               editComment(comment.id, commentary).then(() => {
                 loadPostHome();
               });
@@ -163,19 +140,6 @@ export default () => {
           });
         });
         postElement.appendChild(commentContainer);
-        /* const pruebaComment = document.createElement('div');
-        let listComment = '';
-        const commentDB = db.collection('comments');
-        commentDB.where('id', '==', doc.id).onSnapshot((comment) => {
-          comment.forEach((objComment) => {
-            const dataComment = objComment.data();
-            listComment = modelComment(dataComment);
-            pruebaComment.appendChild(listComment);
-          });
-        });
-        // pruebaComment.innerHTML = listComment;
-        postElement.appendChild(pruebaComment); */
-
 
         const btnDelete = postElement.querySelector('.btnRemove');
         btnDelete.addEventListener('click', () => {
@@ -223,38 +187,21 @@ export default () => {
           });
         });
 
-        /* const btnComentario = postElement.querySelector('.send-Comment');
-        const inputComent = postElement.querySelector('.text-Comment');
-        btnComentario.addEventListener('click', () => {
-          console.log('click coment');
-          const userLogueado = firebase.auth().currentUser;
-          const user = userLogueado.providerData[0].displayName;
-          const email = userLogueado.providerData[0].email;
-          const photo = userLogueado.providerData[0].photoURL;
-          const hours = new Date();
-          const datetime = (`${hours.getFullYear()}${hours.getMonth() +
-            1}${hours.getDate()}${hours.getHours()}${hours.getMinutes()}${hours.getSeconds()}`);
-          saveComent(post.id, inputComent.value, user, email, photo, date, datetime);
-          /* .then(() => {
-          if (userLogueado !== null) {
-              loadPostHome();
-            }
-          })
-        }); */
-
-        const btnLike = postElement.querySelector('.btnLike');
+        /*  const btnLike = postElement.querySelector('.btnLike');
         let click = 0;
         const countClick = () => {
           click += 1;
           postElement.querySelector('.count').innerHTML = click;
-        };
+        }; */
+        const btnLike = postElement.querySelector('.btnLike');
         btnLike.addEventListener('click', () => {
-          countClick();
-          saveLikes(post.id);
+          const like = [];
+          editLike(post.id, like);
+          // countClick();
+          // saveLikes(post.id);
           console.log(click);
         });
 
-        // postElement.appendChild(commentElement);
         allPost.appendChild(postElement);
       });
     });
@@ -277,10 +224,6 @@ export default () => {
     inputTextArea.value = '';
   });
   loadPostHome();
-  // btnDeletePost.addEventListener('click', (event) => {
-  //   event.preventDefault();
-  //   deletePost();
-  // });
 
   return sectionElem;
 };
