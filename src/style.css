@@ -2,6 +2,7 @@
     margin: 0px;
     padding: 0px;
     font-family: 'Poppins', sans-serif;
+    outline: none;
   } 
   
   body{
@@ -22,6 +23,9 @@
     border-radius: 10px;
     font-size: 15px;
 
+  }
+  .outline {
+    outline: none;
   }
   .change-login{
     display:none;
@@ -67,7 +71,9 @@
   .p-intro{
     margin: 10px;
   }
-
+ .uploader{
+   display:none;
+ }
 /*---------------------------------*/
 @media all and (min-width: 700px){
   .login, .form-register{

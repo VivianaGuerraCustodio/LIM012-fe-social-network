@@ -1,3 +1,6 @@
+/* eslint-disable no-shadow */
+/* eslint-disable func-names */
+/* eslint-disable no-console */
 /* eslint-disable import/no-cycle */
 import { signInOff, currentUser } from '../controller/firebase.js';
 import { changeView } from '../view-controler/router.js';
@@ -43,8 +46,11 @@ export default () => {
       </div>
     </div>    
     <div class="lower-create-post"> 
-      <div class="progress"> </div>
-      <input type="image" id="addImage" class= "addImg"  src="assets/agregarIng.png"> 
+    <input type="file"  id="addImg" accept ="image/*" class= " uploader addImg"> 
+  <label for= "addImg">
+  <img src="assets/agregarIng.png">
+  </label>
+  <div class="preview"> </div>
       <select name="options" class="selectPrivacy">
         <option value="public"  class="styleSelect">Público</option>
         <option value="private" class="styleSelect">Privado</option>
@@ -76,28 +82,20 @@ export default () => {
   });
 
   // STORAGE
-  // const btnAddImg = sectionElem.querySelector('.addImg');
-  // btnAddImg.addEventListener(('click'), (e) => {
-  //   const file = e.target.files;
-  //   const userPost = firebase.auth().currentUser;
-  //   addImgPost(file, userPost.uid);
-  // });
-
-  // const userCreatePost = sectionElem.querySelector('.createPost');
-  // const db = firebase.firestore();
-  // const usuariosDB = db.collection('usuarios');
-  // const userPostNew = firebase.auth().currentUser;
-  // if (userPostNew !== null) {
-  // usuariosDB.where('emailUser', '==', userPostNew.providerData[0].email)
-  // .get().then((onSnapshot) => {
-  //     let userList = '';
-  //     onSnapshot.forEach((doc) => {
-  //       userList += modelPost(doc.data().photoURL);
-  //     });
-  //     userCreatePost.innerHTML = userList;
-  //   });
-  // }
-  // realizar una publicacion
+  const btnAddImg = sectionElem.querySelector('.addImg');
+  btnAddImg.addEventListener(('change'), (e) => {
+    const inputFile = e.target.files[0];
+    const reader = new FileReader();
+    reader.onload = function (input) {
+      console.log(input);
+      localStorage.setItem('img', `${input.target.result}`);
+      console.log(localStorage.getItem('img'));
+    };
+    reader.readAsDataURL(inputFile);
+    const preview = sectionElem.querySelector('.preview');
+    localStorage.setItem('imgName', `${inputFile.name}`);
+    preview.innerHTML = `${inputFile.name}`;
+  });
 
   const btnNewPost = sectionElem.querySelector('#btnNewPublication');
   const inputTextArea = sectionElem.querySelector('#newPublication');
@@ -260,6 +258,10 @@ export default () => {
     });
   };
 
+
+  const imgPost = localStorage.getItem('img');
+  const nameImage = localStorage.getItem('imgName');
+
   btnNewPost.addEventListener('click', (event) => {
     event.preventDefault();
     const userLogueado = firebase.auth().currentUser;
@@ -269,18 +271,21 @@ export default () => {
     const textToPost = inputTextArea.value;
     const hours = new Date();
     const datetime = (`${hours.getFullYear()}${hours.getMonth() + 1}${hours.getDate()}${hours.getHours()}${hours.getMinutes()}${hours.getSeconds()}`);
-    savePost(user, email, photo, date, datetime, textToPost).then(() => {
-      if (userLogueado !== null) {
-        loadPostHome();
-      }
+    const imgRef = firebase.storage().ref(`postImg/${nameImage}`);
+    imgRef.putString(imgPost, 'data_url').then((snapshot) => {
+      console.log('archivo cargado');
+      return snapshot.ref.getDownloadURL();
+    }).then((url) => {
+      savePost(user, email, photo, date, datetime, textToPost, url).then(() => {
+        if (userLogueado !== null) {
+          loadPostHome();
+        }
+      });
+      inputTextArea.value = '';
     });
-    inputTextArea.value = '';
   });
-  loadPostHome();
-  // btnDeletePost.addEventListener('click', (event) => {
-  //   event.preventDefault();
-  //   deletePost();
-  // });
+  localStorage.removeItem('img');
 
+  loadPostHome();
   return sectionElem;
 };

@@ -4,7 +4,6 @@ coverage/
 node_modules/
 .yarn.lock
 package-lock.json
-firebase.json
 firebaseunit.json
 data.rules.json
 .firebaserc
