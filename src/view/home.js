@@ -1,4 +1,5 @@
 /* eslint-disable import/no-cycle */
+/* eslint-disable import/no-cycle */
 import { signInOff, currentUser } from '../controller/firebase.js';
 import { changeView } from '../view-controler/router.js';
 import {
@@ -175,7 +176,6 @@ export default () => {
         const btnNewComment = postElement.querySelector('.send-Comment');
         const inputComent = postElement.querySelector('.text-CommentPost');
         btnNewComment.addEventListener('click', () => {
-          console.log('clickeando');
           const userLogueado = firebase.auth().currentUser;
           const user = userLogueado.providerData[0].displayName;
           const email = userLogueado.providerData[0].email;
