@@ -1,4 +1,5 @@
 export const templatePost = (objPost) => {
+  const user = firebase.auth().currentUser;
   const divElement = document.createElement('div');
   divElement.className = 'posteo';
   divElement.innerHTML = `
@@ -30,8 +31,8 @@ export const templatePost = (objPost) => {
   <button class="hide" hidden id="btnCancel">✖️</button>
   <div class="reactions">
     <div class="countLikes">
-      <label class="count" >0</label>
-      <button type= "button" class ="btnLike"><img src="assets/like-solid-24.png">Me gusta</button>
+      <label class="counterLike" >${objPost.likes.length}</label>
+      <button type= "button" class ="btnLike ${(objPost.likes.indexOf(user.uid) === -1)}"><img src="assets/like-solid-24.png">Me gusta</button>
     </div>
     <button type= "button" class ="btnComment"><img src="assets/add comment.png">Comentar</button>
   </div>

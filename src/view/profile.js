@@ -4,7 +4,7 @@
 import { signInOff, currentUser } from '../controller/firebase.js';
 import { changeView } from '../view-controler/router.js';
 import {
-  savePost, deletePost, editPost, saveComment, deleteComment, editComment, saveLikes,
+  savePost, deletePost, editPost, saveComment, deleteComment, editComment, editLike,
 } from '../controller/firestore.js';
 import { modelProfile } from '../templates/templateProfile.js';
 import { templatePost } from '../templates/templatePost.js';
@@ -199,16 +199,27 @@ export default () => {
           });
 
           const btnLike = postElement.querySelector('.btnLike');
-          let click = 0;
-          const countClick = () => {
-            click += 1;
-            postElement.querySelector('.count').innerHTML = click;
-          };
           btnLike.addEventListener('click', () => {
-            countClick();
-            saveLikes(post.id);
-            console.log(click);
+            const user = firebase.auth().currentUser;
+            const result = post.likes.indexOf(user.uid);
+            if (result === -1) {
+              post.likes.push(user.uid);
+              editLike(post.id, post.likes).then(() => {
+                if (user !== null) {
+                  loadPostProfile();
+                }
+              });
+            } else {
+              post.likes.splice(result, 1);
+              editLike(post.id, post.likes).then(() => {
+                if (user !== null) {
+                  loadPostProfile();
+                }
+              });
+            }
+            console.log('click');
           });
+
           allPostProfile.appendChild(postElement);
         });
       });

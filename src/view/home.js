@@ -192,15 +192,28 @@ export default () => {
         let click = 0;
         const countClick = () => {
           click += 1;
-          postElement.querySelector('.count').innerHTML = click;
+          postElement.querySelector('.counterLike').innerHTML = click;
         }; */
         const btnLike = postElement.querySelector('.btnLike');
         btnLike.addEventListener('click', () => {
-          const like = [1];
-          editLike(post.id, like);
-          // countClick();
-          // saveLikes(post.id);
-          console.log('click like');
+          const user = firebase.auth().currentUser;
+          const result = post.likes.indexOf(user.uid);
+          if (result === -1) {
+            post.likes.push(user.uid);
+            editLike(post.id, post.likes).then(() => {
+              if (user !== null) {
+                loadPostHome();
+              }
+            });
+          } else {
+            post.likes.splice(result, 1);
+            editLike(post.id, post.likes).then(() => {
+              if (user !== null) {
+                loadPostHome();
+              }
+            });
+          }
+          console.log('click');
         });
 
         allPost.appendChild(postElement);
