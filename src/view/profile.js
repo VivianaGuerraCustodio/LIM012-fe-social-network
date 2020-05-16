@@ -41,7 +41,7 @@ export default () => {
       <p class="my-post"> °Mis Publicaciones </p>
       <section class="createPost">
         <div class="top-create-post"> 
-        <img src= "${currentUser().photoURL}" class = "user" >
+        <img src= "${currentUser.photoURL}" class = "user" >
           <div class="writePost">
               <textarea id="newPublication" class="textarea" rows="5" cols="50"></textarea>
           </div>
@@ -78,7 +78,7 @@ export default () => {
     changeView('#/profile');
   });
 
-  const userInfor = divElem.querySelector('.user-information');
+  const userInformation = divElem.querySelector('.user-information');
   const db = firebase.firestore();
   const f = new Date();
   const date = (`${f.getDate()}/${f.getMonth() + 1}/${f.getFullYear()}`);
@@ -86,11 +86,12 @@ export default () => {
   const userLogueado = firebase.auth().currentUser;
   if (userLogueado !== null) {
     usuariosDB.where('emailUser', '==', userLogueado.providerData[0].email).get().then((onSnapshot) => {
-      let photoList = '';
-      onSnapshot.forEach((doc) => {
-        photoList += modelProfile(doc.data().nameUser, doc.data().photoURL);
+      onSnapshot.forEach((objectprofile) => {
+        const user = objectprofile.data();
+        user.id = objectprofile.id;
+        const profileElement = modelProfile(user);
+        userInformation.appendChild(profileElement);
       });
-      userInfor.innerHTML = photoList;
     });
   }
 
