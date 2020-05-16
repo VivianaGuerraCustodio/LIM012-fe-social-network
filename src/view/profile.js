@@ -4,7 +4,7 @@
 import { signInOff, currentUser } from '../controller/firebase.js';
 import { changeView } from '../view-controler/router.js';
 import {
-  savePost, deletePost, editPost, saveComment, deleteComment, editComment, saveLikes,
+  savePost, deletePost, editPost, saveComment, deleteComment, editComment, editLike,
 } from '../controller/firestore.js';
 import { modelProfile } from '../templates/templateProfile.js';
 import { templatePost } from '../templates/templatePost.js';
@@ -41,7 +41,7 @@ export default () => {
       <p class="my-post"> °Mis Publicaciones </p>
       <section class="createPost">
         <div class="top-create-post"> 
-        <img src= "${currentUser.photoURL}" class = "user" >
+        <img src= "${currentUser().photoURL}" class = "user" >
           <div class="writePost">
               <textarea id="newPublication" class="textarea" rows="5" cols="50"></textarea>
           </div>
@@ -79,17 +79,22 @@ export default () => {
   });
 
   const userInformation = divElem.querySelector('.user-information');
+  userInformation.innerHTML = '';
   const db = firebase.firestore();
   const f = new Date();
   const date = (`${f.getDate()}/${f.getMonth() + 1}/${f.getFullYear()}`);
   const usuariosDB = db.collection('usuarios');
   const userLogueado = firebase.auth().currentUser;
   if (userLogueado !== null) {
-    usuariosDB.where('emailUser', '==', userLogueado.providerData[0].email).get().then((onSnapshot) => {
+    usuariosDB.where('emailUser', '==', userLogueado.providerData[0].email).onSnapshot((onSnapshot) => {
       onSnapshot.forEach((objectprofile) => {
         const user = objectprofile.data();
         user.id = objectprofile.id;
         const profileElement = modelProfile(user);
+        const btnEditProfile = profileElement.querySelector('.btn-Editar-Perfil');
+        btnEditProfile.addEventListener('click', () => {
+          console.log('click editar perfil');
+        });
         userInformation.appendChild(profileElement);
       });
     });
@@ -112,7 +117,7 @@ export default () => {
             querySnapshotComment.forEach((objComment) => {
               const comment = objComment.data();
               comment.id = objComment.id;
-              console.log(comment.id);
+              // console.log(comment.id);
               // comment.id es EL ID DEL COMMENT
               const comentElement = modelComment(comment);
               commentContainer.appendChild(comentElement);
@@ -200,16 +205,27 @@ export default () => {
           });
 
           const btnLike = postElement.querySelector('.btnLike');
-          let click = 0;
-          const countClick = () => {
-            click += 1;
-            postElement.querySelector('.count').innerHTML = click;
-          };
           btnLike.addEventListener('click', () => {
-            countClick();
-            saveLikes(post.id);
-            console.log(click);
+            const user = firebase.auth().currentUser;
+            const result = post.likes.indexOf(user.uid);
+            if (result === -1) {
+              post.likes.push(user.uid);
+              editLike(post.id, post.likes).then(() => {
+                if (user !== null) {
+                  loadPostProfile();
+                }
+              });
+            } else {
+              post.likes.splice(result, 1);
+              editLike(post.id, post.likes).then(() => {
+                if (user !== null) {
+                  loadPostProfile();
+                }
+              });
+            }
+            console.log('click');
           });
+
           allPostProfile.appendChild(postElement);
         });
       });

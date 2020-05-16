@@ -38,7 +38,7 @@ export default () => {
 <section class="post-Container">
   <section class="createPost">
     <div class="top-create-post"> 
-    <img src= "" class = "user" >
+    <img src= ${currentUser().photoURL} class = "user" >
       <div class="writePost">
           <textarea id="newPublication" class="textarea" rows="5" cols="50"></textarea>
       </div>
@@ -189,19 +189,27 @@ export default () => {
           });
         });
 
-        /*  const btnLike = postElement.querySelector('.btnLike');
-        let click = 0;
-        const countClick = () => {
-          click += 1;
-          postElement.querySelector('.count').innerHTML = click;
-        }; */
+
         const btnLike = postElement.querySelector('.btnLike');
         btnLike.addEventListener('click', () => {
-          const like = [1];
-          editLike(post.id, like);
-          // countClick();
-          // saveLikes(post.id);
-          console.log('click like');
+          const user = firebase.auth().currentUser;
+          const result = post.likes.indexOf(user.uid);
+          if (result === -1) {
+            post.likes.push(user.uid);
+            editLike(post.id, post.likes).then(() => {
+              if (user !== null) {
+                loadPostHome();
+              }
+            });
+          } else {
+            post.likes.splice(result, 1);
+            editLike(post.id, post.likes).then(() => {
+              if (user !== null) {
+                loadPostHome();
+              }
+            });
+          }
+          console.log('click');
         });
 
         allPost.appendChild(postElement);
