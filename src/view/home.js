@@ -188,12 +188,7 @@ export default () => {
           });
         });
 
-        /*  const btnLike = postElement.querySelector('.btnLike');
-        let click = 0;
-        const countClick = () => {
-          click += 1;
-          postElement.querySelector('.counterLike').innerHTML = click;
-        }; */
+
         const btnLike = postElement.querySelector('.btnLike');
         btnLike.addEventListener('click', () => {
           const user = firebase.auth().currentUser;

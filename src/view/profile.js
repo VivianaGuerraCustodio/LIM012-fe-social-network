@@ -78,19 +78,23 @@ export default () => {
     changeView('#/profile');
   });
 
-  const userInfor = divElem.querySelector('.user-information');
+  const userInformation = divElem.querySelector('.user-information');
+  userInformation.innerHTML = '';
   const db = firebase.firestore();
   const f = new Date();
   const date = (`${f.getDate()}/${f.getMonth() + 1}/${f.getFullYear()}`);
   const usuariosDB = db.collection('usuarios');
   const userLogueado = firebase.auth().currentUser;
   if (userLogueado !== null) {
-    usuariosDB.where('emailUser', '==', userLogueado.providerData[0].email).get().then((onSnapshot) => {
-      let photoList = '';
+    usuariosDB.where('emailUser', '==', userLogueado.providerData[0].email).onSnapshot((onSnapshot) => {
       onSnapshot.forEach((doc) => {
-        photoList += modelProfile(doc.data().nameUser, doc.data().photoURL);
+        const profileElement = modelProfile(doc.data().nameUser, doc.data().photoURL);
+        const btnEditProfile = profileElement.querySelector('.btn-Editar-Perfil');
+        btnEditProfile.addEventListener('click', () => {
+          console.log('click editar perfil');
+        });
+        userInformation.appendChild(profileElement);
       });
-      userInfor.innerHTML = photoList;
     });
   }
 
@@ -111,7 +115,7 @@ export default () => {
             querySnapshotComment.forEach((objComment) => {
               const comment = objComment.data();
               comment.id = objComment.id;
-              console.log(comment.id);
+              // console.log(comment.id);
               // comment.id es EL ID DEL COMMENT
               const comentElement = modelComment(comment);
               commentContainer.appendChild(comentElement);
