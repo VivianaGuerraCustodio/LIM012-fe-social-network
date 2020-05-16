@@ -54,7 +54,7 @@ export const deleteComment = id => firebase.firestore().collection('comments').d
 
 
 export const editLike = (id, likes) => firebase.firestore().collection('posts').doc(id).update({ likes });
-
+export const editProfile = (id, nameUser) => firebase.firestore().collection('usuarios').doc(id).update({ nameUser });
 /* export const saveLikes = (id) => {
   firebase.firestore().collection('likes').add({
     id,

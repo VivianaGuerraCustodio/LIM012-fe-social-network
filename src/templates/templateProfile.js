@@ -9,8 +9,10 @@ export const modelProfile = (objProfile) => {
 <img src ="${objProfile.photoURL}" class="img-user">;
 <div class="information-user">
     <div class="name">
-    <p> ${objProfile.nameUser}</p>
+    <p id="editProfile" contenteditable="false"> ${objProfile.nameUser}</p>
     <p> Prof. Educ. Inicial</p></div>
+    <button class="hide" hidden id="btnSaveProfile">💾</button>
+    <button class="hide" hidden id="btnCancelProfile">✖️</button>
     <button class="btn-Editar-Perfil">Editar Perfil</button>
 </div>
 </div>

@@ -4,7 +4,7 @@
 import { signInOff, currentUser } from '../controller/firebase.js';
 import { changeView } from '../view-controler/router.js';
 import {
-  savePost, deletePost, editPost, saveComment, deleteComment, editComment, editLike,
+  savePost, deletePost, editPost, saveComment, deleteComment, editComment, editLike, editProfile,
 } from '../controller/firestore.js';
 import { modelProfile } from '../templates/templateProfile.js';
 import { templatePost } from '../templates/templatePost.js';
@@ -77,29 +77,46 @@ export default () => {
   profile.addEventListener('click', () => {
     changeView('#/profile');
   });
-
-  const userInformation = divElem.querySelector('.user-information');
-  userInformation.innerHTML = '';
   const db = firebase.firestore();
   const f = new Date();
   const date = (`${f.getDate()}/${f.getMonth() + 1}/${f.getFullYear()}`);
   const usuariosDB = db.collection('usuarios');
   const userLogueado = firebase.auth().currentUser;
-  if (userLogueado !== null) {
-    usuariosDB.where('emailUser', '==', userLogueado.providerData[0].email).onSnapshot((onSnapshot) => {
-      onSnapshot.forEach((objectprofile) => {
-        const user = objectprofile.data();
-        user.id = objectprofile.id;
-        const profileElement = modelProfile(user);
-        const btnEditProfile = profileElement.querySelector('.btn-Editar-Perfil');
-        btnEditProfile.addEventListener('click', () => {
-          console.log('click editar perfil');
-        });
-        userInformation.appendChild(profileElement);
-      });
-    });
-  }
 
+  const loadInformationProfile = () => {
+    const userInformation = divElem.querySelector('.user-information');
+    userInformation.innerHTML = '';
+    if (userLogueado !== null) {
+      usuariosDB.where('emailUser', '==', userLogueado.providerData[0].email).onSnapshot((onSnapshot) => {
+        onSnapshot.forEach((objectprofile) => {
+          const user = objectprofile.data();
+          user.id = objectprofile.id;
+          const profileElement = modelProfile(user);
+          const btnEditProfile = profileElement.querySelector('.btn-Editar-Perfil');
+          const btnUpdateProfile = profileElement.querySelector('#btnSaveProfile');
+          const btnCancelProfile = profileElement.querySelector('#btnCancelProfile');
+          btnEditProfile.addEventListener('click', () => {
+            console.log('click editar perfil');
+            const editablePerfil = profileElement.querySelector('#editProfile');
+            editablePerfil.contentEditable = 'true';
+            btnUpdateProfile.hidden = false;
+            btnCancelProfile.hidden = false;
+          });
+          btnCancelProfile.addEventListener('click', () => {
+            loadInformationProfile();
+          });
+          btnUpdateProfile.addEventListener('click', () => {
+            console.log('UPDATE');
+            const userName = profileElement.querySelector('#editProfile').innerHTML;
+            editProfile(currentUser().email, userName).then(() => {
+              loadInformationProfile();
+            });
+          });
+          userInformation.appendChild(profileElement);
+        });
+      });
+    }
+  };
   const loadPostProfile = () => {
     const allPostProfile = divElem.querySelector('#allPost');
     allPostProfile.innerHTML = '';
@@ -231,6 +248,7 @@ export default () => {
       });
     }
   };
+
   const btnNewPost = divElem.querySelector('#btnNewPublication');
   const inputTextArea = divElem.querySelector('#newPublication');
 
@@ -250,5 +268,6 @@ export default () => {
     inputTextArea.value = '';
   });
   loadPostProfile();
+  loadInformationProfile();
   return divElem;
 };
