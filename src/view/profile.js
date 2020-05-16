@@ -87,8 +87,10 @@ export default () => {
   const userLogueado = firebase.auth().currentUser;
   if (userLogueado !== null) {
     usuariosDB.where('emailUser', '==', userLogueado.providerData[0].email).onSnapshot((onSnapshot) => {
-      onSnapshot.forEach((doc) => {
-        const profileElement = modelProfile(doc.data().nameUser, doc.data().photoURL);
+      onSnapshot.forEach((objectprofile) => {
+        const user = objectprofile.data();
+        user.id = objectprofile.id;
+        const profileElement = modelProfile(user);
         const btnEditProfile = profileElement.querySelector('.btn-Editar-Perfil');
         btnEditProfile.addEventListener('click', () => {
           console.log('click editar perfil');
