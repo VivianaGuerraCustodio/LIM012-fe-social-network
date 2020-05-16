@@ -1,4 +1,5 @@
 /* eslint-disable import/no-cycle */
+/* eslint-disable import/no-cycle */
 import { signInOff, currentUser } from '../controller/firebase.js';
 import { changeView } from '../view-controler/router.js';
 import {
@@ -37,7 +38,7 @@ export default () => {
 <section class="post-Container">
   <section class="createPost">
     <div class="top-create-post"> 
-    <img src= "${currentUser().photoURL}" class = "user" >
+    <img src= ${currentUser().photoURL} class = "user" >
       <div class="writePost">
           <textarea id="newPublication" class="textarea" rows="5" cols="50"></textarea>
       </div>
