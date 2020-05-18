@@ -21,7 +21,7 @@ export const getUser = (user) => {
     });
 };
 
-export const savePost = (user, email, photo, date, datetime, content) => {
+export const savePost = (user, email, photo, date, datetime, content, url) => {
   const firestore = firebase.firestore();
   return firestore.collection('posts').add({
     user,
@@ -31,6 +31,7 @@ export const savePost = (user, email, photo, date, datetime, content) => {
     datetime,
     content,
     likes: [],
+    url,
   });
 };
 export const editPost = (id, content) => firebase.firestore().collection('posts').doc(id).update({ content });
