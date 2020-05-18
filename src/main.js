@@ -9,7 +9,7 @@ const init = () => {
     authDomain: 'yachaywasiper.firebaseapp.com',
     // databaseURL: 'https://yachaywasiper.firebaseio.com',
     projectId: 'yachaywasiper',
-    // storageBucket: 'yachaywasiper.appspot.com',
+    storageBucket: 'yachaywasiper.appspot.com',
     messagingSenderId: '310386263852',
     appId: '1:310386263852:web:73a2899abadb931f214e89',
     measurementId: 'G-QTBC8WWL0Y',

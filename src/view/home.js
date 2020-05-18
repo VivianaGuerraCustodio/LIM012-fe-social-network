@@ -44,8 +44,8 @@ export default () => {
       </div>
     </div>    
     <div class="lower-create-post"> 
-      <div class="progress"> </div>
-      <input type="image" id="addImage" class= "addImg"  src="assets/agregarIng.png"> 
+      <progress value= "0" max= "100" id="uploader">0%</progress>
+      <input type="file" id="addImage" accept ="image/*" class= "addImg"> 
       <select name="options" class="selectPrivacy">
         <option value="public"  class="styleSelect">Público</option>
         <option value="private" class="styleSelect">Privado</option>
@@ -217,6 +217,29 @@ export default () => {
     });
   };
 
+  const btnAddImage = sectionElem.querySelector('#addImage');
+  const uploader = sectionElem.querySelector('#uploader');
+
+  btnAddImage.addEventListener('change', (e) => {
+    console.log('CLICK SUBIR IMAGEN', e.target.files[0]);
+    // Get file
+    const file = e.target.files[0];
+    // create a storage ref
+    const storageRef = firebase.storage().ref(`postImage/${currentUser().email}/${file.name}`);
+    // Upload file
+    const task = storageRef.put(file);
+    // Update progress bar
+    task.on('state_changed', (snapshot) => {
+      const percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      uploader.value = percentage;
+    }, () => {
+    }, () => {
+      task.snapshot.ref.getDownloadURL().then((downloadURL) => {
+        console.log('File available at', downloadURL);
+      });
+    });
+  });
+
   btnNewPost.addEventListener('click', (event) => {
     event.preventDefault();
     const userLogueado = firebase.auth().currentUser;
@@ -233,7 +256,16 @@ export default () => {
     });
     inputTextArea.value = '';
   });
+
   loadPostHome();
 
   return sectionElem;
 };
+
+/* <input type="file"  id="addImg" accept ="image/*" class= " uploader addImg">
+  <label for= "addImg">
+  <img src="assets/agregarIng.png">
+  </label>
+  <div class="preview"> </div> */
+// <input type="image" id="addImage"class= "addImg"  src="assets/agregarIng.png">
+// <div class="progress"> </div>

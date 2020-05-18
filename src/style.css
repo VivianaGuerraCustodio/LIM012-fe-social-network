@@ -185,8 +185,14 @@
     border-radius: 10px;
     text-decoration: none;
   }
+  #uploader{
+    -webkit-appearance: none;
+    appearance: none;
+    width: 50%;
+    margin-bottom: 10px;
+  }
   .addImg{
-    width: 8%;
+    /* width: 8%;*/ 
     height: 8%;
     margin: 0em 2.5em;
   }
@@ -230,7 +236,7 @@
     width: 90%;
   }
   .addImg{
-    width: 30px;
+    /* width: 30px;*/
     height: auto;
     margin: 0em 2em 0em 7em;
   }
