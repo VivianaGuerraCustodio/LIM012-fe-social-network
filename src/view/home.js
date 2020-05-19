@@ -45,7 +45,10 @@ export default () => {
     </div>    
     <div class="lower-create-post"> 
       <progress value= "0" max= "100" id="uploader">0%</progress>
-      <input type="file" id="addImage" accept ="image/*" class= "addImg"> 
+      <input type="file" id="addImage" accept ="image/*" src="assets/agregaring.png" class= "addImg"> 
+      <label for= "addImage">
+      <img src="assets/agregarIng.png">
+      </label>
       <select name="options" class="selectPrivacy">
         <option value="public"  class="styleSelect">Público</option>
         <option value="private" class="styleSelect">Privado</option>
