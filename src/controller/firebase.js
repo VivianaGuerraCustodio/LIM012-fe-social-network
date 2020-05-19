@@ -14,6 +14,7 @@ export const register = (email, password) => firebase.auth().createUserWithEmail
 export const logIn = (emailLogin, passwordLogin) => firebase.auth().signInWithEmailAndPassword(emailLogin, passwordLogin)
   .then(() => {
     if (logIn) {
+      getUser(emailLogin);
       changeView('#/home');
     }
   });
@@ -29,7 +30,6 @@ export const googleAuth = () => {
     saveUser(currentUser());
     if (googleAuth) {
       changeView('#/home');
-      getUser();
       // modelProfile();
     }
   }).catch();
