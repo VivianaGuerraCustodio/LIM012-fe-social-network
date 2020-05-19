@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-expressions */
 export const modelProfile = (objProfile) => {
   const divElement = document.createElement('div');
-  divElement.className = 'profileUser';
+  divElement.className = 'userProfile';
   divElement.innerHTML = `
   <div class="profile-container">
   <figure><img src="assets/portada5.jpg" class="img-portada"></figure>

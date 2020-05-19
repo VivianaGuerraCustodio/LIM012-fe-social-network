@@ -40,7 +40,7 @@ export const editPost = (id, content) => firebase.firestore().collection('posts'
 export const deletePost = id => firebase.firestore().collection('posts').doc(id).delete();
 
 
-export const saveComment = (postId, comment, user, email, photo, date, datetime) => {
+export const saveComment = (postId, comment, user, email, photo, date, datetime, useruid) => {
   const firestore = firebase.firestore();
   return firestore.collection('comments').add({
     postId,
@@ -50,6 +50,7 @@ export const saveComment = (postId, comment, user, email, photo, date, datetime)
     photo,
     date,
     datetime,
+    useruid,
   });
 };
 export const editComment = (id, comment) => firebase.firestore().collection('comments').doc(id).update({ comment });
