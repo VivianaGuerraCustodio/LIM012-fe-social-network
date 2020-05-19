@@ -21,7 +21,7 @@ export const getUser = (user) => {
     });
 };
 
-export const savePost = (user, email, photo, date, datetime, content, url) => {
+export const savePost = (user, email, photo, date, datetime, content, privacy, url, useruid) => {
   const firestore = firebase.firestore();
   return firestore.collection('posts').add({
     user,
@@ -30,8 +30,10 @@ export const savePost = (user, email, photo, date, datetime, content, url) => {
     date,
     datetime,
     content,
-    likes: [],
+    privacy,
     url,
+    useruid,
+    likes: [],
   });
 };
 export const editPost = (id, content) => firebase.firestore().collection('posts').doc(id).update({ content });
@@ -56,6 +58,8 @@ export const deleteComment = id => firebase.firestore().collection('comments').d
 
 export const editLike = (id, likes) => firebase.firestore().collection('posts').doc(id).update({ likes });
 export const editProfile = (id, nameUser) => firebase.firestore().collection('usuarios').doc(id).update({ nameUser });
+export const updatePrivacy = (id, status) => firebase.firestore().collection('posts').doc(id).update({ privacy: status });
+
 /* export const saveLikes = (id) => {
   firebase.firestore().collection('likes').add({
     id,

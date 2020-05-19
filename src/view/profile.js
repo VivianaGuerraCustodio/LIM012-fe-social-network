@@ -4,7 +4,8 @@
 import { signInOff, currentUser } from '../controller/firebase.js';
 import { changeView } from '../view-controler/router.js';
 import {
-  savePost, deletePost, editPost, saveComment, deleteComment, editComment, editLike, editProfile,
+  savePost, deletePost, editPost, saveComment, deleteComment, editComment, editLike,
+  editProfile, updatePrivacy,
 } from '../controller/firestore.js';
 import { modelProfile } from '../templates/templateProfile.js';
 import { templatePost } from '../templates/templatePost.js';
@@ -49,9 +50,9 @@ export default () => {
         <div class="lower-create-post"> 
         <progress value= "0" max= "100" id="uploader">0%</progress>
         <input type="file" id="addImage" accept ="image/*" class= "addImg"> 
-          <select name="options" class="selectPrivacy">
-            <option value="public"  class="styleSelect">Público</option>
-            <option value="private" class="styleSelect">Privado</option>
+          <select id="options" class="selectPrivacy">
+            <option value="0" selected class="styleSelect">Público</option>
+            <option value="1" class="styleSelect">Privado</option>
           </select>
           <button id="btnNewPublication" class="btnPost">Publicar</button>
         </div>
@@ -242,14 +243,20 @@ export default () => {
             }
             console.log('click');
           });
-
+          // Options
+          const selectPrivacy = postElement.querySelector('.selectPrivacy');
+          selectPrivacy.addEventListener('change', () => {
+            updatePrivacy(post.id, selectPrivacy.value).then(() => {
+              loadPostProfile();
+            });
+          });
           allPostProfile.appendChild(postElement);
         });
       });
     }
   };
 
-  let file = '';
+  let file;
   const btnAddImage = divElem.querySelector('#addImage');
   const uploader = divElem.querySelector('#uploader');
   btnAddImage.addEventListener('change', (e) => {
@@ -268,26 +275,36 @@ export default () => {
     const textToPost = inputTextArea.value;
     const hours = new Date();
     const datetime = (`${hours.getFullYear()}${hours.getMonth() + 1}${hours.getDate()}${hours.getHours()}${hours.getMinutes()}${hours.getSeconds()}`);
-    const storageRef = firebase.storage().ref(`postImage/${currentUser().email}/${file.name}`);
-    // Upload file
-    const task = storageRef.put(file);
-    // Update progress bar
-    let url = '';
-    task.on('state_changed', (snapshot) => {
-      const percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-      uploader.value = percentage;
-    }, () => {
-    }, () => {
-      task.snapshot.ref.getDownloadURL().then((downloadURL) => {
-        console.log('File available at', downloadURL);
-        url = downloadURL;
-        savePost(user, email, photo, date, datetime, textToPost, url).then(() => {
-          if (userLogueado !== null) {
-            loadPostProfile();
-          }
+    const selectOption = divElem.querySelector('#options');
+    const privacy = selectOption.value;
+    if (file) {
+      const storageRef = firebase.storage().ref(`postImage/${currentUser().email}/${file.name}`);
+      // Upload file
+      const task = storageRef.put(file);
+      // Update progress bar
+      let url = '';
+      task.on('state_changed', (snapshot) => {
+        const percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        uploader.value = percentage;
+      }, () => {
+      }, () => {
+        task.snapshot.ref.getDownloadURL().then((downloadURL) => {
+          console.log('File available at', downloadURL);
+          url = downloadURL;
+          savePost(user, email, photo, date, datetime, textToPost, privacy, url).then(() => {
+            if (userLogueado !== null) {
+              loadPostProfile();
+            }
+          });
         });
       });
-    });
+    } else {
+      savePost(user, email, photo, date, datetime, textToPost, privacy, null).then(() => {
+        if (userLogueado !== null) {
+          loadPostProfile();
+        }
+      });
+    }
     inputTextArea.value = '';
     btnAddImage.value = '';
   });

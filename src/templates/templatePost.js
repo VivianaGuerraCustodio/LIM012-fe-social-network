@@ -8,25 +8,25 @@ export const templatePost = (objPost) => {
       <img class = "user" src="${objPost.photo}">
       <div class= "dateUser">
         <p id="nameUser">Publicado por: ${objPost.user} | Prof. Educ. Inicial </p>
-        <select name="options" class="selectPrivacy">
-          <option value="public"  class="styleSelect">Público</option>
-          <option value="private" class="styleSelect">Privado</option>
+        <select name="options" class="selectPrivacy ${(user.uid === objPost.useruid) || 'hide'}">
+          <option value="0" ${(objPost.privacy === '1') || 'selected'} class="styleSelect">Público</option>
+          <option value="1" ${(objPost.privacy === '0') || 'selected'} class="styleSelect">Privado</option>
         </select>
         <time datetime="date">${objPost.date} </time>
       </div>
     </div>
-    <div class="option-edit-post">
-      <span>...</span>
-      <ul class="optionPost"> 
-        <li class="btnEdit">Editar</li>
-        <li class="btnRemove">Eliminar</li>
-      </ul>
-    </div>       
+    ${(user.uid === objPost.useruid) ? `<div class="option-edit-post">
+    <span>...</span>
+    <ul class="optionPost"> 
+      <li class="btnEdit">Editar</li>
+      <li class="btnRemove">Eliminar</li>
+    </ul>
+  </div>  ` : ''}      
   </div>
   <div class= "editPostOption">
   <div class="contentPost">
     <p contenteditable="false" id="editPost" >${objPost.content}</p>
-    <img src=${objPost.url}>
+    ${objPost.url ? `<img src="${objPost.url}">` : ''}
   </div>
   <button class="hide" hidden id="btnSave">💾</button>
   <button class="hide" hidden id="btnCancel">✖️</button>
