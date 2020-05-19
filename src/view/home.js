@@ -265,6 +265,7 @@ export default () => {
       });
     });
     inputTextArea.value = '';
+    btnAddImage.value = '';
   });
 
   loadPostHome();

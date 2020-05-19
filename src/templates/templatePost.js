@@ -26,7 +26,7 @@ export const templatePost = (objPost) => {
   <div class= "editPostOption">
   <div class="contentPost">
     <p contenteditable="false" id="editPost" >${objPost.content}</p>
-    <img src=${objPost.url}>
+    <img class="updateImgPost" src=${objPost.url}>
   </div>
   <button class="hide" hidden id="btnSave">💾</button>
   <button class="hide" hidden id="btnCancel">✖️</button>
