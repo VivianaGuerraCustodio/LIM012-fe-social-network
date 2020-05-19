@@ -4,7 +4,7 @@ export const modelComment = (Obj) => {
   divElement.className = 'comentario';
   divElement.innerHTML = `
 <div class="new-Commentary">
-  <img src="${Obj.photo}" class = "userComentImg" > 
+${Obj.photo ? `<img class = "userComentImg" src="${Obj.photo}" > ` : '<img class="userComentImg" src="assets/user.png">'}
   <div class="boxComment">  
     <div class= "dataCommentUser">
       <div class= "headerComment">
