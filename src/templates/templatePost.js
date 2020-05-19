@@ -5,7 +5,7 @@ export const templatePost = (objPost) => {
   divElement.innerHTML = `
   <div class="postHeader">
     <div class="user-info">
-    ${objPost.photo ? `<img class = "user" src="${objPost.photo}"> ` : '<img src="assets/user.png">'}
+    ${objPost.photo ? `<img class = "user" src="${objPost.photo}"> ` : '<img class = "user" src="assets/user.png">'}
       <div class= "dateUser">
         <p id="nameUser">Publicado por: ${objPost.user} | Prof. Educ. Inicial </p>
         <select name="options" class="selectPrivacy ${(user.uid === objPost.useruid) || 'hide'}">
@@ -26,7 +26,7 @@ export const templatePost = (objPost) => {
   <div class= "editPostOption">
   <div class="contentPost">
     <p contenteditable="false" id="editPost" >${objPost.content}</p>
-    ${objPost.url ? `<img src="${objPost.url}">` : ''}
+    ${objPost.url ? `<img id="photoPost" src="${objPost.url}">` : ''}
   </div>
   <button class="hide" hidden id="btnSave">💾</button>
   <button class="hide" hidden id="btnCancel">✖️</button>

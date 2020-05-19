@@ -145,7 +145,7 @@
     background: #F1F2F5;
   }
   .homeContainer{
-    background: #f6eeee;;
+    background: #f6eeee;
     width: 100%;
     margin: auto;
     display: flex;
@@ -338,11 +338,14 @@
 
   .contentPost{
     border: solid 2px #BAB7B7;
-    width: 75%;
+    width: 78%;
     margin: 1em 1em 1em 1.3em;
     padding: 1em;
     border-radius: 10px;
   }
+ #photoPost{
+  width: 95%;
+ }
 
  .updateImgPost{
     width: 90%;
@@ -398,6 +401,9 @@
     width: 35%;
     align-items: center;
   }
+  #photoPost{
+    width: 70%;
+   }
 }
 
 
