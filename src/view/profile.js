@@ -120,6 +120,7 @@ export default () => {
   };
   const loadPostProfile = () => {
     const allPostProfile = divElem.querySelector('#allPost');
+    const useruid = userLogueado.uid;
     allPostProfile.innerHTML = '';
     if (userLogueado !== null) {
       const postDB = db.collection('posts');
@@ -176,24 +177,24 @@ export default () => {
           });
           postElement.appendChild(commentContainer);
 
-
-          const btnDelete = postElement.querySelector('.btnRemove');
-          btnDelete.addEventListener('click', () => {
-            deletePost(post.id).then(() => {
-              loadPostProfile();
+          if (post.useruid === useruid) {
+            const btnDelete = postElement.querySelector('.btnRemove');
+            btnDelete.addEventListener('click', () => {
+              deletePost(post.id).then(() => {
+                loadPostProfile();
+              });
             });
-          });
 
-          const btnEdit = postElement.querySelector('.btnEdit');
-          const btnSave = postElement.querySelector('#btnSave');
-          const btnCancel = postElement.querySelector('#btnCancel');
-          btnEdit.addEventListener('click', () => {
-            const editable = postElement.querySelector('#editPost');
-            editable.contentEditable = 'true';
-            btnSave.hidden = false;
-            btnCancel.hidden = false;
-          });
-
+            const btnEdit = postElement.querySelector('.btnEdit');
+            const btnSave = postElement.querySelector('#btnSave');
+            const btnCancel = postElement.querySelector('#btnCancel');
+            btnEdit.addEventListener('click', () => {
+              const editable = postElement.querySelector('#editPost');
+              editable.contentEditable = 'true';
+              btnSave.hidden = false;
+              btnCancel.hidden = false;
+            });
+          }
           const btnUpdatePost = postElement.querySelector('#btnSave');
           btnUpdatePost.addEventListener('click', () => {
             const prueba = postElement.querySelector('#editPost').innerHTML;
@@ -270,6 +271,7 @@ export default () => {
   btnNewPost.addEventListener('click', (event) => {
     event.preventDefault();
     const user = userLogueado.providerData[0].displayName;
+    const useruid = userLogueado.uid;
     const email = userLogueado.providerData[0].email;
     const photo = userLogueado.providerData[0].photoURL;
     const textToPost = inputTextArea.value;
@@ -291,7 +293,8 @@ export default () => {
         task.snapshot.ref.getDownloadURL().then((downloadURL) => {
           console.log('File available at', downloadURL);
           url = downloadURL;
-          savePost(user, email, photo, date, datetime, textToPost, privacy, url).then(() => {
+          savePost(user, email, photo, date, datetime, textToPost,
+            privacy, url, useruid).then(() => {
             if (userLogueado !== null) {
               loadPostProfile();
             }
@@ -299,7 +302,7 @@ export default () => {
         });
       });
     } else {
-      savePost(user, email, photo, date, datetime, textToPost, privacy, null).then(() => {
+      savePost(user, email, photo, date, datetime, textToPost, privacy, null, useruid).then(() => {
         if (userLogueado !== null) {
           loadPostProfile();
         }
