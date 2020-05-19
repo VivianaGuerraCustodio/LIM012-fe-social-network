@@ -216,16 +216,15 @@ export default () => {
       });
     });
   };
-
+  let file = '';
   const btnAddImage = sectionElem.querySelector('#addImage');
   const uploader = sectionElem.querySelector('#uploader');
-
   btnAddImage.addEventListener('change', (e) => {
     console.log('CLICK SUBIR IMAGEN', e.target.files[0]);
     // Get file
-    const file = e.target.files[0];
+    file = e.target.files[0];
     // create a storage ref
-    const storageRef = firebase.storage().ref(`postImage/${currentUser().email}/${file.name}`);
+    /* const storageRef = firebase.storage().ref(`postImage/${currentUser().email}/${file.name}`);
     // Upload file
     const task = storageRef.put(file);
     // Update progress bar
@@ -237,7 +236,7 @@ export default () => {
       task.snapshot.ref.getDownloadURL().then((downloadURL) => {
         console.log('File available at', downloadURL);
       });
-    });
+    }); */
   });
 
   btnNewPost.addEventListener('click', (event) => {
@@ -249,10 +248,25 @@ export default () => {
     const textToPost = inputTextArea.value;
     const hours = new Date();
     const datetime = (`${hours.getFullYear()}${hours.getMonth() + 1}${hours.getDate()}${hours.getHours()}${hours.getMinutes()}${hours.getSeconds()}`);
-    savePost(user, email, photo, date, datetime, textToPost).then(() => {
-      if (userLogueado !== null) {
-        loadPostHome();
-      }
+    const storageRef = firebase.storage().ref(`postImage/${currentUser().email}/${file.name}`);
+    // Upload file
+    const task = storageRef.put(file);
+    // Update progress bar
+    let url = '';
+    task.on('state_changed', (snapshot) => {
+      const percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      uploader.value = percentage;
+    }, () => {
+    }, () => {
+      task.snapshot.ref.getDownloadURL().then((downloadURL) => {
+        console.log('File available at', downloadURL);
+        url = downloadURL;
+        savePost(user, email, photo, date, datetime, textToPost, url).then(() => {
+          if (userLogueado !== null) {
+            loadPostHome();
+          }
+        });
+      });
     });
     inputTextArea.value = '';
   });

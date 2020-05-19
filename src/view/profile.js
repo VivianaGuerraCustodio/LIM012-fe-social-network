@@ -47,8 +47,8 @@ export default () => {
           </div>
         </div>    
         <div class="lower-create-post"> 
-          <div class="progress"> </div>
-          <input type="image" id="addImage" class= "addImg"  src="assets/agregarIng.png"> 
+        <progress value= "0" max= "100" id="uploader">0%</progress>
+        <input type="file" id="addImage" accept ="image/*" class= "addImg"> 
           <select name="options" class="selectPrivacy">
             <option value="public"  class="styleSelect">Público</option>
             <option value="private" class="styleSelect">Privado</option>
@@ -249,6 +249,14 @@ export default () => {
     }
   };
 
+  let file = '';
+  const btnAddImage = divElem.querySelector('#addImage');
+  const uploader = divElem.querySelector('#uploader');
+  btnAddImage.addEventListener('change', (e) => {
+    console.log('CLICK SUBIR IMAGEN', e.target.files[0]);
+    // Get file
+    file = e.target.files[0];
+  });
   const btnNewPost = divElem.querySelector('#btnNewPublication');
   const inputTextArea = divElem.querySelector('#newPublication');
 
@@ -260,10 +268,25 @@ export default () => {
     const textToPost = inputTextArea.value;
     const hours = new Date();
     const datetime = (`${hours.getFullYear()}${hours.getMonth() + 1}${hours.getDate()}${hours.getHours()}${hours.getMinutes()}${hours.getSeconds()}`);
-    savePost(user, email, photo, date, datetime, textToPost).then(() => {
-      if (userLogueado !== null) {
-        loadPostProfile();
-      }
+    const storageRef = firebase.storage().ref(`postImage/${currentUser().email}/${file.name}`);
+    // Upload file
+    const task = storageRef.put(file);
+    // Update progress bar
+    let url = '';
+    task.on('state_changed', (snapshot) => {
+      const percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      uploader.value = percentage;
+    }, () => {
+    }, () => {
+      task.snapshot.ref.getDownloadURL().then((downloadURL) => {
+        console.log('File available at', downloadURL);
+        url = downloadURL;
+        savePost(user, email, photo, date, datetime, textToPost, url).then(() => {
+          if (userLogueado !== null) {
+            loadPostProfile();
+          }
+        });
+      });
     });
     inputTextArea.value = '';
   });
