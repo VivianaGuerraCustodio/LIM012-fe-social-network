@@ -113,25 +113,26 @@ export default () => {
               const comentElement = modelComment(comment);
               commentContainer.appendChild(comentElement);
 
-              const btnDeleteComment = comentElement.querySelector('.btnRemoveComment');
-              btnDeleteComment.addEventListener('click', () => {
-                console.log('clickeando eliminar');
-                deleteComment(comment.id).then(() => {
-                  loadPostHome();
+              if (comment.useruid === useruid) {
+                const btnDeleteComment = comentElement.querySelector('.btnRemoveComment');
+                btnDeleteComment.addEventListener('click', () => {
+                  console.log('clickeando eliminar');
+                  deleteComment(comment.id).then(() => {
+                    loadPostHome();
+                  });
                 });
-              });
 
-              const btnEditComment = comentElement.querySelector('.btnEditComment');
-              const btnSaveComment = comentElement.querySelector('#btnSaveComment');
-              const btnCancelComment = comentElement.querySelector('#btnCancelComment');
-              btnEditComment.addEventListener('click', () => {
-                console.log('clickeando editar');
-                const editableComment = comentElement.querySelector('#editComment');
-                editableComment.contentEditable = 'true';
-                btnSaveComment.hidden = false;
-                btnCancelComment.hidden = false;
-              });
-
+                const btnEditComment = comentElement.querySelector('.btnEditComment');
+                const btnSaveComment = comentElement.querySelector('#btnSaveComment');
+                const btnCancelComment = comentElement.querySelector('#btnCancelComment');
+                btnEditComment.addEventListener('click', () => {
+                  console.log('clickeando editar');
+                  const editableComment = comentElement.querySelector('#editComment');
+                  editableComment.contentEditable = 'true';
+                  btnSaveComment.hidden = false;
+                  btnCancelComment.hidden = false;
+                });
+              }
               const btnCancelEditComment = comentElement.querySelector('#btnCancelComment');
               btnCancelEditComment.addEventListener('click', () => {
                 loadPostHome();
@@ -169,8 +170,8 @@ export default () => {
           }
           const btnUpdatePost = postElement.querySelector('#btnSave');
           btnUpdatePost.addEventListener('click', () => {
-            const prueba = postElement.querySelector('#editPost').innerHTML;
-            editPost(post.id, prueba).then(() => {
+            const update = postElement.querySelector('#editPost').innerHTML;
+            editPost(post.id, update).then(() => {
               loadPostHome();
             });
           });
@@ -188,7 +189,8 @@ export default () => {
             const photo = userLogueado.providerData[0].photoURL;
             const hours = new Date();
             const datetime = (`${hours.getFullYear()}${hours.getMonth() + 1}${hours.getDate()}${hours.getHours()}${hours.getMinutes()}${hours.getSeconds()}`);
-            saveComment(post.id, inputComent.value, user, email, photo, date, datetime).then(() => {
+            saveComment(post.id, inputComent.value, user, email, photo, date,
+              datetime, useruid).then(() => {
               if (userLogueado !== null) {
                 loadPostHome();
               }
