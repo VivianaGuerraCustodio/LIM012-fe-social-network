@@ -291,11 +291,3 @@ export default () => {
 
   return sectionElem;
 };
-
-/* <input type="file"  id="addImg" accept ="image/*" class= " uploader addImg">
-  <label for= "addImg">
-  <img src="assets/agregarIng.png">
-  </label>
-  <div class="preview"> </div> */
-// <input type="image" id="addImage"class= "addImg"  src="assets/agregarIng.png">
-// <div class="progress"> </div>
