@@ -26,7 +26,6 @@ export const logIn = (emailLogin, passwordLogin) => firebase.auth().signInWithEm
   });
 
 
-
 export const signInOff = () => firebase.auth().signOut().then().catch();
 
 export const googleAuth = () => {
