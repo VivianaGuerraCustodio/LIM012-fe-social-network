@@ -46,8 +46,11 @@ export default () => {
     <div class="lower-create-post"> 
       <progress value= "0" max= "100" id="uploader">0%</progress>
       <input type="file" id="addImage" accept ="image/*" class= "addImg"> 
+      <label for= "addImage">
+      <img src="assets/agregarIng.png">
+      </label>
       <select id="options" class="selectPrivacy">
-        <option value="0" selected class="styleSelect">Público</option>
+        <option value="0" selected  class="styleSelect">Público</option>
         <option value="1" class="styleSelect">Privado</option>
       </select>
       <button id="btnNewPublication" class="btnPost">Publicar</button>
@@ -235,20 +238,16 @@ export default () => {
     // Get file
     file = e.target.files[0];
     // create a storage ref
-    /* const storageRef = firebase.storage().ref(`postImage/${currentUser().email}/${file.name}`);
-    // Upload file
-    const task = storageRef.put(file);
-    // Update progress bar
-    task.on('state_changed', (snapshot) => {
-      const percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-      uploader.value = percentage;
-    }, () => {
-    }, () => {
-      task.snapshot.ref.getDownloadURL().then((downloadURL) => {
-        console.log('File available at', downloadURL);
-      });
-    }); */
   });
+  // const mostrarImg = () => {
+  //   storageRef.on('change', (e) => {
+  //     const file = e.target.files[0];
+  //     const user = firebase.auth().currentUser();
+  //     const post = loadPostHome();
+  //     post.subirImagenPost(file, user.email);
+  //     mostrarImg();
+  //   });
+  //   mostrarImg();
 
   btnNewPost.addEventListener('click', (event) => {
     event.preventDefault();
