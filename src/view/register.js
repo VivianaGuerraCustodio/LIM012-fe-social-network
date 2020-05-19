@@ -1,5 +1,6 @@
 /* eslint-disable import/no-cycle */
 import { register } from '../controller/firebase.js';
+import { saveUser } from '../controller/firestore';
 
 export default () => {
   const viewRegister = `<img class="imageDetail" src="assets/vista1.jpg">
@@ -29,6 +30,7 @@ export default () => {
     const password = divElem.querySelector('.newPassword').value;
     register(email, password).then(() => {
       if (register) {
+        saveUser(email);
         login.style.display = 'block';
       }
     }).catch((error) => {

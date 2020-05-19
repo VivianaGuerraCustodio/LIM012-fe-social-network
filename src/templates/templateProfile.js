@@ -3,11 +3,11 @@ export const modelProfile = (objProfile) => {
   const divElement = document.createElement('div');
   divElement.className = 'profileUser';
   divElement.innerHTML = `
-<div class="profile-container">
+  <div class="profile-container">
   <figure><img src="assets/portada5.jpg" class="img-portada"></figure>
   </div>
   <div class="logged-user-data">
-    <img src ="${objProfile.photoURL}" class="img-user">;
+  ${objProfile.photoURL ? `<img src="${objProfile.photoURL}" class="img-user"> ` : '<img src="assets/user.png">'}
     <div class="information-user">
         <div class="name">
         <p id="editProfile" contenteditable="false"> ${objProfile.nameUser}</p>

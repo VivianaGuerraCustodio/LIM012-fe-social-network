@@ -5,7 +5,7 @@ export const templatePost = (objPost) => {
   divElement.innerHTML = `
   <div class="postHeader">
     <div class="user-info">
-      <img class = "user" src="${objPost.photo}">
+    ${objPost.photo ? `<img class = "user" src="${objPost.photo}"> ` : '<img src="assets/user.png">'}
       <div class= "dateUser">
         <p id="nameUser">Publicado por: ${objPost.user} | Prof. Educ. Inicial </p>
         <select name="options" class="selectPrivacy ${(user.uid === objPost.useruid) || 'hide'}">
