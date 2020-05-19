@@ -3,7 +3,7 @@
 
 import { changeView } from '../view-controler/router.js';
 import { saveUser, getUser } from './firestore.js';
-import { modelProfile } from '../templates/templateProfile.js';
+// import { modelProfile } from '../templates/templateProfile.js';
 
 // import home from '../view/home.js';
 
@@ -30,7 +30,7 @@ export const googleAuth = () => {
     if (googleAuth) {
       changeView('#/home');
       getUser();
-      modelProfile();
+      // modelProfile();
     }
   }).catch();
   return provider;

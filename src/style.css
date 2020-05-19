@@ -82,10 +82,10 @@
   }
   .imageDetail{
     display: block;
-    width: 45%;
+    width: 40%;
     height: 50%;
     margin: 10px;
-    padding: 3% 2% 3% 5%;
+    padding: 3% 8%;
   }
   .logIn {
     width: 30%;
@@ -151,7 +151,7 @@
     background: #F1F2F5;
   }
   .homeContainer{
-    background: #ffffff;
+    background: #f6eeee;;
     width: 100%;
     margin: auto;
     display: flex;
@@ -165,6 +165,7 @@
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
+    background: #f9f9f9;
   }
   .post-done{
     margin: 10px 0px;
@@ -173,7 +174,7 @@
     flex-wrap: nowrap;
   }
 
-  .top-create-post, .lower-create-post{
+  .top-create-post{
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -190,11 +191,27 @@
     padding: 1.8em;
     border-radius: 10px;
     text-decoration: none;
+    background: #f9f9f9;
+  }
+  .lower-create-post{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 5px;
+  }
+  #uploader{
+    -webkit-appearance: none;
+    appearance: none;
+    width: 50%;
+    margin-bottom: 10px;
   }
   .addImg{
-    width: 8%;
+    /* width: 8%; */
     height: 8%;
-    margin: 0em 2.5em;
+    margin: 0em 1em 1em 1em;
+    display: none;
   }
   .user {
     width: 20%;
@@ -236,7 +253,7 @@
     width: 90%;
   }
   .addImg{
-    width: 30px;
+    /* width: 30px;*/
     height: auto;
     margin: 0em 2em 0em 7em;
   }
@@ -249,12 +266,16 @@
   .textarea{
     width: 95%;
   }
-}
+  #uploader {
+    width: 30%;
 
+}
+}
 /* -------------------publicaciones ----------------------------------------------------------------------- */
   .posteo{
     border: solid 1px rgb(145, 144, 144);
-    margin: 0px 0px 10px 0px;
+    margin: 0px 0px 20px 0px;
+    background: #f9f9f9;
   }
   .postHeader{
     display: flex;
@@ -263,12 +284,12 @@
     justify-content: space-between;
     align-items: center;
     position: relative;
-    background: #EB8763;
+    background: #EB7C6A;
     /* background: rgb(236, 120, 78); */
 
   }
   select{
-    background: #EB8763;
+    background: #EB7C6A;
     outline: none;  
 
   }
@@ -287,7 +308,7 @@
     font-size: 25px;
     margin-bottom: 15px;
     margin-left: 0;
-    padding-left: 50px;
+    /* padding-left: 50px; */
   }
 
   .optionPost{ 
@@ -328,6 +349,10 @@
     padding: 1em;
     border-radius: 10px;
   }
+
+ .updateImgPost{
+    width: 90%;
+  }
   .hide{
     left: 20%;
   }
@@ -347,7 +372,7 @@
   }
   .btnLike, .btnComment{
     border: none;
-    background: #ffffff;
+    background: #f9f9f9;
     cursor: pointer;
     text-decoration: none;
     font-size: 12px;
@@ -375,6 +400,10 @@
   .contentPost{
     width: 89%;
   }
+  .updateImgPost{
+    width: 35%;
+    align-items: center;
+  }
 }
 
 
@@ -394,6 +423,7 @@
 .main-content{
   display: flex;
   flex-direction: column;
+  background:  #f6eeee;
 }
 
 .user-information{
@@ -402,6 +432,7 @@ margin: 1px ;
 border: solid 2px rgb(145, 144, 144);
 padding-bottom: 5px;
 margin-bottom: 5px;
+background: #f9f9f9;
 
 }
 .profile-container{
@@ -410,7 +441,7 @@ margin-bottom: 5px;
 }
 
 .img-portada{
-  width: 63%;
+  width: 67%;
 }
 
 figure{
@@ -464,6 +495,7 @@ figure{
 .my-post{
   border: solid 2px rgb(145, 144, 144);
   margin-bottom: 5px;
+  background: #f9f9f9;
 }
 /*---------------------------------Estilos publcacion perfil------------------------------*/
 .user-post{
@@ -478,13 +510,16 @@ figure{
   justify-content: space-around;
   align-items: center;
 }
-.text-Comment{
-  width: 80%;
-  margin: 0.5em;
+.text-CommentPost{
+  width: 84%;
+  margin: 1em 0em 0.5em 0.5em;
   padding: 1%;
   border-radius: 10px;
   text-decoration: none;
   background: #dedede;
+}
+.send-Comment{
+  margin-bottom: 8px;
 }
 .nameCommentary{
   align-items: center;
@@ -518,7 +553,7 @@ figure{
     left: 50px;
    margin-top: 0px;
   }
-  .text-Comment{
+  .text-CommentPost{
     width: 90%;
   }
 
@@ -537,17 +572,49 @@ figure{
  .userComentImg{
   width: 15%;
   height: 20%;
-  margin: 5px;
+  margin: 8px;
   border-radius: 110px;
   border: solid 2px #BAB7B7;
 }
+.dataCommentUser{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#nameUserC{
+  font-size: 12px;
+  font-weight: bold;
+  margin: 5px 0px 0px 5px;
+  width: max-content;
+}
+.text-Comment{
+  width: 74%;
+  margin: 0em 0em 0.5em 0.5em;
+  padding: 1%;
+  border-radius: 10px;
+  text-decoration: none;
+  background: #dedede;
+}
+
+.boxComment{
+  width: 100%;
+}
+
+.headerComment{
+  display: flex;
+}
 
 
-/*.nameUser{
-
-}  .date{
+@media all and (min-width: 700px){
+  .userComentImg{
+    width: 7%;
+  }
+  .text-Comment {
+    width: 90%;
+    margin: 0em 0em 0.5em 0.5em;
+}
 
 }
-p{
-
-} */
