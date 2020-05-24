@@ -1,6 +1,5 @@
 /* eslint-disable import/no-cycle */
 import { register } from '../controller/firebase.js';
-// import { saveUser } from '../controller/firestore.js';
 
 export default () => {
   const viewRegister = `<img class="imageDetail" src="assets/vista1.jpg">

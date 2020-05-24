@@ -16,7 +16,7 @@ export const register = (email, password) => firebase.auth().createUserWithEmail
     saveUser((currentUser(email)));
   }
 });
-
+// eslint-disable-next-line max-len
 export const logIn = (emailLogin, passwordLogin) => firebase.auth().signInWithEmailAndPassword(emailLogin, passwordLogin)
   .then(() => {
     if (logIn) {

@@ -1,7 +1,7 @@
 export const templatePost = (objPost) => {
   const user = firebase.auth().currentUser;
   const divElement = document.createElement('div');
-  divElement.className = 'posteo';
+  divElement.className = 'userPost';
   divElement.innerHTML = `
   <div class="postHeader">
     <div class="user-info">
@@ -15,13 +15,14 @@ export const templatePost = (objPost) => {
         <time datetime="date">${objPost.date} </time>
       </div>
     </div>
-    ${(user.uid === objPost.useruid) ? `<div class="option-edit-post">
-    <span>...</span>
-    <ul class="optionPost"> 
-      <li class="btnEdit">Editar</li>
-      <li class="btnRemove">Eliminar</li>
-    </ul>
-  </div>  ` : ''}      
+    ${(user.uid === objPost.useruid) ? `
+    <div class="option-edit-post">
+      <span>...</span>
+        <ul class="optionPost"> 
+          <li class="btnEdit">Editar</li>
+          <li class="btnRemove">Eliminar</li>
+        </ul>
+    </div>  ` : ''}      
   </div>
   <div class= "editPostOption">
   <div class="contentPost">
