@@ -67,3 +67,14 @@ export const updatePrivacy = (id, status) => firebase.firestore().collection('po
     count: '01',
   });
 }; */
+export const loadPostHome = (callback) => {
+  return firebase.firestore().collection('posts').where('privacy', '==', '0')
+    .orderBy('orderDate', 'desc')
+    .onSnapshot((querySanpshot) => {
+      const post = [];
+      querySanpshot.forEach((doc) => {
+        post.push({ id: doc.id, ...doc.data() });
+      });
+      callback(post);
+    });
+};
