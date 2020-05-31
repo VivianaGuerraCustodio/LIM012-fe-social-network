@@ -259,7 +259,6 @@
   }
   .user {
     width: 10%;
-    height: 8%;
     margin: 15px;
 
   }
@@ -457,9 +456,8 @@ figure{
 }
 .logged-user-data{
   display: flex;
-  align-items: center;
   justify-content: center;
-  font-size: 12px;
+  text-align: center;
 }
 .img-user{
   width: 65px;
@@ -482,6 +480,7 @@ figure{
 .btn-Editar-Perfil{
   background: #DA4545;
   margin: 5px;
+  margin-top: 10px;
   padding: 3px;
   width: 80%;
   cursor: pointer;
@@ -516,23 +515,21 @@ figure{
   justify-content: space-around;
   align-items: center;
 }
-.text-CommentPost{
-  width: 84%;
-  margin: 1em 0em 0.5em 0.5em;
+.text-CommentPost {
+  width: 75%;
+  margin: 1em 0em 1em 1em;
   padding: 1%;
   border-radius: 10px;
   text-decoration: none;
   background: #dedede;
 }
 .send-Comment{
-  margin-bottom: 8px;
+  padding-bottom: 14px;
+
 }
 .nameCommentary{
   align-items: center;
   margin-top: 6px;
-}
-.sendComment{
-  margin-bottom: 10px;
 }
 
 /*-----------------------------------------------*/
@@ -554,13 +551,17 @@ figure{
     width: 90%;
     margin: 0.5% 3% 0% 2%;
   }
+  .img-user {
 
-  .img-user{
     left: 50px;
-   margin-top: 0px;
+    margin-top: 2%;
   }
   .text-CommentPost{
     width: 90%;
+  }
+  .send-Comment{
+    padding-top: 23px;
+    padding-bottom: 23px;
   }
 
 }

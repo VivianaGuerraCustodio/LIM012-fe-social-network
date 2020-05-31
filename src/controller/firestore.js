@@ -8,17 +8,6 @@ export const saveUser = (user) => {
   });
 };
 
-
-/* export const getUser = (user) => {
-  // console.log(user);
-  const db = firebase.firestore();
-  db.collection('usuarios')
-    .onSnapshot((querySnapshot) => {
-      querySnapshot.forEach(() => {
-        // console.log('Current data: ', usuarios.data());
-      });
-    });
-}; */
 export const getUser = idEmail => firebase.firestore().collection('users').doc(idEmail);
 
 export const savePost = (user, email, photo, date, datetime, content, privacy, url, useruid) => {
