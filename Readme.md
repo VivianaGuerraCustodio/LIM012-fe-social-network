@@ -37,10 +37,11 @@ Los usuarios podrán escribir, leer, actualizar y eliminar datos de las publicac
 - Test de usabilidad completado (directamente al usuario objetivo).
 
 ## Prototipo versión Mobile
-![](https://github.com/Lourdes0896/LIM012-fe-social-network/blob/ludevelop/src/assets/prototipo%20H1-MOBILE.png)
+![prototipo H1-MOBILE](https://user-images.githubusercontent.com/60890508/88619223-a3b1d580-d060-11ea-8f9b-06511cf14bb3.png)
 
 ## Prototipo versión Desktop
-![](https://github.com/Lourdes0896/LIM012-fe-social-network/blob/ludevelop/src/assets/prototipo%20H1-DESKTOP.png)
+![prototipo H1-DESKTOP](https://user-images.githubusercontent.com/60890508/88619282-cfcd5680-d060-11ea-8ab8-1db994847609.png)
+
 
 #### Historia 2: Como usuario nuevo debo poder tener la opción de iniciar sesión con mi cuenta de Google o Facebook para ingresar a la red social sin necesidad de crear una cuenta de email válido.
 
@@ -60,10 +61,10 @@ Los usuarios podrán escribir, leer, actualizar y eliminar datos de las publicac
 - Test de usabilidad completado (directamente al usuario objetivo).
 
 ## Prototipo versión Mobile
-![](https://github.com/Lourdes0896/LIM012-fe-social-network/blob/ludevelop/src/assets/prototipo%20H2-MOBILE.png)
+![prototipo H2-MOBILE](https://user-images.githubusercontent.com/60890508/88619415-1cb12d00-d061-11ea-9f0a-ee8c86fbd468.png)
 
 ## Prototipo versión Desktop
-![](https://github.com/Lourdes0896/LIM012-fe-social-network/blob/ludevelop/src/assets/prototipo%20H2-DESKTOP.png)
+![prototipo H2-DESKTOP](https://user-images.githubusercontent.com/60890508/88619457-3488b100-d061-11ea-8eef-8d1a056631ff.png)
 
 #### Historia 3: Como usuario loggeado debo poder crear, guardar, modificar en el mismo lugar (in place) y eliminar una publicación (post) privada o pública, que puede ser una frase o una imagen.
 
@@ -85,10 +86,10 @@ Los usuarios podrán escribir, leer, actualizar y eliminar datos de las publicac
 - Usar linter como una buena practica.
 - Test de usabilidad completado (directamente al usuario objetivo).
 ## Prototipo versión Mobile
-![](https://github.com/Lourdes0896/LIM012-fe-social-network/blob/ludevelop/src/assets/prototipo%20H3-MOBILE.png)
+![prototipo H3-MOBILE](https://user-images.githubusercontent.com/60890508/88619678-bd9fe800-d061-11ea-9361-86367288d879.png)
 
 ## Prototipo versión Desktop
-![](https://github.com/Lourdes0896/LIM012-fe-social-network/blob/ludevelop/src/assets/prototipo%20H3-DESKTOP.png)
+![prototipo H3-DESKTOP](https://user-images.githubusercontent.com/60890508/88619726-d9a38980-d061-11ea-94ad-e4b9285e4cda.png)
 
 #### Historia 4: Como usuario loggeado debo poder ver todos los posts públicos y privados que he creado hasta ese momento, desde el más reciente hasta el más antiguo, así como la opción de poder cambiar la configuración de privacidad de mis post.
 
@@ -108,10 +109,10 @@ Los usuarios podrán escribir, leer, actualizar y eliminar datos de las publicac
 - Test de usabilidad completado (directamente al usuario objetivo).
 
 ## Prototipo versión Mobile
-![](https://github.com/Lourdes0896/LIM012-fe-social-network/blob/ludevelop/src/assets/prototipo%20H4-MOBILE.png)
+![prototipo H4-MOBILE](https://user-images.githubusercontent.com/60890508/88619817-0bb4eb80-d062-11ea-906e-51ee16b8e5a9.png)
 
 ## Prototipo versión Desktop
-![](https://github.com/Lourdes0896/LIM012-fe-social-network/blob/ludevelop/src/assets/prototipo%20H4-DESKTOP.png)
+![prototipo H4-DESKTOP](https://user-images.githubusercontent.com/60890508/88619847-20917f00-d062-11ea-9dc7-5c53808c0121.png)
 
 #### Historia 5: Yo como usuario loggeado, puedo dar like y llevar un conteo de likes en mi publicación así como poder escribir, guardar, editar o eliminar un comentario en mi publicación.
 
@@ -135,10 +136,10 @@ Los usuarios podrán escribir, leer, actualizar y eliminar datos de las publicac
 - Test de usabilidad completado (directamente al usuario objetivo).
 
 ## Prototipo versión Mobile
-![](https://github.com/Lourdes0896/LIM012-fe-social-network/blob/ludevelop/src/assets/prototipo%20H5-MOBILE.png)
+![prototipo H5-MOBILE](https://user-images.githubusercontent.com/60890508/88619938-546ca480-d062-11ea-8e19-046fb2bf2a64.png)
 
 ## Prototipo versión Desktop
-![](https://github.com/Lourdes0896/LIM012-fe-social-network/blob/ludevelop/src/assets/prototipo%20H5-DESKTOP.png)
+![prototipo H5-DESKTOP](https://user-images.githubusercontent.com/60890508/88619953-63ebed80-d062-11ea-9b52-0bea193950c8.png)
 
 #### Historia 6: Al final debo poder ingresar a la red social y poder visualizar los datos de mi perfil creado o editarlos.
 
@@ -161,10 +162,10 @@ Los usuarios podrán escribir, leer, actualizar y eliminar datos de las publicac
 - Test de usabilidad completado (directamente al usuario objetivo).
 
 ## Prototipo versión Mobile
-![](https://github.com/Lourdes0896/LIM012-fe-social-network/blob/ludevelop/src/assets/prototipo%20H6-MOBILE.png)
+![prototipo H6-MOBILE](https://user-images.githubusercontent.com/60890508/88620005-82ea7f80-d062-11ea-89f1-2733e29cd9cb.png)
 
 ## Prototipo versión Desktop
-![](https://github.com/Lourdes0896/LIM012-fe-social-network/blob/ludevelop/src/assets/prototipo%20H6-DESKTOP.png)
+![prototipo H6-DESKTOP](https://user-images.githubusercontent.com/60890508/88620032-95fd4f80-d062-11ea-9ec6-a7ad4bdf0cdc.png)
 
 
 ## Link para visualizar los prototipos de alta fidelidad en Figma para móvil.
