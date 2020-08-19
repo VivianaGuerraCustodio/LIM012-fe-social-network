@@ -243,7 +243,17 @@ export default () => {
     console.log('CLICK SUBIR IMAGEN', e.target.files[0]);
     // Get file
     file = e.target.files[0];
+    // create a storage ref
   });
+  // const mostrarImg = () => {
+  //   storageRef.on('change', (e) => {
+  //     const file = e.target.files[0];
+  //     const user = firebase.auth().currentUser();
+  //     const post = loadPostHome();
+  //     post.subirImagenPost(file, user.email);
+  //     mostrarImg();
+  //   });
+  //   mostrarImg();
 
   btnNewPost.addEventListener('click', (event) => {
     event.preventDefault();
@@ -258,7 +268,6 @@ export default () => {
     const selectOption = sectionElem.querySelector('#options');
     const privacy = selectOption.value;
     if (file) {
-      // create a storage ref
       const storageRef = firebase.storage().ref(`postImage/${currentUser().email}/${file.name}`);
       // Upload file
       const task = storageRef.put(file);
@@ -296,3 +305,11 @@ export default () => {
   loadPostHome();
   return sectionElem;
 };
+
+/* <input type="file"  id="addImg" accept ="image/*" class= " uploader addImg">
+  <label for= "addImg">
+  <img src="assets/agregarIng.png">
+  </label>
+  <div class="preview"> </div> */
+// <input type="image" id="addImage"class= "addImg"  src="assets/agregarIng.png">
+// <div class="progress"> </div>
