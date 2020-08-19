@@ -112,7 +112,6 @@ export default () => {
             querySnapshotComment.forEach((objComment) => {
               const comment = objComment.data();
               comment.id = objComment.id;
-              console.log(comment.id);
               // comment.id es EL ID DEL COMMENT
               const comentElement = modelComment(comment);
               commentContainer.appendChild(comentElement);
@@ -120,7 +119,6 @@ export default () => {
               if (comment.useruid === useruid) {
                 const btnDeleteComment = comentElement.querySelector('.btnRemoveComment');
                 btnDeleteComment.addEventListener('click', () => {
-                  console.log('clickeando eliminar');
                   deleteComment(comment.id).then(() => {
                     loadPostHome();
                   });
@@ -130,7 +128,6 @@ export default () => {
                 const btnSaveComment = comentElement.querySelector('#btnSaveComment');
                 const btnCancelComment = comentElement.querySelector('#btnCancelComment');
                 btnEditComment.addEventListener('click', () => {
-                  console.log('clickeando editar');
                   const editableComment = comentElement.querySelector('#editComment');
                   editableComment.contentEditable = 'true';
                   btnSaveComment.hidden = false;
@@ -144,7 +141,6 @@ export default () => {
 
               const btnUpdateComment = comentElement.querySelector('#btnSaveComment');
               btnUpdateComment.addEventListener('click', () => {
-                console.log('UPDATE');
                 const commentary = comentElement.querySelector('#editComment').innerHTML;
                 editComment(comment.id, commentary).then(() => {
                   loadPostHome();
@@ -221,7 +217,6 @@ export default () => {
                 }
               });
             }
-            console.log('click');
           });
           // Options
           const selectPrivacy = postElement.querySelector('.selectPrivacy');
@@ -306,10 +301,3 @@ export default () => {
   return sectionElem;
 };
 
-/* <input type="file"  id="addImg" accept ="image/*" class= " uploader addImg">
-  <label for= "addImg">
-  <img src="assets/agregarIng.png">
-  </label>
-  <div class="preview"> </div> */
-// <input type="image" id="addImage"class= "addImg"  src="assets/agregarIng.png">
-// <div class="progress"> </div>
