@@ -10,7 +10,6 @@ import {
 import { modelProfile } from '../templates/templateProfile.js';
 import { templatePost } from '../templates/templatePost.js';
 import { modelComment } from '../templates/templateComment.js';
-// import { modelComment } from '../templates/templateComment.js';
 
 export default () => {
   const viewProfile = `<header>
